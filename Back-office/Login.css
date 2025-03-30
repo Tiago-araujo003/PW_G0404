@@ -4,6 +4,12 @@ html, body {
     height: 100%; /* Ensure full height */
 }
 
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 .container {
 	display: flex;
 	width: 1366px;
@@ -206,4 +212,158 @@ html, body {
 
 .new-account-link:hover {
     text-decoration: underline; /* Add hover effect */
+}
+
+.sidebar {
+    width: 218px;
+    background: #585858;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .nav li {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sidebar .nav li:hover {
+    background: #4A4A4A;
+    border-radius: 8px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #F6F6F6;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #585858;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.reports-section, .peritos-section, .materials-section, .audits-section, .response-time-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.reports-section h2, .peritos-section h2, .materials-section h2, .audits-section h2, .response-time-section h2 {
+    font-size: 18px;
+    color: #06152B;
+    margin-bottom: 10px;
+}
+
+.reports-chart {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #76BFEB 0%, #E48698 100%);
+    border-radius: 10px;
+}
+
+.peritos-section .donut-chart {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: conic-gradient(#77B7A9 0% 40%, #76BFEB 40% 100%);
+    position: relative;
+}
+
+.peritos-section .donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.peritos-section .donut-center span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #06152B;
+}
+
+.peritos-section .donut-center p {
+    font-size: 14px;
+    color: #06152B;
+}
+
+.peritos-section .legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.legend-color.active {
+    background: #77B7A9;
+}
+
+.legend-color.available {
+    background: #76BFEB;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+table th {
+    background: #F9F9F9;
+    font-weight: bold;
+}
+
+table .in-progress {
+    color: #E48698;
+    font-weight: bold;
+}
+
+table .completed {
+    color: #77B7A9;
+    font-weight: bold;
+}
+
+.response-time {
+    font-size: 18px;
+    color: white;
+    background: #77B7A9;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
 }

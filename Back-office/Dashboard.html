@@ -2,16 +2,111 @@
     <link rel="stylesheet" href="Login.css">
     <title>Dashboard</title>
 </head>
-<div class="login-page">
-    <div class="login-container">
-        <div class="logo-section">
-            <div class="logo-text">Dashboard</div>
+<body>
+    <div class="sidebar">
+        <div class="logo">Dashboard</div>
+        <ul class="nav">
+            <li>Dashboard</li>
+            <li>Reports</li>
+            <li>Peritos</li>
+            <li>Materiais</li>
+            <li>Auditorias</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Dashboard</h1>
         </div>
-        <div class="input-group">
-            <p>Welcome to the back-office dashboard!</p>
-        </div>
-        <div class="login-button-container">
-            <a href="Login.html" class="login-button">Log Out</a>
+        <div class="dashboard-grid">
+            <div class="reports-section">
+                <h2>Reports</h2>
+                <div class="reports-chart"></div>
+            </div>
+            <div class="peritos-section">
+                <h2>Peritos</h2>
+                <div class="donut-chart">
+                    <div class="donut-center">
+                        <span>40%</span>
+                        <p>Peritos Ativos</p>
+                    </div>
+                </div>
+                <div class="legend">
+                    <div><span class="legend-color active"></span>Em Ativo</div>
+                    <div><span class="legend-color available"></span>Disponíveis</div>
+                </div>
+            </div>
+            <div class="materials-section">
+                <h2>Materiais Utilizados</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#876364</td>
+                            <td>Colete Refletor</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>#876368</td>
+                            <td>Fita Fluorescente</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>#876412</td>
+                            <td>Cone de Trânsito</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>#876621</td>
+                            <td>Telemóvel</td>
+                            <td>5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="audits-section">
+                <h2>Auditorias por Área</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Em Andamento</th>
+                            <th>Concluídas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Braga</td>
+                            <td class="in-progress">7</td>
+                            <td class="completed">31</td>
+                        </tr>
+                        <tr>
+                            <td>Porto</td>
+                            <td class="in-progress">13</td>
+                            <td class="completed">59</td>
+                        </tr>
+                        <tr>
+                            <td>Guimarães</td>
+                            <td class="in-progress">4</td>
+                            <td class="completed">24</td>
+                        </tr>
+                        <tr>
+                            <td>Beja</td>
+                            <td class="in-progress">6</td>
+                            <td class="completed">25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="response-time-section">
+                <h2>Tempo médio de resposta de auditorias</h2>
+                <div class="response-time">3 dias</div>
+            </div>
         </div>
     </div>
-</div>
+</body>

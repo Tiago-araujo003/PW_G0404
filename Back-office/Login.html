@@ -20,15 +20,12 @@
         </div>
         <div class="divider"></div>
         <div class="social-login">
-            <div class="google-login">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M16.32 7.35H15.75V7.31H9V10.69H13.03C12.55 12.22 11.11 13.35 9 13.35C6.65 13.35 4.75 11.45 4.75 9C4.75 6.55 6.65 4.65 9 4.65C10.13 4.65 11.14 5.08 11.88 5.78L14.19 3.47C12.73 2.11 10.95 1.35 9 1.35C4.97 1.35 1.75 4.57 1.75 9C1.75 13.43 4.97 16.65 9 16.65C12.73 16.65 15.75 13.63 15.75 9C15.75 8.59 15.7 8.18 15.62 7.79L16.32 7.35Z" fill="#FFC107"/>
-                    <path d="M2.48 5.18L4.91 6.84C5.55 5.36 7.13 4.35 9 4.35C10.13 4.35 11.14 4.78 11.88 5.48L14.19 3.17C12.73 1.81 10.95 1.05 9 1.05C6.24 1.05 3.84 2.64 2.48 5.18Z" fill="#FF3D00"/>
-                    <path d="M9 16.95C11.06 16.95 12.88 16.18 14.32 14.91L12.03 12.79C11.31 13.39 10.31 13.75C9 13.75C6.91 13.75 5.48 12.63 5 11.11L2.6 12.82C3.91 15.41 6.31 16.95 9 16.95Z" fill="#4CAF50"/>
-                    <path d="M16.32 7.35H15.75V7.31H9V10.69H13.03C12.77 11.48 12.29 12.19 11.63 12.72L11.64 12.71L13.93 14.83C13.79 14.96 16.25 13.35 16.25 9C16.25 8.59 16.2 8.18 16.12 7.79L16.32 7.35Z" fill="#1976D2"/>
-                </svg>
-                <span>Google</span>
+            <div id="g_id_onload"
+                 data-client_id="989743293355-q7t8qv7pm7b1j8hfi4gcpdkbk3fcp53e.apps.googleusercontent.com"
+                 data-callback="handleGoogleLogin"
+                 data-auto_prompt="false">
             </div>
+            <div class="g_id_signin" data-type="standard" data-theme="outline" data-size="large"></div>
         </div>
         <div class="divider"></div>
         <div class="or-text">Or</div>
@@ -50,4 +47,5 @@
         </div>
     </div>
 </div>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="script.js"></script>
