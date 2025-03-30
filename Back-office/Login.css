@@ -1,3 +1,9 @@
+html, body {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure full height */
+}
+
 .container {
 	display: flex;
 	width: 1366px;
@@ -17,16 +23,20 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh; /* Ensure full viewport height */
+    height: 100%; /* Ensure it occupies the full page */
     background: #E5E5E5; /* Update background color */
 }
 
 .login-container {
     width: 400px; /* Adjust width */
+    height: 100%; /* Occupy full vertical space */
     background: #FFFFFF;
     padding: 40px; /* Increase padding */
     border-radius: 12px; /* Adjust border radius */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Update shadow */
+    display: flex;
+    flex-direction: column; /* Ensure proper layout */
+    justify-content: center; /* Center content vertically */
 }
 
 .logo-section {
@@ -58,7 +68,7 @@
 .divider {
     height: 1px;
     background: #D9D9D9; /* Update divider color */
-    margin: 24px 0; /* Adjust spacing */
+    margin: 12px 0; /* Reduce spacing */
 }
 
 .or-text {
@@ -97,6 +107,12 @@
     font-family: 'Source Sans Pro', sans-serif;
     color: #76BFEB;
     margin-bottom: 20px;
+    text-decoration: none; /* Make it a link */
+    cursor: pointer;
+}
+
+.reset-password:hover {
+    text-decoration: underline; /* Add hover effect */
 }
 
 .remember-me {
@@ -115,10 +131,16 @@
     color: #585858;
 }
 
+.login-button-container {
+    display: flex;
+    justify-content: center; /* Center the button */
+    margin-bottom: 20px;
+}
+
 .login-button {
     width: 100%;
     padding: 14px; /* Adjust padding */
-    background: #4A90E2; /* Update background color */
+    background: #585858; /* Update background color */
     color: #FFFFFF; /* Update text color */
     text-align: center;
     font-size: 16px; /* Adjust font size */
@@ -130,7 +152,7 @@
 }
 
 .login-button:hover {
-    background: #357ABD; /* Darken on hover */
+    background: #3E3E3E; /* Darken on hover */
 }
 
 .social-login {
@@ -148,6 +170,13 @@
     padding: 12px; /* Adjust padding */
     cursor: pointer;
     transition: background 0.3s; /* Add hover effect */
+    font-family: 'Poppins', sans-serif; /* Match font */
+    font-size: 14px; /* Match font size */
+    color: #333333; /* Match text color */
+}
+
+.google-login svg {
+    margin-right: 8px; /* Add spacing between logo and text */
 }
 
 .google-login:hover {
