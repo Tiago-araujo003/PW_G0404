@@ -1,60 +1,53 @@
+/* ========================================
+   1. GLOBAL STYLES
+   ======================================== */
 html, body {
-    margin: 0; /* Remove default margins */
-    padding: 0; /* Remove default padding */
-    height: 100%; /* Ensure full height */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
     display: flex;
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    height: 100vh;
 }
 
-.container {
-	display: flex;
-	width: 1366px;
-	padding: 0px 459px;
-	justify-content: center;
-	align-items: center;
-}
-
-.container {
-	width: 448px;
-	height: 1112px;
-	flex-shrink: 0;
-}
-
+/* ========================================
+   2. LOGIN PAGE STYLES
+   ======================================== */
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; /* Ensure it occupies the full page */
-    background: #E5E5E5; /* Update background color */
+    height: 100%;
+    background: #E5E5E5;
 }
 
 .login-container {
-    width: 400px; /* Adjust width */
-    height: 100%; /* Occupy full vertical space */
+    width: 400px;
+    height: 100%;
     background: #FFFFFF;
-    padding: 40px; /* Increase padding */
-    border-radius: 12px; /* Adjust border radius */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Update shadow */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* Ensure proper layout */
-    justify-content: center; /* Center content vertically */
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* Logo and header section */
 .logo-section {
     text-align: center;
     margin-bottom: 20px;
 }
 
 .logo-text {
-    font-size: 28px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Update font */
-    font-weight: 600; /* Adjust font weight */
-    color: #333333; /* Update color */
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #333333;
 }
 
 .logo-icon {
@@ -71,19 +64,21 @@ body {
     border-radius: 50%;
 }
 
+/* Divider styles */
 .divider {
     height: 1px;
-    background: #D9D9D9; /* Update divider color */
-    margin: 12px 0; /* Reduce spacing */
+    background: #D9D9D9;
+    margin: 12px 0;
 }
 
 .or-text {
     text-align: center;
-    font-size: 14px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Update font */
-    color: #666666; /* Update color */
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #666666;
 }
 
+/* Form elements */
 .input-group {
     margin-bottom: 20px;
 }
@@ -91,36 +86,36 @@ body {
 .input-label {
     display: block;
     font-size: 16px;
-    font-family: 'Source Sans Pro', sans-serif;
     color: #585858;
     margin-bottom: 8px;
 }
 
 .input-field {
     width: 100%;
-    padding: 14px; /* Adjust padding */
-    border: 1px solid #CCCCCC; /* Update border color */
-    border-radius: 8px; /* Adjust border radius */
-    background: #F9F9F9; /* Update background */
-    font-size: 14px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Update font */
-    color: #333333; /* Update color */
+    padding: 14px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    background: #F9F9F9;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
 }
 
+/* Reset password link */
 .reset-password {
     text-align: right;
     font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
     color: #76BFEB;
     margin-bottom: 20px;
-    text-decoration: none; /* Make it a link */
+    text-decoration: none;
     cursor: pointer;
 }
 
 .reset-password:hover {
-    text-decoration: underline; /* Add hover effect */
+    text-decoration: underline;
 }
 
+/* Remember me checkbox */
 .remember-me {
     display: flex;
     align-items: center;
@@ -137,30 +132,33 @@ body {
     color: #585858;
 }
 
+/* Login button */
 .login-button-container {
     display: flex;
-    justify-content: center; /* Center the button */
+    justify-content: center;
     margin-bottom: 20px;
 }
 
 .login-button {
     width: 100%;
-    padding: 14px; /* Adjust padding */
-    background: #585858; /* Update background color */
-    color: #FFFFFF; /* Update text color */
+    padding: 14px;
+    background: #585858;
+    color: #FFFFFF;
     text-align: center;
-    font-size: 16px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Update font */
-    font-weight: 500; /* Adjust font weight */
-    border-radius: 8px; /* Adjust border radius */
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s; /* Add hover effect */
+    transition: background 0.3s;
+    border: none;
 }
 
 .login-button:hover {
-    background: #3E3E3E; /* Darken on hover */
+    background: #3E3E3E;
 }
 
+/* Social login */
 .social-login {
     text-align: center;
     margin: 20px 0;
@@ -170,23 +168,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF; /* Update background */
-    border: 1px solid #CCCCCC; /* Add border */
-    border-radius: 8px; /* Adjust border radius */
-    padding: 12px; /* Adjust padding */
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    padding: 12px;
     cursor: pointer;
-    transition: background 0.3s; /* Add hover effect */
-    font-family: 'Poppins', sans-serif; /* Match font */
-    font-size: 14px; /* Match font size */
-    color: #333333; /* Match text color */
+    transition: background 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333333;
 }
 
 .google-login svg {
-    margin-right: 8px; /* Add spacing between logo and text */
+    margin-right: 8px;
 }
 
 .google-login:hover {
-    background: #F5F5F5; /* Lighten on hover */
+    background: #F5F5F5;
 }
 
 .google-icon {
@@ -197,23 +195,27 @@ body {
     border-radius: 50%;
 }
 
+/* Signup link */
 .signup-link {
     text-align: center;
-    font-size: 14px; /* Adjust font size */
-    font-family: 'Poppins', sans-serif; /* Update font */
-    color: #666666; /* Update color */
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #666666;
 }
 
 .new-account-link {
-    color: #4A90E2; /* Update link color */
+    color: #4A90E2;
     text-decoration: none;
-    font-weight: 500; /* Adjust font weight */
+    font-weight: 500;
 }
 
 .new-account-link:hover {
-    text-decoration: underline; /* Add hover effect */
+    text-decoration: underline;
 }
 
+/* ========================================
+   3. SIDEBAR NAVIGATION
+   ======================================== */
 .sidebar {
     width: 218px;
     background: #585858;
@@ -222,11 +224,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
 }
 
-.sidebar .logo {
-    font-size: 24px;
-    font-weight: 700;
+.sidebar-icon {
     margin-bottom: 20px;
 }
 
@@ -237,20 +238,60 @@ body {
 }
 
 .sidebar .nav li {
-    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
     font-size: 16px;
     cursor: pointer;
+    color: #687179;
 }
 
+.sidebar .nav li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 10px;
+}
+
+/* Hover and active states */
 .sidebar .nav li:hover {
     background: #4A4A4A;
     border-radius: 8px;
+    color: white;
 }
 
+.sidebar .nav li a:hover {
+    color: white;
+}
+
+.sidebar .nav li.active {
+    background: #4A4A4A;
+    border-radius: 8px;
+    color: white;
+}
+
+.sidebar .nav li.active a {
+    color: white;
+}
+
+.sidebar .nav li.active svg path {
+    fill: white;
+}
+
+.sidebar .nav li svg path {
+    fill: #687179;
+}
+
+/* ========================================
+   4. MAIN CONTENT AREA
+   ======================================== */
 .main-content {
     flex: 1;
     padding: 20px;
     background: #F6F6F6;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .header h1 {
@@ -258,62 +299,124 @@ body {
     color: #585858;
 }
 
+/* ========================================
+   5. DASHBOARD LAYOUT
+   ======================================== */
 .dashboard-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
     gap: 20px;
+    align-items: start;
+    height: 100%;
 }
 
-.reports-section, .peritos-section, .materials-section, .audits-section, .response-time-section {
+/* Dashboard card sections */
+.reports-section, 
+.peritos-section, 
+.materials-section, 
+.audits-section, 
+.response-time-section {
     background: white;
     border-radius: 10px;
     padding: 20px;
 }
 
-.reports-section h2, .peritos-section h2, .materials-section h2, .audits-section h2, .response-time-section h2 {
+.reports-section h2, 
+.peritos-section h2, 
+.materials-section h2, 
+.audits-section h2, 
+.response-time-section h2 {
     font-size: 18px;
     color: #06152B;
     margin-bottom: 10px;
 }
 
-.reports-chart {
+/* Response time section (bottom section) */
+.response-time-section {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.response-time {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: #77B7A9;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.response-time-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   6. CHARTS AND VISUALIZATIONS
+   ======================================== */
+/* Line chart for reports */
+.reports-chart-container {
     width: 100%;
     height: 200px;
-    background: linear-gradient(90deg, #76BFEB 0%, #E48698 100%);
+    background: white;
     border-radius: 10px;
-}
-
-.peritos-section .donut-chart {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-    border-radius: 50%;
-    background: conic-gradient(#77B7A9 0% 40%, #76BFEB 40% 100%);
     position: relative;
+    padding: 10px;
 }
 
-.peritos-section .donut-center {
+#reportsChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Donut chart for peritos */
+.donut-chart {
+    position: relative;
+    width: 216px;
+    height: 216px;
+    margin: 0 auto;
+}
+
+.donut-background {
+    width: 216px;
+    height: 216px;
+    position: absolute;
+    border-radius: 50%;
+    border: 15px solid #F1F4FA;
+}
+
+.donut-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    font-size: 18px;
+    color: #333;
 }
 
-.peritos-section .donut-center span {
+.donut-center span {
     font-size: 24px;
     font-weight: bold;
-    color: #06152B;
+    color: #4B82B6;
 }
 
-.peritos-section .donut-center p {
-    font-size: 14px;
-    color: #06152B;
-}
-
-.peritos-section .legend {
+/* Chart legend */
+.legend {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
     margin-top: 10px;
 }
 
@@ -333,9 +436,14 @@ body {
     background: #76BFEB;
 }
 
+/* ========================================
+   7. TABLE STYLES
+   ======================================== */
+/* General table styles */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 table th, table td {
@@ -347,23 +455,568 @@ table th, table td {
 table th {
     background: #F9F9F9;
     font-weight: bold;
+    font-size: 14px;
+    color: #06152B;
 }
 
-table .in-progress {
-    color: #E48698;
-    font-weight: bold;
+table tbody tr:nth-child(even) {
+    background: #F9F9F9;
 }
 
-table .completed {
-    color: #77B7A9;
-    font-weight: bold;
+table tbody tr:hover {
+    background: #F1F4FA;
 }
 
-.response-time {
-    font-size: 18px;
-    color: white;
-    background: #77B7A9;
+/* Table scrollbar */
+table::-webkit-scrollbar {
+    width: 8px;
+}
+
+table::-webkit-scrollbar-thumb {
+    background: #CCCCCC;
+    border-radius: 4px;
+}
+
+table::-webkit-scrollbar-thumb:hover {
+    background: #AAAAAA;
+}
+
+/* Dashboard tables - no borders */
+.dashboard-grid table th, 
+.dashboard-grid table td {
+    border-bottom: none;
+}
+
+/* Non-dashboard tables */
+table:not(.dashboard-grid table) {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table:not(.dashboard-grid table) th, 
+table:not(.dashboard-grid table) td {
+    text-align: left;
     padding: 10px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
     border-radius: 8px;
     text-align: center;
+}
+
+.status-badge.in-progress {
+    background: #E48698;
+    color: white;
+}
+
+.status-badge.completed {
+    background: #77B7A9;
+    color: white;
+}
+
+.quantity-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #76BFEB;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ========================================
+   8. REPORTS PAGE
+   ======================================== */
+.reports-container {
+    width: 1100px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Remove borders from reports table */
+.reports-container .reports-table,
+.reports-container .reports-table tr,
+.reports-container .reports-table th,
+.reports-container .reports-table td {
+    border: none !important;
+    border-bottom: none !important;
+    border-spacing: 0;
+}
+
+.reports-container .reports-table tr {
+    margin-bottom: 4px;
+}
+
+.reports-container .reports-table tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* Center align table cells */
+.reports-table th, .reports-table td {
+    text-align: center;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+/* Status column style */
+.reports-table td:nth-child(4) {
+    text-align: center;
+    padding: 15px 5px;
+}
+
+/* Status boxes in reports table */
+.reports-table .status-resolved,
+.reports-table .status-pending,
+.reports-table .status-analysis {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 100px;
+    max-width: 120px;
+    height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.reports-table .status-resolved {
+    background: #77B7A9;
+    color: white;
+}
+
+.reports-table .status-pending {
+    background: #E48698;
+    color: white;
+}
+
+.reports-table .status-analysis {
+    background: #F6E7AE;
+    color: white;
+}
+
+/* ========================================
+   9. DROPDOWN MENU
+   ======================================== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: #687179;
+    transition: transform 0.2s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+    min-width: 150px;
+    padding: 10px 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #F6F6F6;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    pointer-events: auto;
+}
+
+/* ========================================
+   10. REPORT DETAILS PAGE
+   ======================================== */
+.details-container {
+    width: 1081px;
+    min-width: 320px;
+    padding: 24px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.details-header h2 {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #585858;
+}
+
+.details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.details-section label {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #1E1E1E;
+}
+
+.details-box {
+    padding: 12px 16px;
+    background: #F9F9F9;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #1E1E1E;
+}
+
+.details-image {
+    width: 431px;
+    height: 323px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Action buttons */
+.details-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.approve-button, .reject-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.approve-button {
+    background: #77B7A9;
+    color: white;
+}
+
+.approve-button:hover {
+    background: #5A9B8A;
+}
+
+.reject-button {
+    background: #E48698;
+    color: white;
+}
+
+.reject-button:hover {
+    background: #C76A7C;
+}
+
+/* View report button - positioned at the right side of the page */
+.view-report-container {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    text-align: right; /* Align all content to the right */
+}
+
+.view-report-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #4B82B6;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    float: right; /* Force the button to float right */
+}
+
+.view-report-button:hover {
+    background: #3A6FA0;
+}
+
+/* ========================================
+   11. SUCCESS PAGE
+   ======================================== */
+.success-container {
+    width: 800px;
+    min-width: 320px;
+    padding: 40px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.success-icon {
+    margin-bottom: 24px;
+}
+
+.success-message h2 {
+    font-size: 28px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+.success-message p {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #666666;
+    margin-bottom: 32px;
+}
+
+.success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.generate-pdf-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    background: #77B7A9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.generate-pdf-button:hover {
+    background: #5A9B8A;
+}
+
+.back-to-reports-button {
+    padding: 14px 24px;
+    background: #F5F5F5;
+    color: #333333;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back-to-reports-button:hover {
+    background: #E8E8E8;
+}
+
+/* ========================================
+   12. PDF REPORT PAGE
+   ======================================== */
+.pdf-body {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.pdf-container {
+    max-width: 210mm; /* A4 width */
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* PDF header */
+.pdf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pdf-logo svg {
+    width: 51px;
+    height: 50px;
+    display: block;
+}
+
+.pdf-title {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.pdf-title h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.pdf-subtitle {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.pdf-date {
+    font-size: 14px;
+    color: #666;
+}
+
+/* PDF content */
+.pdf-divider {
+    height: 2px;
+    background-color: #77B7A9;
+    margin: 20px 0;
+}
+
+.pdf-section {
+    margin-bottom: 25px;
+}
+
+.pdf-section h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.pdf-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.pdf-info-row {
+    display: flex;
+    align-items: center;
+}
+
+.pdf-info-label {
+    font-weight: bold;
+    min-width: 150px;
+    color: #555;
+}
+
+.pdf-info-value {
+    flex-grow: 1;
+}
+
+.pdf-image-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pdf-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.pdf-evidence-note {
+    background-color: #f8f8f8;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* PDF navigation */
+.back-button-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button-fixed:hover {
+    background-color: #e0e0e0;
+}
+
+/* Print styles */
+@media print {
+    .pdf-body {
+        background: none;
+        padding: 0;
+    }
+    
+    .pdf-container {
+        box-shadow: none;
+        padding: 15px;
+    }
+    
+    .pdf-buttons {
+        display: none;
+    }
 }
