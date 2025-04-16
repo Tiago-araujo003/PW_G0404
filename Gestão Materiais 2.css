@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/*Sidebar*/
+.sidebar {
+    width: 218px;
+    background: #585858;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Make the sidebar stretch to the full height of the page */
+}
+
+.sidebar-icon {
+    margin-bottom: 20px; /* Add spacing below the icon */
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .nav li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; /* Adjust padding for better spacing */
+    font-size: 16px;
+    cursor: pointer;
+    color: #687179; /* Match the text color in the screenshot */
+}
+
+.sidebar .nav li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+    gap: 10px; /* Add spacing between icon and text */
+}
+
+.sidebar .nav li:hover {
+    background: #4A4A4A; /* Darken background on hover */
+    border-radius: 8px;
+    color: white; /* Change text color on hover */
+}
+
+.sidebar .nav li a:hover {
+    color: white; /* Ensure text color changes on hover */
+}
+
+.sidebar .nav li.active {
+    background: #4A4A4A; /* Highlight the active page */
+    border-radius: 8px;
+    color: white; /* Ensure text is white */
+}
+
+.sidebar .nav li.active a {
+    color: white; /* Ensure link text is white */
+}
+
+.sidebar .nav li.active svg path {
+    fill: white; /* White color for active icons */
+}
+
+.sidebar .nav li svg path {
+    fill: #687179; /* Default color for inactive icons */
+}
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.audit-info label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.audit-info textarea, .audit-info input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+.materials {
+    margin-top: 20px;
+}
+.materials label {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+.materials input {
+    margin-right: 10px;
+}
+button {
+    background: #5aa897;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: #497d6a;
+}

@@ -1,0 +1,58 @@
+.aprovado-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+  }
+  
+  .card-aprovado {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .icon-check {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background-color: #78c2ad;
+    color: white;
+    border-radius: 50%;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-aprovado h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .card-aprovado p {
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-secondary {
+    background-color: #333; /* Darker background */
+    color: white;
+    border: none;
+    padding: 10px 12px; /* Increased height and reduced width */
+    border-radius: 4px; /* Adjusted border radius */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+  }
