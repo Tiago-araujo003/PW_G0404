@@ -283,6 +283,38 @@ body {
     fill: #687179;
 }
 
+/* Sign out button at sidebar bottom */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.sign-out-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #687179;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.sign-out-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sign-out-btn:hover {
+    background: #4A4A4A;
+    color: white;
+}
+
+.sign-out-btn:hover svg {
+    color: white;
+}
+
 /* ========================================
    4. MAIN CONTENT AREA
    ======================================== */
