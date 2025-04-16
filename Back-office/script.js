@@ -158,6 +158,14 @@ let reports = {
         date: "22/03/2025",
         image: "https://placehold.co/431x323",
         status: "pending"
+    },
+    "876790": {
+        type: "Estrada danificada",
+        description: "Buracos na estrada causando risco de acidentes.",
+        location: "Aveiro, Rua da Liberdade",
+        date: "25/03/2025",
+        image: "https://placehold.co/431x323",
+        status: "pending"
     }
 };
 
@@ -165,22 +173,23 @@ let reports = {
 function loadReportsData() {
     const savedReports = localStorage.getItem('reports');
     if (savedReports) {
-        const parsedReports = JSON.parse(savedReports);
-        
-        // Ensure the new report exists in the loaded data
-        if (!parsedReports['876789']) {
-            parsedReports['876789'] = {
-                type: "Semáforo avariado",
-                description: "O semáforo na intersecção principal está com falhas, criando risco de acidentes.",
-                location: "Coimbra, Praça da República",
-                date: "22/03/2025",
-                image: "https://placehold.co/431x323",
-                status: "pending"
-            };
+        try {
+            const parsedReports = JSON.parse(savedReports);
+            
+            // Ensure all our initial reports exist in the loaded data
+            // This prevents report not found errors if localStorage has old data
+            Object.keys(reports).forEach(reportId => {
+                if (!parsedReports[reportId]) {
+                    parsedReports[reportId] = reports[reportId];
+                }
+            });
+            
             localStorage.setItem('reports', JSON.stringify(parsedReports));
+            reports = parsedReports;
+        } catch (error) {
+            console.error("Error parsing reports from localStorage:", error);
+            saveReportsData(); // Reset with default reports
         }
-        
-        reports = parsedReports;
     } else {
         // If no saved data, save the current reports data
         saveReportsData();
@@ -206,6 +215,9 @@ function getQueryParam(param) {
 // Populate report details dynamically
 function populateReportDetails() {
     const reportId = getQueryParam("id");
+    console.log("Report ID from URL:", reportId);
+    console.log("Available reports:", Object.keys(reports));
+    
     const report = reports[reportId];
 
     if (report) {
@@ -230,7 +242,12 @@ function populateReportDetails() {
             document.getElementById("view-report-link").href = `ReportPDF.html?id=${reportId}`;
         }
     } else {
-        alert("Report not found!");
+        alert("Report not found! ID: " + reportId);
+        console.error("Report not found with ID:", reportId);
+        // Redirect back to reports page after showing error
+        setTimeout(() => {
+            window.location.href = "Reports.html";
+        }, 1500);
     }
 }
 
