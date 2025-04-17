@@ -39,6 +39,13 @@ main {
     padding: 20px;
 }
 
+/* Header styling to match dashboard */
+main h1 {
+    font-size: 24px;
+    color: #585858;
+    margin-bottom: 20px;
+}
+
 .container {
     display: flex;
     gap: 20px;
@@ -52,15 +59,80 @@ main {
     flex: 1;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.box h2 {
+    font-size: 18px;
+    color: #06152B;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+/* Enhanced Table Styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: white;
+}
+
+thead {
+    background-color: #f8f9fa;
+}
+
+th {
+    padding: 15px;
     text-align: left;
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+    border-bottom: none;
+}
+
+td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: none;
+}
+
+/* Alternate row colors for better readability without borders */
+tbody tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Changed to gray for odd rows (1st, 3rd, etc.) */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Changed to white for even rows (2nd, 4th, etc.) */
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Keeping and enhancing the quantity indicators */
+.quantidade {
+    background: #76BFEB;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+}
+
+.alerta {
+    background: #E48698;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
 }
 
 table td button {
@@ -76,20 +148,6 @@ table td button {
 
 table td button:hover {
     color: #000;
-}
-
-.quantidade {
-    background: #4ea1ff;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.alerta {
-    background: #ff6b6b;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
 .button-container {
@@ -129,8 +187,6 @@ table td button:hover {
     font-size: 20px;
     padding: 5px;
 }
-
-
 
 /*Sidebar*/
 .sidebar {
