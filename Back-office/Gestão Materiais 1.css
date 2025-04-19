@@ -1,0 +1,256 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.sidebar {
+    width: 250px;
+    background: #2e2e2e;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.logo {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.active {
+    background: #444;
+    border-radius: 5px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Header styling to match dashboard */
+main h1 {
+    font-size: 24px;
+    color: #585858;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.box h2 {
+    font-size: 18px;
+    color: #06152B;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Enhanced Table Styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: white;
+}
+
+thead {
+    background-color: #f8f9fa;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+    border-bottom: none;
+}
+
+td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: none;
+}
+
+/* Alternate row colors for better readability without borders */
+tbody tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Changed to gray for odd rows (1st, 3rd, etc.) */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Changed to white for even rows (2nd, 4th, etc.) */
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Keeping and enhancing the quantity indicators */
+.quantidade {
+    background: #76BFEB;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+}
+
+.alerta {
+    background: #E48698;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+}
+
+table td button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444;
+    outline: none; /* Remove outlines */
+    padding: 0; /* Remove padding */
+    display: inline; /* Ensure it doesn't behave like a block element */
+}
+
+table td button:hover {
+    color: #000;
+}
+
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    background: white;
+    color: black;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    top: 30px; /* Position directly under the 3 dots */
+    left: -80px; /* Move further to the left */
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.options-container.active .tooltip {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.options-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.options-icon {
+    font-size: 20px;
+    padding: 5px;
+}
+
+/*Sidebar*/
+.sidebar {
+    width: 218px;
+    background: #585858;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Make the sidebar stretch to the full height of the page */
+}
+
+.sidebar-icon {
+    margin-bottom: 20px; /* Add spacing below the icon */
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .nav li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; /* Adjust padding for better spacing */
+    font-size: 16px;
+    cursor: pointer;
+    color: #687179; /* Match the text color in the screenshot */
+}
+
+.sidebar .nav li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+    gap: 10px; /* Add spacing between icon and text */
+}
+
+.sidebar .nav li:hover {
+    background: #4A4A4A; /* Darken background on hover */
+    border-radius: 8px;
+    color: white; /* Change text color on hover */
+}
+
+.sidebar .nav li a:hover {
+    color: white; /* Ensure text color changes on hover */
+}
+
+.sidebar .nav li.active {
+    background: #4A4A4A; /* Highlight the active page */
+    border-radius: 8px;
+    color: white; /* Ensure text is white */
+}
+
+.sidebar .nav li.active a {
+    color: white; /* Ensure link text is white */
+}
+
+.sidebar .nav li.active svg path {
+    fill: white; /* White color for active icons */
+}
+
+.sidebar .nav li svg path {
+    fill: #687179; /* Default color for inactive icons */
+}

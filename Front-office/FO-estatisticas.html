@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="FO-estatisticas.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <img src="/images/logo-svg.jpg" alt="Logo" />
+            <h1>EYES EVERYWHERE</h1>
+        </div>
+
+        <!-- Ícone de três tracinhos -->
+        <div class="menu-icon" onclick="openMenu()">
+            <img src="images/image.jpg" alt="Menu" />
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <div id="sideMenu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+        <a href="home.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="contatos.html">Contactos</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="estatisticas.html">Estatísticas</a>
+    </div>
+
+    <!-- Seção de Estatísticas -->
+    <section class="statistics">
+        <h2>Estatísticas</h2>
+        <img src="/images/pic-13.jpg" alt="Imagem Estatísticas" />
+        <p>O sistema Eyes Everywhere tem sido fundamental para otimizar a gestão de ocorrências e melhorar a eficiência na resolução de problemas. Este ano, conseguimos resolver um total de 146 casos com sucesso, garantindo maior segurança e confiança aos nossos utilizadores.</p>
+
+        <!-- Total de casos resolvidos -->
+        <div class="case-stats">
+            <h3>Total de casos resolvidos com sucesso este ano</h3>
+            <p>Tempo médio de resolução: 2 dias</p>
+            <p>Taxa de sucesso: 94%</p>
+            <p>85% das pessoas avaliaram positivamente a nossa resolução</p>
+        </div>
+
+        <!-- Total de casos resolvidos -->
+        <div class="case-stats">
+            <h3>Total de casos resolvidos com sucesso este ano</h3>
+            <p>Tempo médio de resolução: 2 dias</p>
+            <p>Taxa de sucesso: 94%</p>
+            <p>85% das pessoas avaliaram positivamente a nossa resolução</p>
+        </div>
+
+        <!-- Gráfico -->
+        <div class="chart">
+            <img src="chart.png" alt="Gráfico estatístico">
+        </div>
+
+        <p>Continuamos a trabalhar para melhorar ainda mais a operação dos nossos utilizadores e garantir um serviço ágil e eficaz. Obrigado pela confiança!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <h3>GET IN TOUCH</h3>
+            <form>
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="social-media">
+            <h3>FOLLOW</h3>
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+    <script src="FO-estatisticas.js"></script> <!-- Inclua o arquivo JS com a lógica de abertura do menu -->
+</body>
+</html>

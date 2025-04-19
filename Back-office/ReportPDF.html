@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+    <title>Relatório PDF</title>
+</head>
+<body class="pdf-body">
+    <div class="pdf-container">
+        <div class="pdf-header">
+            <div class="pdf-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
+                    <g clip-path="url(#clip0_5_1809)">
+                        <path d="M25.5 9.375C14.875 9.375 5.80125 15.8542 2.125 25C5.80125 34.1458 14.875 40.625 25.5 40.625C36.125 40.625 45.1987 34.1458 48.875 25C45.1987 15.8542 36.125 9.375 25.5 9.375ZM25.5 35.4167C19.635 35.4167 14.875 30.75 14.875 25C14.875 19.25 19.635 14.5833 25.5 14.5833C31.365 14.5833 36.125 19.25 36.125 25C36.125 30.75 31.365 35.4167 25.5 35.4167ZM25.5 18.75C21.9725 18.75 19.125 21.5417 19.125 25C19.125 28.4583 21.9725 31.25 25.5 31.25C29.0275 31.25 31.875 28.4583 31.875 25C31.875 21.5417 29.0275 18.75 25.5 18.75Z" fill="#4B82B6"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_5_1809">
+                            <rect width="51" height="50" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <div class="pdf-title">
+                <h1>Relatório de Ocorrência</h1>
+                <p class="pdf-subtitle">Relatório aprovado e processado</p>
+            </div>
+            <div class="pdf-date" id="pdf-date">Data: 25/05/2023</div>
+        </div>
+        
+        <div class="pdf-divider"></div>
+        
+        <div class="pdf-section">
+            <h2>Detalhes do Relatório</h2>
+            <div class="pdf-info-grid">
+                <div class="pdf-info-row">
+                    <div class="pdf-info-label">ID:</div>
+                    <div class="pdf-info-value" id="pdf-id">#876368</div>
+                </div>
+                <div class="pdf-info-row">
+                    <div class="pdf-info-label">Tipo:</div>
+                    <div class="pdf-info-value" id="pdf-type">Congestionamento</div>
+                </div>
+                <div class="pdf-info-row">
+                    <div class="pdf-info-label">Status:</div>
+                    <div class="pdf-info-value">Resolvido</div>
+                </div>
+                <div class="pdf-info-row">
+                    <div class="pdf-info-label">Data de Ocorrência:</div>
+                    <div class="pdf-info-value" id="pdf-occurrence-date">14/03/2025</div>
+                </div>
+                <div class="pdf-info-row">
+                    <div class="pdf-info-label">Data de Resolução:</div>
+                    <div class="pdf-info-value" id="pdf-resolution-date">25/05/2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pdf-section">
+            <h2>Localização</h2>
+            <p id="pdf-location">Porto, Rua de Santa Catarina</p>
+        </div>
+        
+        <div class="pdf-section">
+            <h2>Descrição</h2>
+            <p id="pdf-description">Trânsito intenso devido a obras na via principal.</p>
+        </div>
+        
+        <div class="pdf-section">
+            <h2>Evidência</h2>
+            <p class="pdf-evidence-note">Uma imagem foi anexada a este relatório como evidência.</p>
+        </div>
+        
+        <div class="pdf-section">
+            <h2>Ações tomadas</h2>
+            <p>O relatório foi analisado e aprovado pela equipe técnica. Foram implementadas as seguintes ações:</p>
+            <ul class="pdf-actions-list">
+                <li>Comunicação com as autoridades competentes</li>
+                <li>Verificação da situação reportada</li>
+                <li>Implementação das medidas corretivas</li>
+                <li>Confirmação da resolução do problema</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Moved button outside of pdf-container -->
+    <button class="back-button-fixed" onclick="window.location.href='Reports.html'">Voltar</button>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get reportId from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const reportId = urlParams.get('id');
+            
+            // Set current date
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('pt-PT');
+            document.getElementById('pdf-date').textContent = `Data: ${formattedDate}`;
+            
+            // If we have a report ID and the reports object is available
+            if (reportId && typeof reports !== 'undefined') {
+                const report = reports[reportId];
+                if (report) {
+                    document.getElementById('pdf-id').textContent = `#${reportId}`;
+                    document.getElementById('pdf-type').textContent = report.type;
+                    document.getElementById('pdf-occurrence-date').textContent = report.date;
+                    document.getElementById('pdf-location').textContent = report.location;
+                    document.getElementById('pdf-description').textContent = report.description;
+                    
+                    // Set resolution date (today)
+                    document.getElementById('pdf-resolution-date').textContent = formattedDate;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
