@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="contactos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="public/images/logo.png" alt="Logo" />
+            <h1>EYES EVERYWHERE</h1>
+        </div>
+        <div class="menu-icon" onclick="openMenu()">
+            <img src="public/images/menu.png" alt="Menu" />
+        </div>
+        <div id="sideMenu" class="menu">
+            <span href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</span>
+            <h2>Menu</h2>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contactos</a>
+            <a href="#">Feedback</a>
+            <a href="#">Estatísticas</a>
+        </div>
+    </header>
+
+    <section class="intro">
+        <h3>Contactos</h3>
+        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/6b9af68eaa1623dcaaff54f354632200ede2a565" alt="Uni">
+        
+        <div class="intro-container">
+            <div class="intro-tele">
+            <img src="public/images/phone.png" alt="Tele" />
+            <h6>Telefone: 253 601 100</h6>
+            </div>
+        
+            <div class="intro-email">
+            <img src="public/images/mail.png" alt="Email" />
+            <h6>Email: eyeseverywhere@gmail.com</h6>
+            </div>
+        
+            <div class="intro-morada">
+            <img src="public/images/map.png" alt="Morada" />
+            <h6>Morada: Campus de Azurém, Av. da Universidade, 4800-058 Guimarães</h6>
+            </div>
+        </div>
+
+        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/c55cb5fe558c416de38b8532b08f11858912849b" alt="Mapa">
+    </section>
+    
+    <section class="contact">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3>GET IN TOUCH</h3>
+                <form>
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Name" required />
+                        <input type="email" name="email" placeholder="Email" required />
+                    </div>
+                    <textarea name="message" placeholder="Message" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="follow">
+                <h3>FOLLOW</h3>
+                <div class="icons-grid">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fas fa-phone"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
+    </footer>
+    <script src="FO-inicio1.js"></script>
+    
+</body>
+
+</html>
