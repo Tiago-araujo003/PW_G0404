@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perito</title>
+    <link rel="stylesheet" href="completo.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-icon">
+            <!-- ...existing code... -->
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <!-- ...existing code... -->
+                    <span style="color: #687179;">Dashboard</span>
+                </li>
+                <li>
+                    <!-- ...existing code... -->
+                    <span style="color: #687179;">Reports</span>
+                </li>
+                <li class="active">
+                    <!-- ...existing code... -->
+                    <span style="color: #687179;">Peritos</span>
+                </li>
+                <li>
+                    <!-- ...existing code... -->
+                    <span style="color: #687179;">Materiais</span>
+                </li>
+                <li>
+                    <!-- ...existing code... -->
+                    Auditorias
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>#001</h1>
+        </header>
+        <div class="form-container">
+            <form>
+                <label for="nome">Nome do Perito</label>
+                <input type="text" id="nome" name="nome" value="João Rodrigues">
+
+                <label for="data-nascimento">Data de Nascimento</label>
+                <input type="date" id="data-nascimento" name="data-nascimento" value="1985-03-15">
+
+                <label for="morada">Morada</label>
+                <input type="text" id="morada" name="morada" value="Rua das Flores, 123, Porto, Portugal">
+
+                <label for="contacto">Contacto</label>
+                <input type="text" id="contacto" name="contacto" value="joao.rodrigues@email.com | +351 912 345 678">
+
+                <div class="dropdowns">
+                    <select id="especialidade" name="especialidade">
+                        <option value="" disabled>Escolha o item</option>
+                        <option value="mobilidade" selected>Mobilidade</option>
+                        <option value="infraestruturas">Infraestruturas</option>
+                        <option value="transportes">Transportes</option>
+                        <option value="seguranca">Segurança Rodoviária</option>
+                        <option value="peritagem">Peritagem Técnica</option>
+                    </select>
+
+                    <select id="disponibilidade" name="disponibilidade">
+                        <option value="" disabled>Escolha o item</option>
+                        <option value="disponivel" selected>Disponível</option>
+                        <option value="ocupado">Ocupado</option>
+                    </select>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="delete-button">Eliminar Perito</button>
+                    <button type="button" class="cancel-button">Cancelar</button>
+                    <button type="submit" class="save-button">Atualizar Perito</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
