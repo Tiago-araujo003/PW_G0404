@@ -14,72 +14,103 @@
 
     <header>
         <div class="logo">
-            <img src="public/images/logo.png" alt="Logo" />
+            <img src="images/logo.png" alt="Logo" />
             <h1>EYES EVERYWHERE</h1>
         </div>
         <div class="menu-icon" onclick="openMenu()">
-            <img src="public/images/menu.png" alt="Menu" />
+            <img src="images/menu.png" alt="Menu" />
         </div>
         <div id="sideMenu" class="menu">
             <span href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</span>
             <h2>Menu</h2>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Contactos</a>
-            <a href="#">Feedback</a>
-            <a href="#">Estatísticas</a>
+            <a href="#home">Home</a>
+            <a href="#aboutUs">About Us</a>
+            <a href="#contactos">Contactos</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#estatisticas">Estatísticas</a>
         </div>
     </header>
 
-    <section class="intro">
+<section id="feedback">
+
+    <section class="introf">
         <h3>Feedback</h3>
         <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/667fd36c32750c64d9b1e6b523e6373af2f55fa0" alt="Feedback">
         <p>Deixe a sua avaliação sobre o nosso site e resolução dos serviços prestados! Obrigado!</p>
         
-        <div class="intro-container">
+        <div class="containerf">
 
             <div class="intro-forms">
-                <div class="intro-nome">
+              <div class="intro-nome">
                 <h6>Nome</h6>
-                <img src="public/images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                  <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                  <input type="text" placeholder="Escreva o seu nome">
                 </div>
-                <div class="intro-email">
+              </div>
+          
+              <div class="intro-email">
                 <h6>Email</h6>
-                <img src="public/images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                  <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                  <input type="email" placeholder="Escreva o seu email">
                 </div>
-                <div class="intro-idade">
+              </div>
+          
+              <div class="intro-idade">
                 <h6>Idade</h6>
-                <img src="public/images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                  <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                  <input type="number" placeholder="Idade">
                 </div>
+              </div>
             </div>
-
+          
             <div class="intro-avalia">
-                <div class="intro-ex">
-                <img src="public/images/caixa.png" alt="Caixa" /><h6>Excelente</h6>
-                </div>
-                <div class="intro-ot">
-                <img src="public/images/caixa.png" alt="Caixa" /><h6>Ótimo</h6>
-                </div>
-                <div class="intro-bom">
-                <img src="public/images/caixa.png" alt="Caixa" /><h6>Bom</h6>
-                </div>
-                <div class="intro-raz">
-                <img src="public/images/caixa.png" alt="Caixa" /><h6>Razoável</h6>
-                </div>
-                <div class="intro-mau">
-                <img src="public/images/caixa.png" alt="Caixa" /><h6>Mau</h6>
-                </div>
+              <div class="checkbox-imagem">
+                <img src="images/caixa.png" alt="Caixa">
+                <input type="checkbox" id="excelente">
+                <label for="excelente">Excelente</label>
+              </div>
+          
+              <div class="checkbox-imagem">
+                <img src="images/caixa.png" alt="Caixa">
+                <input type="checkbox" id="otimo">
+                <label for="otimo">Ótimo</label>
+              </div>
+          
+              <div class="checkbox-imagem">
+                <img src="images/caixa.png" alt="Caixa">
+                <input type="checkbox" id="bom">
+                <label for="bom">Bom</label>
+              </div>
+          
+              <div class="checkbox-imagem">
+                <img src="images/caixa.png" alt="Caixa">
+                <input type="checkbox" id="razoavel">
+                <label for="razoavel">Razoável</label>
+              </div>
+          
+              <div class="checkbox-imagem">
+                <img src="images/caixa.png" alt="Caixa">
+                <input type="checkbox" id="mau">
+                <label for="mau">Mau</label>
+              </div>
             </div>
-
+          
             <div class="intro-sugest">
-                <h6>Sugestões</h6>
-                <img src="public/images/caixaRet.png" alt="CaixaRet" />
-                <img src="public/images/buttonSub.png" alt="Submeter" />
+              <h6>Sugestões</h6>
+              <div class="input-imagem">
+                <img src="images/caixaRet.png" alt="CaixaRet">
+                <textarea placeholder="Escreva aqui a sua sugestão"></textarea>
+              </div>
             </div>
-
-        </div>
-    </section>
+          
+          </div>          
         
+    </section>
+</section>        
+
     <section class="contact">
         <div class="contact-container">
             <div class="contact-form">
@@ -110,7 +141,7 @@
     <footer>
         <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
     </footer>
-    <script src="FO-inicio1.js"></script>
+    <script src="feedback.js"></script>
         
 </body>
     

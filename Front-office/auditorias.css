@@ -44,7 +44,7 @@
     letter-spacing: 8px;
     text-transform: uppercase;
     margin: 0;
-  }  
+  } 
   
   .menu-icon {
     display: block;
@@ -114,7 +114,7 @@
     right: 0; 
   }
   
-/*muda aqui*/
+  /*muda aqui*/
   
   .intro {
     max-width: 1000px;
@@ -124,171 +124,112 @@
   
   .intro h3 {
     font-size: 32px;
-    font-weight: bold;
+    margin-bottom: 30px;
     color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
-    margin-bottom: 30px;
   }
   
-  .intro > img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 30px;
-  }
-  
-  .intro p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 40px;
-    text-align: justify;
-  }
-
-  .intro-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  
-  .intro-forms {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .intro-forms > div {
-    flex: 1;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .intro-forms h6 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    margin: 0;
-  }
-  
-  .intro-forms img {
-    width: 100%;
-    max-width: 100%;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 4px;
-  }
-  
-  .intro-avalia {
-    display: flex;
-    flex-direction: column; /* Coloca na vertical */
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .intro-avalia > div {
-    display: flex;
-    flex-direction: row; /* Coloca texto e caixa lado a lado */
-    align-items: center;
-    gap: 10px; /* Espaço entre texto e caixa */
-  }
-  
-  .intro-avalia h6 {
-    font-size: 15px;
-    font-weight: 500;
-    color: #444;
-    margin: 0;
-  }
-  
-  .intro-avalia img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-  }  
-  
-  .intro-sugest {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .intro-sugest h6 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 5px;
-  }
-  
-  .intro-sugest img {
-    width: 100%;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 4px;
-  }
-
-  .input-imagem, .checkbox-imagem {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .input-imagem img, .checkbox-imagem img {
-    display: block;
+  .intro img {
     width: 100%;
     height: auto;
+    border-radius: 4px;
+    margin-bottom: 50px;
   }
   
-  .input-imagem input,
-  .input-imagem textarea {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 90%; /* ou 95% para mais espaço */
-    height: 90%;
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    padding: 10px;
-    color: #333;
-    outline: none;
+  .intro-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
   }
   
-  .checkbox-imagem input[type="checkbox"] {
+  .intro-container h4 {
+    width: 100%;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 7px;
+    color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  
+  .total-oc {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .total-oc img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .total-oc h1 {
+    font-size: 50px;
+    color: #555;
+    font-weight: bold;
+    margin-top: -50px;
+  }
+  
+  .intro-estado {
+    display: flex;
+    flex-direction: column;
+    margin-top: -50px;
+    margin-left: auto; 
+  }
+  
+  .intro-estado > div {
+    position: relative;
+  }
+  
+  .intro-estado img {
+    height: 38px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .intro-estado h6 {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 15px;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border: none;
-  }
-  
-  .checkbox-imagem label {
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
     font-size: 16px;
-    color: #333;
-  }
-  
-  @media (max-width: 768px) {
-    .intro-forms,
-    .intro-avalia {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .intro-avalia > div {
-      width: 100%;
-      align-items: flex-start;
-    }
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
   }  
   
-/*muda aqui*/
+  .listagem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .listagem h4 {
+    width: 100%;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 7px;
+    color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  
+  .listagem p {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-right: 80px;
+    margin-bottom: 10px;
+  }  
+    
+  /*muda aqui*/
   
   html, body {
     height: 100%;  
