@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Eyes Everywhere</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="fo_pagina.css">
@@ -12,41 +12,160 @@
 
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo" />
-            <h1>EYES EVERYWHERE</h1>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo" />
+        <h1>EYES EVERYWHERE</h1>
+    </div>        
+    <div class="menu-icon" onclick="openMenu()">
+        <img src="images/menu.png" alt="Menu" />
+    </div>
+    <div id="sideMenu" class="menu">
+        <span href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</span>
+        <h2>Menu</h2>
+        <a href="#home">Home</a>
+        <a href="#aboutUs">About Us</a>
+        <a href="#contactos">Contactos</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#estatisticas">Estatísticas</a>
+    </div>
+</header>
+
+<section class="inicial">
+    <h2>Bem-Vindo</h2>
+    <img class="animated-image" src="images/inicial.jpg" alt="inicio">
+</section>
+
+<section id="home">
+    <section class="intro">
+        <h2>Informações de ocorrências em Portugal</h2>
+        <p>Uma solução integrada para gestão e auditoria de ocorrências, oferecendo relatórios detalhados, estatísticas precisas e um fluxo eficiente de comunicação.</p>
+    </section>
+    <section class="cards">
+        <div class="card-report" id="report-card" onclick="location.href='#report-section'">
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/03137d4e94fca80ac601f00ef0a3e5bd703f215a/download" alt="Report">
+            <h3>Report</h3>
         </div>
-        <div class="menu-icon" onclick="openMenu()">
-            <img src="images/menu.png" alt="Menu" />
+        <div class="card-auditorias" id="auditorias-card" onclick="location.href='#auditorias-section'">
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/7822b0dd39cd6d4aa46cea4b969fd88f9b47e614" alt="Auditorias e ocorrências em aberto">
+            <h3>Auditorias e Ocorrências em Aberto</h3>
         </div>
-        <div id="sideMenu" class="menu">
-            <span href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</span>
-            <h2>Menu</h2>
-            <a href="#home">Home</a>
-            <a href="#aboutUs">About Us</a>
-            <a href="#contactos">Contactos</a>
-            <a href="#feedback">Feedback</a>
-            <a href="#estatisticas">Estatísticas</a>
+        <div class="card-registos">
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/fdf5e5e50bd225182db0be7f5fec35cdf5e92211" alt="Registos de Auditorias e Ocorrências">
+            <h3>Registos de Auditorias e Ocorrências</h3>
         </div>
-    </header>
+    </section>
+</section>
+
+<section id="report-section" class="report-main">
+    <div class="report-image">
+        <img src="images/pic-01-jpg.png" alt="Imagem Ocorrência" />
+    </div>
+
+    <section class="report-description">
+        <p>Se está presente numa ocorrência e acha que é necessária ajuda ou uma intervenção faça Report aqui.</p>
+    </section>
+
+    <div class="arrow-down">&darr;</div>
+
+    <div class="report-button">
+        <button onclick="handleReport()">FAZER REPORT DE UMA OCORRÊNCIA</button>
+    </div>
+
+    <section class="report-extra">
+        <p>A nossa equipa prestará assistência a ocorrências rodoviárias, incluindo acidentes, estacionamento ilegal, ocupação indevida de lugares reservados, congestionamentos, monitorização de transportes, condições das paragens e eficiência dos trajetos.</p>
+    </section>
+</section>
+
+<section id="auditorias-section" class="intro">
+    <h3>Auditorias e ocorrências em aberto</h3>
+    <img src="images/auditorias.png" alt="Aud">
+    
+    <div class="intro-container">
+        <h4>Total de ocorrências</h4>
+
+        <div class="total-oc">
+            <img src="images/alert.png" alt="Alert" />
+            <h1>18</h1>
+        </div>
+
+        <div class="intro-estado">
+            <div class="estado-verde">
+                <img src="images/ret-verde.png" alt="Verde" />
+                <h6>Em Conclusão</h6>
+            </div>
+
+            <div class="estado-amarelo">
+                <img src="images/ret-amarelo.png" alt="Amarelo" />
+                <h6>Em despacho</h6>                
+            </div>
+
+            <div class="estado-vermelho">
+                <img src="images/ret-vermelho.png" alt="Vermelho" />
+                <h6>Em Curso</h6>
+            </div>
+        </div>
+              
+        <div class="listagem">
+            <h4>Listagem de ocorrências</h4>
+            <p>Data</p>
+            <p>Local</p>
+            <p>Descrição</p>
+        </div>
+    </div>
+</section>
+
 
 <section id="aboutUs">
-    <section class="intro1">
+    <section class="intro-ab">
         <h3>About Us</h3>
         <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/59bbc73be5429dbb91b6cb8acb3084abfd95d44c" alt="Equipa">
-        <h3>Quem Somos?</h3>
-        <p>Somos uma empresa dedicada à fiscalização e monitorização da mobilidade urbana, atuando para garantir um trânsito mais organizado, acessível e eficiente. Fiscalizamos veículos mal estacionados, a ocupação indevida de lugares reservados e congestionamentos, contribuindo para um espaço público mais funcional e seguro.</p>
-        <p>Além disso, monitorizamos o transporte público, avaliando as condições das paragens e a eficiência do tráfego, para promover melhorias contínuas na mobilidade urbana.</p> 
-        <p>Com tecnologia e análise de dados, ajudamos municípios, empresas e cidadãos a terem um transporte mais sustentável e uma circulação mais fluida.</p>
     </section>
+    <section class="quemSomos">
+        <h3>Quem Somos?</h3>
+            <p>Somos uma empresa dedicada à fiscalização e monitorização da mobilidade urbana, atuando para garantir um trânsito mais organizado, acessível e eficiente. Fiscalizamos veículos mal estacionados, a ocupação indevida de lugares reservados e congestionamentos, contribuindo para um espaço público mais funcional e seguro.</p>
+            <p>Além disso, monitorizamos o transporte público, avaliando as condições das paragens e a eficiência do tráfego, para promover melhorias contínuas na mobilidade urbana.</p> 
+            <p>Com tecnologia e análise de dados, ajudamos municípios, empresas e cidadãos a terem um transporte mais sustentável e uma circulação mais fluida.</p>
+    </section>
+    
 </section> 
 
+<section id="estatisticas">
+    <section class="intro-e">
+        <h3>Estatísticas</h3>
+        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/070681aaa71ed680de9eabbc98096a908e7ab5e5" alt="Estat">
+        <p>O sistema Eyes Everywhere tem sido fundamental para otimizar a gestão de ocorrências e melhorar a eficiência na resolução de problemas. Este ano, conseguimos resolver um total de 146 casos com sucesso, garantindo maior segurança e confiança aos utilizadores.</p>
+        <h4>Total de casos resolvidos com sucesso este ano</h4>
+        <div class="intro-e-container">
+            <div class="intro-certo">
+            <img src="images/check.png" alt="Certo" />
+            <h5>Tempo médio de resolução: 2 dias</h5>
+            </div>
+            <div class="intro-certo">
+            <img src="images/check.png" alt="Certo" />
+            <h5>Taxa de sucesso: 94%</h5>
+            </div>
+            <div class="intro-certo">
+            <img src="images/check.png" alt="Certo" />
+            <h5>85% das pessoas avaliaram positivamente a nossa resolução</h6>
+            </div>
+        </div>
+        <div class="circulo"> 
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/bcc0009b09b2a1a45309ca889dda4cdaf8aa8196" alt="Circulo" />
+        </div>
+        <div class="graf">
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/88d99be8f696f10b41ba4ae0e01d5e33c5bc7a15" alt="Mapa">
+            <h6>Continuamos a trabalhar para melhorar ainda mais a experiência dos nossos utilizadores e garantir um serviço ágil e eficaz. 
+            <p>Obrigado pela confiança!</p></h6>
+        </div>
+    </section>
+</section>
+
 <section id="contactos">  
-    <section class="intro">
+    <section class="intro-c">
         <h3>Contactos</h3>
         <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/6b9af68eaa1623dcaaff54f354632200ede2a565" alt="Uni">
-        <div class="intro-container">
+        <div class="intro-c-container">
             <div class="intro-tele">
             <img src="images/phone.png" alt="Tele" />
             <h6>Telefone: 253 601 100</h6>
@@ -65,80 +184,68 @@
 </section>
 
 <section id="feedback">
-    <section class="intro">
+    <section class="intro-f">
         <h3>Feedback</h3>
         <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/667fd36c32750c64d9b1e6b523e6373af2f55fa0" alt="Feedback">
         <p>Deixe a sua avaliação sobre o nosso site e resolução dos serviços prestados! Obrigado!</p>
-        <div class="intro-container">
-            <div class="intro-forms">
-                <div class="intro-nome">
+        <div class="intro-f-container">
+          <div class="intro-forms">  
+            <div class="intro-nome">
                 <h6>Nome</h6>
-                <img src="images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                    <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                    <input type="text">
                 </div>
-                <div class="intro-email">
+            </div>
+            <div class="intro-email">
                 <h6>Email</h6>
-                <img src="images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                      <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                      <input type="email">
                 </div>
-                <div class="intro-idade">
+            </div>
+            <div class="intro-idade">
                 <h6>Idade</h6>
-                <img src="images/caixaRetang.png" alt="CaixaRet" />
+                <div class="input-imagem">
+                      <img src="images/caixaRetang.png" alt="CaixaRetang" />
+                      <input type="number">
                 </div>
             </div>
-            <div class="intro-avalia">
-                <div class="intro-ex">
-                <img src="images/caixa.png" alt="Caixa" /><h6>Excelente</h6>
-                </div>
-                <div class="intro-ot">
-                <img src="images/caixa.png" alt="Caixa" /><h6>Ótimo</h6>
-                </div>
-                <div class="intro-bom">
-                <img src="images/caixa.png" alt="Caixa" /><h6>Bom</h6>
-                </div>
-                <div class="intro-raz">
-                <img src="images/caixa.png" alt="Caixa" /><h6>Razoável</h6>
-                </div>
-                <div class="intro-mau">
-                <img src="images/caixa.png" alt="Caixa" /><h6>Mau</h6>
-                </div>
-            </div>
-            <div class="intro-sugest">
-                <h6>Sugestões</h6>
-                <img src="images/caixaRet.png" alt="CaixaRet" />
-                <img src="images/buttonSub.png" alt="Submeter" />
-            </div>
-        </div>
-    </section>
-</section>
-
-<section id="estatisticas">
-    <section class="intro">
-        <h3>Estatísticas</h3>
-        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/070681aaa71ed680de9eabbc98096a908e7ab5e5" alt="Estat">
-        <p>O sistema Eyes Everywhere tem sido fundamental para otimizar a gestão de ocorrências e melhorar a eficiência na resolução de problemas. Este ano, conseguimos resolver um total de 146 casos com sucesso, garantindo maior segurança e confiança aos utilizadores.</p>
-        <h4>Total de casos resolvidos com sucesso este ano</h4>
-        <div class="intro-container">
-            <div class="intro-certo">
-            <img src="images/check.png" alt="Certo" />
-            <h5>Tempo médio de resolução: 2 dias</h5>
-            </div>
-            <div class="intro-certo">
-            <img src="images/check.png" alt="Certo" />
-            <h5>Taxa de sucesso: 94%</h5>
-            </div>
-            <div class="intro-certo">
-            <img src="images/check.png" alt="Certo" />
-            <h5>85% das pessoas avaliaram positivamente a nossa resolução</h6>
-            </div>
-            <div class="circulo"> 
-            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/bcc0009b09b2a1a45309ca889dda4cdaf8aa8196" alt="Circulo" />
-            </div>
-        </div>
-    </section>
-    <section class="graf">
-        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/88d99be8f696f10b41ba4ae0e01d5e33c5bc7a15" alt="Mapa">
-        <h6>Continuamos a trabalhar para melhorar ainda mais a experiência dos nossos utilizadores e garantir um serviço ágil e eficaz. 
-            <p>Obrigado pela confiança!</p></h6>
-    </section>
+          </div>
+          <div class="intro-avalia">
+              <div class="checkbox-imagem">
+                  <input type="radio" id="excelente" name="avaliacao">
+                  <label for="excelente">Excelente</label>
+              </div>
+              <div class="checkbox-imagem">
+                  <input type="radio" id="otimo" name="avaliacao">
+                  <label for="otimo">Ótimo</label>
+              </div>
+              <div class="checkbox-imagem">
+                  <input type="radio" id="bom" name="avaliacao">
+                  <label for="bom">Bom</label>
+              </div>
+              <div class="checkbox-imagem">
+                  <input type="radio" id="razoavel" name="avaliacao">
+                  <label for="razoavel">Razoável</label>
+              </div>
+              <div class="checkbox-imagem">
+                  <input type="radio" id="mau" name="avaliacao">
+                  <label for="mau">Mau</label>
+              </div>
+          </div>
+          <div class="intro-sugest">
+              <h6>Sugestões</h6>
+                  <div class="input-imagem">
+                    <img src="images/caixaRet.png" alt="CaixaRet">
+                    <textarea placeholder=""></textarea>
+                  </div>
+              <button type="submit" class="botao-submeter">
+                <img src="images/buttonSub.png" alt="Submeter">
+              </button>
+          </div>
+        </div>              
+      </section>
 </section>
    
 <section class="contact">
@@ -172,7 +279,7 @@
     <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
 </footer>
 
-<script src="aboutUs.js"></script>
+<script src="FO-inicio1.js"></script>
     
 </body>
 

@@ -116,177 +116,159 @@
   
 /*muda aqui*/
   
-  .intro {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  
-  .intro h3 {
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
-    margin-bottom: 30px;
-  }
-  
-  .intro > img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 30px;
-  }
-  
-  .intro p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 40px;
-    text-align: justify;
-  }
+.intro {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-  .intro-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  
-  .intro-forms {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .intro-forms > div {
-    flex: 1;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .intro-forms h6 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    margin: 0;
-  }
-  
-  .intro-forms img {
-    width: 100%;
-    max-width: 100%;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 4px;
-  }
-  
+.intro h3 {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
+  margin-bottom: 30px;
+}
+
+.intro > img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+
+.intro p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 40px;
+  text-align: justify;
+}
+
+/* Container geral */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Inputs de Nome, Email e Idade */
+.intro-forms {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.intro-forms > div {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intro-forms h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}
+
+.input-imagem {
+  position: relative;
+  display: block;
+}
+
+.input-imagem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.input-imagem input,
+.input-imagem textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+  outline: none;
+  resize: none;
+}
+
+/* Avaliação (radio buttons) */
+.intro-avalia {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-imagem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-imagem input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox-imagem label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Sugestões */
+.intro-sugest {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-sugest h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}
+
+/* Botão de Submeter (imagem) */
+.botao-submeter {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.botao-submeter img {
+  width: 955px; /* Ajusta se necessário */
+  height: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .intro-forms,
   .intro-avalia {
-    display: flex;
-    flex-direction: column; /* Coloca na vertical */
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .intro-avalia > div {
-    display: flex;
-    flex-direction: row; /* Coloca texto e caixa lado a lado */
-    align-items: center;
-    gap: 10px; /* Espaço entre texto e caixa */
-  }
-  
-  .intro-avalia h6 {
-    font-size: 15px;
-    font-weight: 500;
-    color: #444;
-    margin: 0;
-  }
-  
-  .intro-avalia img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-  }  
-  
-  .intro-sugest {
-    display: flex;
     flex-direction: column;
-    gap: 8px;
-  }
-  
-  .intro-sugest h6 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 5px;
-  }
-  
-  .intro-sugest img {
-    width: 100%;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 4px;
+    align-items: stretch;
   }
 
-  .input-imagem, .checkbox-imagem {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .input-imagem img, .checkbox-imagem img {
-    display: block;
+  .intro-forms > div {
     width: 100%;
-    height: auto;
   }
-  
-  .input-imagem input,
-  .input-imagem textarea {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 90%; /* ou 95% para mais espaço */
-    height: 90%;
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    padding: 10px;
-    color: #333;
-    outline: none;
-  }
-  
-  .checkbox-imagem input[type="checkbox"] {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border: none;
-  }
-  
-  .checkbox-imagem label {
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #333;
-  }
-  
-  @media (max-width: 768px) {
-    .intro-forms,
-    .intro-avalia {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .intro-avalia > div {
-      width: 100%;
-      align-items: flex-start;
-    }
-  }  
+}
   
 /*muda aqui*/
   

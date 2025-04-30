@@ -189,43 +189,12 @@ header {
   height: auto;
 }
 
-/*.total-casos {
-  max-width: 900px;
-  margin-left: 50px;
-  margin-right: auto;  
-}
-
-  .circulo h1 {
-  position: absolute;                    
-  top: 50%;                              
-  left: 50%;                             
-  transform: translate(-50%, -50%);     
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
-  z-index: 3;
-  margin: 0;
-} 
-
-.semi {
-  position: absolute;
-  top: -18px;            
-  left: 50%;
-  z-index: 1;
-}
-
-.semi img {
-  width: 110px;          
-  height: auto;
-}*/
-
 .graf {
   max-width: 1000px;
-  margin: -150px auto 60px;
+  margin: -100px auto 40px;     /* sobe grafico */
   padding: 0 20px;
   display: flex;
   align-items: flex-start;
-  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -241,15 +210,10 @@ header {
   color: #555;
   line-height: 1.6;
   max-width: 600px;
-  margin: 0;
+  margin-left: 20px;
 }
 
 @media (max-width: 768px) {
-  .total-casos {
-    margin: 30px auto;
-    text-align: center;
-  }
-
   .graf {
     flex-direction: column;
     align-items: center;
