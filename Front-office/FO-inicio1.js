@@ -26,3 +26,8 @@ document.getElementById('auditorias-card').addEventListener('click', function() 
 document.getElementById('registos-card').addEventListener('click', function() {
   navigateToPage('registos.html'); // Redireciona para a página de Registros
 });
+
+window.onload = function() {
+  const image = document.querySelector('.animated-image');
+  image.classList.add('animate');
+};
