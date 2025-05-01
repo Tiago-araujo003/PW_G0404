@@ -76,6 +76,33 @@
             <h1>Reports</h1>
         </div>
         <div class="reports-container">
+            <!-- Add criticality legend above the table -->
+            <div class="criticality-legend">
+                <h3>Níveis de Criticidade:</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="criticality-badge level-1">1</span>
+                        <span class="legend-text">Baixo</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="criticality-badge level-2">2</span>
+                        <span class="legend-text">Moderado</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="criticality-badge level-3">3</span>
+                        <span class="legend-text">Médio</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="criticality-badge level-4">4</span>
+                        <span class="legend-text">Alto</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="criticality-badge level-5">5</span>
+                        <span class="legend-text">Muito Alto</span>
+                    </div>
+                </div>
+            </div>
+
             <table class="reports-table">
                 <thead>
                     <tr>
@@ -83,6 +110,7 @@
                         <th>Tipo</th>
                         <th>Localização</th>
                         <th>Status</th>
+                        <th>Criticidade</th>
                         <th>Data</th>
                         <th></th>
                     </tr>
@@ -93,6 +121,9 @@
                         <td>Estacionamento</td>
                         <td>Braga</td>
                         <td class="status-resolved">Resolvido</td>
+                        <td>
+                            <span class="criticality-badge level-3">3</span>
+                        </td>
                         <td>10/03/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -115,6 +146,9 @@
                         <td>Congestionamento</td>
                         <td>Porto</td>
                         <td class="status-pending">Pendente</td>
+                        <td>
+                            <span class="criticality-badge level-4">4</span>
+                        </td>
                         <td>14/03/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -136,6 +170,9 @@
                         <td>Lugar reservado</td>
                         <td>Lisboa</td>
                         <td class="status-resolved">Resolvido</td>
+                        <td>
+                            <span class="criticality-badge level-3">3</span>
+                        </td>
                         <td>18/02/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -158,6 +195,9 @@
                         <td>Transportes</td>
                         <td>Faro</td>
                         <td class="status-analysis">Em análise</td>
+                        <td>
+                            <span class="criticality-badge level-4">4</span>
+                        </td>
                         <td>05/03/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -179,6 +219,9 @@
                         <td>Semáforo avariado</td>
                         <td>Coimbra</td>
                         <td class="status-pending">Pendente</td>
+                        <td>
+                            <span class="criticality-badge level-4">4</span>
+                        </td>
                         <td>22/03/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -200,6 +243,9 @@
                         <td>Estrada danificada</td>
                         <td>Aveiro</td>
                         <td class="status-pending">Pendente</td>
+                        <td>
+                            <span class="criticality-badge level-4">4</span>
+                        </td>
                         <td>25/03/2025</td>
                         <td class="dropdown-cell">
                             <div class="dropdown">
@@ -216,17 +262,202 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>#876795</td>
+                        <td>Sinalização inadequada</td>
+                        <td>Viseu</td>
+                        <td class="status-analysis">Em análise</td>
+                        <td>
+                            <span class="criticality-badge level-5">5</span>
+                        </td>
+                        <td>28/03/2025</td>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="ReportDetails.html?id=876795">Ver detalhes</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- New report for Passadeira Danificada -->
+                    <tr>
+                        <td>#876810</td>
+                        <td>Passadeira danificada</td>
+                        <td>Guimarães</td>
+                        <td class="status-pending">Pendente</td>
+                        <td>
+                            <span class="criticality-badge level-4">4</span>
+                        </td>
+                        <td>02/04/2025</td>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="ReportDetails.html?id=876810">Ver detalhes</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- New report for Buracos na Estrada -->
+                    <tr>
+                        <td>#876811</td>
+                        <td>Veículo abandonado</td>
+                        <td>Braga</td>
+                        <td class="status-pending">Pendente</td>
+                        <td>
+                            <span class="criticality-badge level-3">3</span>
+                        </td>
+                        <td>20/03/2025</td>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="ReportDetails.html?id=876811">Ver detalhes</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="dropdown.js"></script>
     <script>
         // Make sure reports are loaded and status is updated when page loads
         document.addEventListener("DOMContentLoaded", function() {
             loadReportsData();
             updateReportStatus();
+            // The dropdown functionality is now handled in dropdown.js
         });
     </script>
+    <style>
+        /* Criticality legend styles */
+        .criticality-legend {
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .criticality-legend h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .legend-items {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-text {
+            font-size: 14px;
+        }
+        
+        /* Criticality badge styles */
+        .criticality-badge {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            line-height: 25px;
+        }
+        
+        .level-1 { background-color: #90EE90; } /* Light green */
+        .level-2 { background-color: #FFD700; } /* Gold */
+        .level-3 { background-color: #FFA500; } /* Orange */
+        .level-4 { background-color: #FF6347; } /* Tomato */
+        .level-5 { background-color: #DC143C; } /* Crimson */
+        
+        /* Table layout improvements */
+        .reports-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        
+        /* Column width definitions */
+        .reports-table th:nth-child(1), 
+        .reports-table td:nth-child(1) {
+            width: 10%; /* ID column */
+        }
+        
+        .reports-table th:nth-child(2), 
+        .reports-table td:nth-child(2) {
+            width: 17%; /* Tipo column */
+        }
+        
+        .reports-table th:nth-child(3), 
+        .reports-table td:nth-child(3) {
+            width: 15%; /* Localização column */
+        }
+        
+        .reports-table th:nth-child(4), 
+        .reports-table td:nth-child(4) {
+            width: 15%; /* Status column */
+        }
+        
+        .reports-table th:nth-child(5), 
+        .reports-table td:nth-child(5) {
+            width: 12%; /* Criticidade column */
+        }
+        
+        .reports-table th:nth-child(6), 
+        .reports-table td:nth-child(6) {
+            width: 15%; /* Data column */
+        }
+        
+        .reports-table th:nth-child(7), 
+        .reports-table td:nth-child(7) {
+            width: 8%; /* Action column */
+        }
+        
+        /* Ensure rows have consistent height */
+        .reports-table tr {
+            height: 60px;
+        }
+        
+        /* Make all cells consistent with vertical alignment and padding */
+        .reports-table td, .reports-table th {
+            padding: 12px 10px;
+            vertical-align: middle;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </body>
 </html>
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="perito-association.css">
+    <title>Report Details - Veículo Abandonado</title>
+</head>
+<body>
+    <!-- Explicitly set to pending -->
+    <div id="report-status" data-status="pending" style="display:none;"></div>
+    
+    <!-- Very explicit status marker -->
+    <div class="status-markers" style="display:none;">
+        <span id="status-marker" class="status-pending"></span>
+    </div>
+    
+    <!-- Typical sidebar structure -->
+    <div class="sidebar">
+        <!-- ...existing sidebar code... -->
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1 id="report-id">#876811</h1>
+        </div>
+        <div class="details-container">
+            <div class="details-header">
+                <h2 id="report-type">Veículo abandonado</h2>
+            </div>
+            <div class="details-section">
+                <label>Descrição do problema</label>
+                <div class="details-box" id="report-description">
+                    Veículo sem matrícula abandonado há várias semanas, a ocupar dois lugares de estacionamento.
+                </div>
+            </div>
+            <div class="details-section">
+                <label>Localização</label>
+                <div class="details-box" id="report-location">
+                    Braga, Rua do Comércio
+                </div>
+            </div>
+            <div class="details-section">
+                <label>Data</label>
+                <div class="details-box" id="report-date">
+                    03/04/2025
+                </div>
+            </div>
+            
+            <!-- Status badge - explicitly marked as pending -->
+            <div class="status-badge status-pending" style="display: block; background-color: #E48698; color: white; padding: 8px 16px; border-radius: 8px; margin: 20px 0;">
+                Pendente
+            </div>
+            
+            <!-- Criticality section -->
+            <div class="details-section" id="criticality-section">
+                <label>Nível de Criticidade</label>
+                <div class="details-box">
+                    <div id="current-criticality">
+                        <span class="criticality-badge level-3">3</span>
+                        Médio
+                    </div>
+                </div>
+            </div>
+            
+            <div class="details-section">
+                <label>Imagem/Vídeo</label>
+                <img id="report-image" src="https://placehold.co/431x323" alt="Veículo Abandonado" class="details-image">
+            </div>
+            
+            <!-- Add new section for perito allocation -->
+            <div class="details-section" id="perito-section">
+                <label>Perito Alocado</label>
+                <div class="details-box perito-allocation">
+                    <div class="perito-info">
+                        <img src="../Assets/avatar-joao.jpg" alt="Avatar do Perito" class="perito-avatar">
+                        <div class="perito-details">
+                            <div class="perito-name">João Pereira</div>
+                            <div class="perito-speciality">Infraestrutura Rodoviária</div>
+                            <div class="perito-contact">joao.pereira@example.com | +351 923 456 789</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple action buttons without Vue -->
+            <div class="details-actions">
+                <button class="reject-button" onclick="handleAction('reject')">Rejeitar</button>
+                <button class="approve-button" onclick="handleAction('approve')">Aprovar</button>
+            </div>
+            
+            <script>
+                function handleAction(action) {
+                    alert(`Ação ${action} selecionada. Esta página é apenas para testes.`);
+                    window.location.href = "Reports.html";
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
