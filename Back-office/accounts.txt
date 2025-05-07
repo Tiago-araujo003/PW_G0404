@@ -1,4 +1,5 @@
 admin,admin123
 user1,password1
 tiago,ola
-tiagojosearaujo003@gmail.com,google-auth
+tiagojosearaujo003@gmail.com,google-authlucascostapokemongo@gmail.com,google-auth
+lucascostapokemongo@gmail.com,google-auth
