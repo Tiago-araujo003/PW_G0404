@@ -1,149 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* HEADER IGUAL AO REPORT 1 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color:#f9f9f9;
   
-  header {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    position: relative;
-    z-index: 10;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .logo img {
-    width: 40px;
-  }
-  
-  .logo h1 {
-    font-size: 20px;
-    color: #333;
-    letter-spacing: 2px;
-  }
-  
-  .menu-icon {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
-  
-  .banner {
+  position: relative;
+  z-index: 10;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.menu-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* MENU LATERAL */
+.menu {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  background-color: #585858;
+  color: white;
+  transition: right 0.3s ease;
+  padding-top: 60px;
+  z-index: 9999;
+}
+
+.menu.open {
+  right: 0;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.menu h2 {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.menu a {
+  padding: 10px 32px;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 21px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  background-color: #6f6f6f;
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* IMAGEM INTEGRADA */
+.report-image {
+  width: 100%;
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.report-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* TÍTULO */
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* TABELA DE OCORRÊNCIAS */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.resolvido {
+  background-color: #4CAF50;
+}
+
+.pendente {
+  background-color: #E91E63;
+}
+
+.analise {
+  background-color: #FFC107;
+  color: #333;
+}
+
+.ver-mais {
+  background-color: #585858;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;         /* <-- Impede quebra de linha */
+  display: inline-block;
+  min-width: 80px;             /* <-- Garante largura mínima */
+  text-align: center;
+}
+
+/* RODAPÉ */
+footer {
+  background: #f4f4f4;
+  padding: 50px 20px;
+  margin-top: auto;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
     width: 100%;
-    height: 250px;
-    background: url('images/pic-01-jpg.png') center/cover no-repeat;
   }
-  
-  main {
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+
+  thead {
+    display: none;
   }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
+
+  tr {
+    margin-bottom: 15px;
     background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 10px;
   }
-  
-  th, td {
-    padding: 15px 20px;
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    padding-top: 12px;
+    padding-bottom: 12px;
     text-align: left;
+    font-size: 14px;
+    border: none;
   }
-  
-  th {
-    background-color: #f0f0f0;
+
+  td::before {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
     font-weight: bold;
-    color: #333;
+    color: #888;
+    content: attr(data-label);
   }
-  
-  tr:nth-child(even) {
-    background-color: #fafafa;
-  }
-  
-  .status {
-    padding: 5px 12px;
-    border-radius: 12px;
-    font-weight: bold;
-    color: white;
-    display: inline-block;
-    font-size: 14px;
-  }
-  
-  .resolvido {
-    background-color: #4CAF50;
-  }
-  
-  .pendente {
-    background-color: #E91E63;
-  }
-  
-  .analise {
-    background-color: #FFC107;
-    color: #333;
-  }
-  
-  .ver-mais {
-    background-color: #585858;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  footer {
-    background: #f4f4f4;
-    padding: 50px 20px;
-    margin-top: auto;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  @media (max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-  
-    th {
-      display: none;
-    }
-  
-    td {
-      padding: 10px;
-      position: relative;
-    }
-  
-    td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      font-size: 12px;
-      color: #666;
-    }
-  }
-  
+}

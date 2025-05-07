@@ -11,29 +11,27 @@
 </head>
 <body>
 
-
   <!-- Cabeçalho -->
   <header class="logo">
     <div class="logo">
-      <img src="/images/logo-svg.jpg" alt="Logo" />
+      <img src="images/logo-svg.jpg" alt="Logo" />
       <h1>EYES EVERYWHERE</h1>
-  </div>
-
-  <!-- Ícone de três tracinhos -->
-  <div class="menu-icon" onclick="openMenu()">
-      <img src="images/image.jpg" alt="Menu" />
-  </div>
-
-    <div id="sideMenu" class="menu">
-      <span class="closebtn" onclick="closeMenu()">&times;</span>
-      <h2>Menu</h2>
-      <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Contactos</a>
-      <a href="#">Feedback</a>
-      <a href="#">Estatísticas</a>
     </div>
+    <div class="menu-icon" onclick="openMenu()">
+      <img src="images/image.jpg" alt="Menu" />
+    </div>
+    
   </header>
+
+  <div id="sideMenu" class="menu">
+    <span class="closebtn" onclick="closeMenu()">&times;</span>
+    <h2>Menu</h2>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contactos</a>
+    <a href="#">Feedback</a>
+    <a href="#">Estatísticas</a>
+  </div>
 
   <!-- Secção principal -->
   <main class="report-main">
@@ -46,88 +44,80 @@
     </section>
 
     <!-- Formulário de Report -->
-<section class="report-form">
-  <h2>Report</h2>
+    <section class="report-form">
+      <h2>Report</h2>
 
-  <form id="reportForm">
-    <div class="form-group">
-      <label for="tipo">Título/Tipologia da ocorrência</label>
-      <select id="tipo" name="tipo" required>
-        <option value="">Selecione uma opção</option>
-        <option value="Acidente">Acidente</option>
-        <option value="Estacionamento">Estacionamento Indevido</option>
-        <option value="Congestionamento">Congestionamento</option>
-        <option value="LugarReservado">Lugar Reservado</option>
-        <option value="Transportes">Transportes</option>
-      </select>
+      <form id="reportForm">
+        <div class="form-group">
+          <label for="tipo">Título/Tipologia da ocorrência</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecione uma opção</option>
+            <option value="Acidente">Acidente</option>
+            <option value="Estacionamento">Estacionamento Indevido</option>
+            <option value="Congestionamento">Congestionamento</option>
+            <option value="LugarReservado">Lugar Reservado</option>
+            <option value="Transportes">Transportes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descreva o problema</label>
+          <input type="text" id="descricao" name="descricao" placeholder="Descreva o Problema" required />
+        </div> 
+
+        <div class="form-group">
+          <label for="morada">Morada Exata</label>
+          <input type="text" id="morada" name="morada" placeholder="Ex: Rua da Liberdade, nº 20, Lisboa" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Distrito">Distrito</label>
+          <select id="Distrito" name="Distrito" required>
+            <option value="">Selecione um distrito</option>
+            <option value="Aveiro">Aveiro</option>
+            <option value="Beja">Beja</option>
+            <option value="Braga">Braga</option>
+            <option value="Bragança">Bragança</option>
+            <option value="CasteloBranco">Castelo Branco</option>
+            <option value="Coimbra">Coimbra</option>
+            <option value="Evora">Evora</option>
+            <option value="Faro">Faro</option>
+            <option value="Guarda">Guarda</option>
+            <option value="Leiria">Leiria</option>
+            <option value="Lisboa">Lisboa</option>
+            <option value="Portalegre">Portalegre</option>
+            <option value="Porto">Porto</option>
+            <option value="Santarem">Santarem</option>
+            <option value="Setubal">Setubal</option>
+            <option value="VCastelo">Viana do Castelo</option>
+            <option value="VReal">Vila Real</option>
+            <option value="Viseu">Viseu</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ficheiro">Insira uma imagem ou vídeo</label>
+          <input type="file" id="ficheiro" name="ficheiro" accept="image/*,video/*" />
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="termos" required />
+          <label for="termos">I accept the terms<br><a href="#">Read our T&Cs</a></label>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Submeter</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Notificação de sucesso -->
+    <div id="successNotification" class="notification hidden">
+      <div class="notification-content">
+        <p><strong>✔️ Report submetido com sucesso!</strong><br> Aguarde uma resposta!</p>
+        <button onclick="closeNotification()">OK</button>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="descricao">Descreva o problema</label>
-      <input type="text" id="descricao" name="descricao" required />
-    </div> 
-
-    <div class="form-group">
-      <label for="morada">Morada Exata</label>
-      <input type="text" id="morada" name="morada" required />
-    </div>
-    
-
-    <div class="form-group">
-      <label for="Distrito">Distrito</label>
-      <select id="Distrito" name="Distrito" required>
-        <option value="">Selecione um distrito</option>
-        <option value="Aveiro">Aveiro</option>
-        <option value="Beja">Beja</option>
-        <option value="Braga">Braga</option>
-
-        <option value="Bragança">Bragança</option>
-        <option value="CasteloBranco">Castelo Branco</option>
-        <option value="Coimbra">Coimbra</option>
-
-        <option value="Evora">Evora</option>
-        <option value="Faro">Faro</option>
-        <option value="Guarda">Guarda</option>
-
-        <option value="Leiria">Leiria</option>
-        <option value="Lisboa">Lisboa</option>
-        <option value="Portalegre">Portalegre</option>
-
-        <option value="Porto">Porto</option>
-        <option value="Santarem">Santarem</option>
-        <option value="Setubal">Setubal</option>
-
-        <option value="VCastelo">Viana do Castelo</option>
-        <option value="VReal">Vila Real</option>
-        <option value="Viseu">Viseu</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="ficheiro">Insira uma imagem ou vídeo</label>
-      <input type="file" id="ficheiro" name="ficheiro" accept="image/*,video/*" />
-    </div>
-
-    <div class="form-group checkbox-group">
-      <input type="checkbox" id="termos" required />
-      <label for="termos">I accept the terms<br><a href="#">Read our T&Cs</a></label>
-    </div>
-
-    <div class="form-group">
-      <button type="submit">Submeter</button>
-    </div>
-  </form>
-
-</section>
-<!-- Notificação de sucesso -->
-<div id="successNotification" class="notification hidden">
-  <div class="notification-content">
-    <p><strong>✔️ Report submetido com sucesso!</strong><br> Aguarde uma resposta!</p>
-    <button onclick="closeNotification()">OK</button>
-  </div>
-</div>
-
-
   </main>
 
   <!-- Rodapé -->
