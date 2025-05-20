@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>As minhas ocorrências</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="minhas_ocorrencias.css">
+</head>
+
+<body>
+
+<!-- HEADER IGUAL AO REPORT 1 -->
+<header>
+  <div class="logo">
+    <img src="images/logo-svg.jpg" alt="Logo">
+    <h1>EYES EVERYWHERE</h1>
+  </div>
+  <div class="menu-icon" onclick="openMenu()">
+    <img src="images/image.jpg" alt="Menu">
+  </div>
+</header>
+
+<!-- MENU LATERAL FUNCIONAL -->
+<div id="sideMenu" class="menu">
+  <span class="closebtn" onclick="closeMenu()">&times;</span>
+  <h2>Menu</h2>
+  <a href="#">Home</a>
+  <a href="#">Sobre</a>
+  <a href="#">Contactos</a>
+  <a href="#">Feedback</a>
+  <a href="#">Estatísticas</a>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main>
+  <div class="report-image">
+    <img src="images/pic-01-jpg.png" alt="Imagem Ocorrência" />
+  </div>
+  <h2>As minhas ocorrências</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Localização</th>
+        <th>Status</th>
+        <th>Data</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaOcorrencias">
+      <!-- JavaScript vai preencher aqui -->
+    </tbody>
+  </table>
+</main>
+
+<!-- RODAPÉ -->
+<footer>
+  &copy; 2025 Eyes Everywhere. All rights reserved.
+</footer>
+
+<!-- JavaScript Externo -->
+<script src="minhas_ocorrencias.js"></script>
+
+</body>
+</html>

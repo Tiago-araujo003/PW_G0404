@@ -32,19 +32,19 @@ header {
 }
 
 .logo img {
-  width: 40px;  
-  height: 40px;
+  width: 33px;
+  height: 33px;                
 }
 
 .logo h1 {
-  color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858)); 
-  font-size: 21.3px;  
-  font-style: normal;  
-  font-weight: var(--font-weight-900, 900);  
-  line-height: var(--line-height-37_33, 37.33px);  
-  letter-spacing: var(--letter-spacing-7_47, 7.467px);  
-  text-transform: uppercase; 
-}
+  color: #585858;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin: 0;
+} 
 
 .menu-icon {
   display: block;
@@ -189,43 +189,12 @@ header {
   height: auto;
 }
 
-/*.total-casos {
-  max-width: 900px;
-  margin-left: 50px;
-  margin-right: auto;  
-}
-
-  .circulo h1 {
-  position: absolute;                    
-  top: 50%;                              
-  left: 50%;                             
-  transform: translate(-50%, -50%);     
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
-  z-index: 3;
-  margin: 0;
-} 
-
-.semi {
-  position: absolute;
-  top: -18px;            
-  left: 50%;
-  z-index: 1;
-}
-
-.semi img {
-  width: 110px;          
-  height: auto;
-}*/
-
 .graf {
   max-width: 1000px;
-  margin: -150px auto 60px;
+  margin: -100px auto 40px;     /* sobe grafico */
   padding: 0 20px;
   display: flex;
   align-items: flex-start;
-  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -241,15 +210,10 @@ header {
   color: #555;
   line-height: 1.6;
   max-width: 600px;
-  margin: 0;
+  margin-left: 20px;
 }
 
 @media (max-width: 768px) {
-  .total-casos {
-    margin: 30px auto;
-    text-align: center;
-  }
-
   .graf {
     flex-direction: column;
     align-items: center;

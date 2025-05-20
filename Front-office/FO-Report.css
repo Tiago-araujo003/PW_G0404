@@ -1,35 +1,57 @@
-/* Cabeçalho */
-.report-header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 40px 90px 0 90px;
-  gap: 12px;
-  max-width: 1176px;
-  margin: 0 auto;
-  position: relative;
-}
 
-.logo-bloco {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: -10px; /* para aproximar ao título */
-}
-
-.logo-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.logo-text {
-  color: #585858;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  font-weight: 900;
-  letter-spacing: 7px;
-  text-transform: uppercase;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  position: relative;  /* Necessário para que o footer seja posicionado relativo a body */
+  min-height: 100%;  /* Garantir que o conteúdo ocupe toda a altura */
+}
+
+
+
+/* Cabeçalho */
+header {
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+ /* Logo */
+ .logo-bloco {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 
 .report-title {
@@ -117,13 +139,16 @@
 
 /* Imagem */
 .report-image img {
-  width: 1176px;
-  height: 303px;
-  border-radius: 4px;
-  object-fit: cover;
-  display: block;
-  margin-left: 90px;
+    width: 1176px;
+    max-width: 800px;
+    height: 303px;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+    margin-left: 30px;
+    margin: 20px auto 0 auto
 }
+
 
 /* Descrição */
 .report-description {
@@ -285,3 +310,6 @@ footer p {
   margin-top: 60px;
   font-size: 0.75rem;
 }
+
+
+/*FORMULARIO*/

@@ -1,5 +1,5 @@
+/* Resetando margens e paddings para garantir consistência */
 * {
-  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -9,43 +9,24 @@ body {
   background: #ffffff;
   color: #333;
   line-height: 1.6;
-  position: relative;  
-  min-height: 100%;  
+  position: relative;  /* Necessário para que o footer seja posicionado relativo a body */
+  min-height: 100%;  /* Garantir que o conteúdo ocupe toda a altura */
 }
 
-header {
-  padding: 20px;
-  width: 100%;
-  max-width: 1000px;  
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative; 
-}
-
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 100%;  
+  width: 100%;  /* Alinha a largura do logo com a introdução */
 }
 
 .logo img {
-  width: 33px;
-  height: 33px;                
+  width: 40px;  /* Tamanho do logo */
+  height: 40px;
 }
 
-.logo h1 {
-  color: #585858;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 19px;
-  font-weight: 900;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  margin: 0;
-} 
-
+/* Estilo para o menu (ícone de três tracinhos) */
 .menu-icon {
   display: block;
   width: 30px;
@@ -56,19 +37,26 @@ header {
   top: 20px;
 }
 
+
+  
+
+
+/* Ajustes para a imagem dentro do menu */
 .menu-icon img {
-  width: 100%; 
-  height: 100%; 
-  object-fit: contain; 
-  max-width: 40px; 
+  width: 100%; /* Faz com que a imagem ocupe todo o contêiner */
+  height: 100%; /* Ajusta a altura para manter a proporção */
+  object-fit: contain; /* Faz a imagem se ajustar ao tamanho do contêiner */
+  max-width: 40px;  /* Tamanho fixo */
 }
 
+/* Menu Lateral */
 .menu {
   height: 100%;
   width: 250px;
   position: fixed;
   top: 0;
-  right: -250px;
+  right: -250px; /* Inicialmente escondido */
+  
   background-color: #585858;
   color: white;
   transition: 0.3s;
@@ -81,19 +69,21 @@ header {
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-align: left;  
+  text-align: left;  /* Alinhado à esquerda */
   margin-bottom: 10px;
-  padding-left: 20px;  
+  padding-left: 20px;  /* Aumenta o espaço à esquerda do título */
 }
 
+/* Estilo das palavras no menu */
 .menu a {
-  padding: 10px 8px 10px 32px;  
+  padding: 10px 8px 10px 32px;  /* Adicionando mais padding para tornar o texto mais espaçado */
   text-decoration: none;
-  font-size: 21.3px;  
-  font-weight: 150;  
-  font-style: normal;  
-  line-height: 37.33px; 
-  color: #FFF; 
+  font-size: 21.3px;  /* Tamanho da fonte */
+  /*font-family: var(--font-family-Font-1, "Source Sans Pro");  Fonte */
+  font-weight: 150;  /* Peso da fonte */
+  font-style: normal;  /* Estilo normal */
+  line-height: 37.33px;  /* Altura da linha */
+  color: #FFF;  /* Cor branca */
   display: block;
   transition: 0.3s;
 }
@@ -110,59 +100,23 @@ header {
   margin-left: 50px;
 }
 
+/* Menu lateral aberto */
 .menu.open {
-  right: 0; 
+  right: 0; /* Quando clicado, mostra o menu */
 }
-
-/*muda aqui*/
-
-.intro {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.intro h3 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858));
-}
-
-.intro > img:first-of-type {
-  display: block;
-  width: 85%;              
-  max-width: 850px;        
-  height: 200px;           
-  object-fit: cover;      
-  object-position: top;    
-  margin: 20px auto 40px auto;  
-  border-radius: 6px;
-}
-
-.intro p {
-  max-width: 1000px;
-  margin: 0 auto 12px auto;  
-  padding: 0;
-  color: #585858;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.8;
-  text-align: left;
-}
-  
-/*muda aqui*/
 
 html, body {
-  height: 100%;  
-  margin: 0;  
+  height: 100%;  /* Garantir que o corpo ocupe toda a altura da página */
+  margin: 0;  /* Remove margens externas */
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;  /* Organiza os elementos em uma coluna */
 }
 
 .content {
-  flex-grow: 1;  
+  flex-grow: 1;  /* Faz com que o conteúdo ocupe o espaço restante */
 }
 
+/* Seção de Contato */
 .contact {
   background: #f4f4f4;
   padding: 60px 20px;
@@ -220,6 +174,7 @@ html, body {
   cursor: pointer;
 }
 
+/* FOLLOW */
 .follow {
   min-width: 160px;
 }
@@ -255,6 +210,7 @@ html, body {
   background-color: #eee;
 }
 
+/* Footer */
 footer {
   text-align: center;
   height: 100px;

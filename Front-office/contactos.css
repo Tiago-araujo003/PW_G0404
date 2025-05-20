@@ -32,19 +32,19 @@
   }
   
   .logo img {
-    width: 40px;  
-    height: 40px;
+    width: 33px;
+    height: 33px;                
   }
   
   .logo h1 {
-    color: var(--html-5-up-net-scorpion, var(--color-grey-35, #585858)); 
-    font-size: 21.3px;  
-    font-style: normal;  
-    font-weight: var(--font-weight-900, 900);  
-    line-height: var(--line-height-37_33, 37.33px);  
-    letter-spacing: var(--letter-spacing-7_47, 7.467px);  
-    text-transform: uppercase; 
-  }
+    color: #585858;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin: 0;
+  } 
   
   .menu-icon {
     display: block;

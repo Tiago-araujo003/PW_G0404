@@ -166,6 +166,32 @@ let reports = {
         date: "25/03/2025",
         image: "https://placehold.co/431x323",
         status: "pending"
+    },
+    "876795": {
+        type: "Sinalização inadequada",
+        description: "Sinalização de trânsito confusa, causando confusão entre os motoristas.",
+        location: "Viseu, Avenida da Liberdade",
+        date: "28/03/2025",
+        image: "https://placehold.co/431x323",
+        status: "analysis"
+    },
+    "876810": {
+        type: "Passadeira danificada",
+        description: "A passadeira para pedestres está com marcas apagadas, dificilmente visível, aumentando o risco de atropelamentos. Precisa de repintura urgente.",
+        location: "Guimarães, Rua D. João I, próximo ao Centro Cultural",
+        date: "02/04/2025",
+        image: "https://placehold.co/431x323?text=Passadeira+Danificada",
+        status: "pending",
+        criticality: 4
+    },
+    "876811": {
+        type: "Veículo abandonado",
+        description: "Um veículo sem matrícula está abandonado há mais de 30 dias.",
+        location: "Braga, Rua do Comércio",
+        date: "03/04/2025",
+        image: "https://placehold.co/431x323?text=Veículo+Abandonado",
+        status: "pending",
+        criticality: 3
     }
 };
 
@@ -234,12 +260,42 @@ function populateReportDetails() {
             actionButtons.style.display = "flex";
             // Hide view report button for pending/analysis reports
             document.getElementById("view-report-button").style.display = "none";
+            
+            // Display criticality section for pending/analysis reports
+            const criticalitySection = document.getElementById("criticality-section");
+            if (criticalitySection) {
+                criticalitySection.style.display = "block";
+                
+                // Update the current criticality display
+                const currentCriticalityElement = document.getElementById("current-criticality");
+                if (currentCriticalityElement) {
+                    const criticality = report.criticality || 3; // Default to 3 if not set
+                    const criticalityText = getCriticalityText(criticality);
+                    
+                    currentCriticalityElement.innerHTML = `
+                        <span class="criticality-badge level-${criticality}">${criticality}</span>
+                        <span style="margin-left: 8px;">${criticalityText}</span>
+                    `;
+                    
+                    // Set the current value in the dropdown
+                    const criticalitySelect = document.getElementById("criticality-select");
+                    if (criticalitySelect) {
+                        criticalitySelect.value = criticality;
+                    }
+                }
+            }
         } else {
             actionButtons.style.display = "none";
             // Show view report button for resolved reports
             document.getElementById("view-report-button").style.display = "block";
             // Set the correct link with report ID
             document.getElementById("view-report-link").href = `ReportPDF.html?id=${reportId}`;
+            
+            // Hide criticality section for resolved reports
+            const criticalitySection = document.getElementById("criticality-section");
+            if (criticalitySection) {
+                criticalitySection.style.display = "none";
+            }
         }
     } else {
         alert("Report not found! ID: " + reportId);
@@ -249,6 +305,99 @@ function populateReportDetails() {
             window.location.href = "Reports.html";
         }, 1500);
     }
+}
+
+// Get text description for criticality level
+function getCriticalityText(level) {
+    switch (parseInt(level)) {
+        case 1: return "Baixo";
+        case 2: return "Moderado";
+        case 3: return "Médio";
+        case 4: return "Alto";
+        case 5: return "Muito Alto";
+        default: return "Médio";
+    }
+}
+
+// Enhanced function to update report criticality
+function updateReportCriticality() {
+    const reportId = getQueryParam("id");
+    const criticalitySelect = document.getElementById("criticality-select");
+    
+    if (reportId && criticalitySelect) {
+        const criticality = parseInt(criticalitySelect.value);
+        
+        if (reports[reportId]) {
+            // Update report criticality
+            reports[reportId].criticality = criticality;
+            
+            // Save data
+            saveReportsData();
+            
+            // Update display
+            const currentCriticalityElement = document.getElementById("current-criticality");
+            if (currentCriticalityElement) {
+                const criticalityText = getCriticalityText(criticality);
+                
+                currentCriticalityElement.innerHTML = `
+                    <span class="criticality-badge level-${criticality}">${criticality}</span>
+                    <span style="margin-left: 8px;">${criticalityText}</span>
+                `;
+            }
+            
+            // Set timestamp for cross-tab communication
+            localStorage.setItem('criticalityUpdate', JSON.stringify({
+                reportId: reportId,
+                criticality: criticality,
+                timestamp: new Date().getTime()
+            }));
+            
+            alert("Nível de criticidade atualizado com sucesso!");
+        }
+    }
+}
+
+// Listen for changes in localStorage (for cross-tab communication)
+window.addEventListener('storage', function(e) {
+    if (e.key === 'criticalityUpdate') {
+        try {
+            const update = JSON.parse(e.newValue);
+            
+            // Check if we're on the Reports page
+            if (window.location.pathname.endsWith('Reports.html') || window.location.pathname.includes('Reports')) {
+                updateCriticalityBadge(update.reportId, update.criticality);
+            }
+        } catch (error) {
+            console.error("Error handling criticality update:", error);
+        }
+    }
+});
+
+// Function to update criticality badge in the Reports page
+function updateCriticalityBadge(reportId, criticality) {
+    const reportRows = document.querySelectorAll(".reports-table tbody tr");
+    
+    reportRows.forEach(row => {
+        const idCell = row.querySelector("td:first-child");
+        if (idCell && idCell.textContent.replace('#', '') === reportId) {
+            const criticalityCell = row.querySelector("td:nth-child(5)");
+            
+            if (criticalityCell) {
+                const badge = criticalityCell.querySelector(".criticality-badge");
+                
+                if (badge) {
+                    // Remove all level classes
+                    badge.classList.remove("level-1", "level-2", "level-3", "level-4", "level-5");
+                    // Add new level class
+                    badge.classList.add(`level-${criticality}`);
+                    // Update text
+                    badge.textContent = criticality;
+                    
+                    console.log(`Updated criticality badge for report ${reportId} to level ${criticality}`);
+                }
+            }
+        }
+    });
 }
 
 // More robust function to update report status in the Reports page
@@ -301,6 +450,28 @@ function updateReportStatus() {
                         statusCell.classList.add('status-analysis');
                         statusCell.textContent = 'Em análise';
                     }
+                }
+            }
+        }
+    });
+
+    // Also update criticality badges - add this after status updates
+    reportRows.forEach(row => {
+        const idCell = row.querySelector("td:first-child");
+        if (idCell) {
+            const reportId = idCell.textContent.replace('#', '');
+            
+            if (reports[reportId]) {
+                const criticalityCell = row.querySelector("td:nth-child(5)");
+                const criticalityBadge = criticalityCell ? criticalityCell.querySelector(".criticality-badge") : null;
+                
+                if (criticalityBadge && reports[reportId].criticality) {
+                    // Remove all level classes
+                    criticalityBadge.classList.remove("level-1", "level-2", "level-3", "level-4", "level-5");
+                    // Add new level class
+                    criticalityBadge.classList.add(`level-${reports[reportId].criticality}`);
+                    // Update text
+                    criticalityBadge.textContent = reports[reportId].criticality;
                 }
             }
         }

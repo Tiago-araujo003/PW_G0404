@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Materiais</title>
     <link rel="stylesheet" href="Gestão Materiais 1.css">
+    <link rel="stylesheet" href="Login.css"> <!-- Add Login.css for dropdown styles -->
 </head>
 <body>
     <div class="sidebar">
@@ -92,40 +93,72 @@
                     <tr>
                         <td>Braga</td>
                         <td><span class="alerta">7</span></td>
-                        <td>
-                            <div class="options-container">
-                                <span class="options-icon" onclick="toggleTooltip(this)">⋯</span>
-                                <div class="tooltip" onclick="navigateToPage()">Alocar Materiais</div>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
+                                </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>Porto</td>
                         <td><span class="alerta">13</span></td>
-                        <td>
-                            <div class="options-container">
-                                <span class="options-icon" onclick="toggleTooltip(this)">⋯</span>
-                                <div class="tooltip" onclick="navigateToPage()">Alocar Materiais</div>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
+                                </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>Guimarães</td>
                         <td><span class="alerta">4</span></td>
-                        <td>
-                            <div class="options-container">
-                                <span class="options-icon" onclick="toggleTooltip(this)">⋯</span>
-                                <div class="tooltip" onclick="navigateToPage()">Alocar Materiais</div>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
+                                </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>Beja</td>
                         <td><span class="alerta">6</span></td>
-                        <td>
-                            <div class="options-container">
-                                <span class="options-icon" onclick="toggleTooltip(this)">⋯</span>
-                                <div class="tooltip" onclick="navigateToPage()">Alocar Materiais</div>
+                        <td class="dropdown-cell">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -153,21 +186,12 @@
         </section>
     </main>
     <script>
-        function toggleTooltip(element) {
-            const container = element.parentElement;
-            // Close any other open tooltips
-            document.querySelectorAll('.options-container.active').forEach((activeContainer) => {
-                if (activeContainer !== container) {
-                    activeContainer.classList.remove('active');
-                }
-            });
-            // Toggle the current tooltip
-            container.classList.toggle('active');
-        }
-
+        // Navigation function for links
         function navigateToPage() {
             window.location.href = "Gestão Materiais 2.html";
         }
     </script>
+    <script src="dropdown.js"></script>
+    <script src="materiais-dropdown-fix.js"></script>
 </body>
 </html>
