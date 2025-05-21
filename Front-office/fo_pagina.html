@@ -33,6 +33,7 @@
 
 <section class="inicial">
     <h2>Bem-Vindo</h2>
+    <p>Ao mundo da Eyes Everywhere!</p>
     <img class="animated-image" src="images/inicial.jpg" alt="inicio">
 </section>
 
@@ -42,92 +43,34 @@
         <p>Uma solução integrada para gestão e auditoria de ocorrências, oferecendo relatórios detalhados, estatísticas precisas e um fluxo eficiente de comunicação.</p>
     </section>
     <section class="cards">
-        <div class="card-report" id="report-card" onclick="location.href='#report-section'">
-            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/03137d4e94fca80ac601f00ef0a3e5bd703f215a/download" alt="Report">
+        <div class="card report" id="report-card" onclick="location.href='report-section'">
+            <img src="images/report.png" alt="Report">
             <h3>Report</h3>
         </div>
-        <div class="card-auditorias" id="auditorias-card" onclick="location.href='#auditorias-section'">
+        <div class="card auditorias" id="auditorias-card" onclick="location.href='#auditorias-section'">
             <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/7822b0dd39cd6d4aa46cea4b969fd88f9b47e614" alt="Auditorias e ocorrências em aberto">
             <h3>Auditorias e Ocorrências em Aberto</h3>
         </div>
-        <div class="card-registos">
+        <div class="card registos">
             <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/fdf5e5e50bd225182db0be7f5fec35cdf5e92211" alt="Registos de Auditorias e Ocorrências">
             <h3>Registos de Auditorias e Ocorrências</h3>
         </div>
     </section>
 </section>
 
-<section id="report-section" class="report-main">
-    <div class="report-image">
-        <img src="images/pic-01-jpg.png" alt="Imagem Ocorrência" />
-    </div>
-
-    <section class="report-description">
-        <p>Se está presente numa ocorrência e acha que é necessária ajuda ou uma intervenção faça Report aqui.</p>
-    </section>
-
-    <div class="arrow-down">&darr;</div>
-
-    <div class="report-button">
-        <button onclick="handleReport()">FAZER REPORT DE UMA OCORRÊNCIA</button>
-    </div>
-
-    <section class="report-extra">
-        <p>A nossa equipa prestará assistência a ocorrências rodoviárias, incluindo acidentes, estacionamento ilegal, ocupação indevida de lugares reservados, congestionamentos, monitorização de transportes, condições das paragens e eficiência dos trajetos.</p>
-    </section>
-</section>
-
-<section id="auditorias-section" class="intro">
-    <h3>Auditorias e ocorrências em aberto</h3>
-    <img src="images/auditorias.png" alt="Aud">
-    
-    <div class="intro-container">
-        <h4>Total de ocorrências</h4>
-
-        <div class="total-oc">
-            <img src="images/alert.png" alt="Alert" />
-            <h1>18</h1>
-        </div>
-
-        <div class="intro-estado">
-            <div class="estado-verde">
-                <img src="images/ret-verde.png" alt="Verde" />
-                <h6>Em Conclusão</h6>
-            </div>
-
-            <div class="estado-amarelo">
-                <img src="images/ret-amarelo.png" alt="Amarelo" />
-                <h6>Em despacho</h6>                
-            </div>
-
-            <div class="estado-vermelho">
-                <img src="images/ret-vermelho.png" alt="Vermelho" />
-                <h6>Em Curso</h6>
-            </div>
-        </div>
-              
-        <div class="listagem">
-            <h4>Listagem de ocorrências</h4>
-            <p>Data</p>
-            <p>Local</p>
-            <p>Descrição</p>
-        </div>
-    </div>
-</section>
-
-
 <section id="aboutUs">
-    <section class="intro-ab">
+    <div class="intro-ab">
         <h3>About Us</h3>
         <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/59bbc73be5429dbb91b6cb8acb3084abfd95d44c" alt="Equipa">
-    </section>
-    <section class="quemSomos">
+    </div>
+    <div class="quemSomos">
+        <div class="quemSomos-container">
         <h3>Quem Somos?</h3>
-            <p>Somos uma empresa dedicada à fiscalização e monitorização da mobilidade urbana, atuando para garantir um trânsito mais organizado, acessível e eficiente. Fiscalizamos veículos mal estacionados, a ocupação indevida de lugares reservados e congestionamentos, contribuindo para um espaço público mais funcional e seguro.</p>
-            <p>Além disso, monitorizamos o transporte público, avaliando as condições das paragens e a eficiência do tráfego, para promover melhorias contínuas na mobilidade urbana.</p> 
-            <p>Com tecnologia e análise de dados, ajudamos municípios, empresas e cidadãos a terem um transporte mais sustentável e uma circulação mais fluida.</p>
-    </section>
-    
+        <p>Somos uma empresa dedicada à fiscalização e monitorização da mobilidade urbana, atuando para garantir um trânsito mais organizado, acessível e eficiente. Fiscalizamos veículos mal estacionados, a ocupação indevida de lugares reservados e congestionamentos, contribuindo para um espaço público mais funcional e seguro.</p>
+        <p>Além disso, monitorizamos o transporte público, avaliando as condições das paragens e a eficiência do tráfego, para promover melhorias contínuas na mobilidade urbana.</p> 
+        <p>Com tecnologia e análise de dados, ajudamos municípios, empresas e cidadãos a terem um transporte mais sustentável e uma circulação mais fluida.</p>
+        </div> 
+    </div>
 </section> 
 
 <section id="estatisticas">
@@ -154,7 +97,7 @@
             <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/bcc0009b09b2a1a45309ca889dda4cdaf8aa8196" alt="Circulo" />
         </div>
         <div class="graf">
-            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/88d99be8f696f10b41ba4ae0e01d5e33c5bc7a15" alt="Mapa">
+            <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/88d99be8f696f10b41ba4ae0e01d5e33c5bc7a15" alt="Grafico">
             <h6>Continuamos a trabalhar para melhorar ainda mais a experiência dos nossos utilizadores e garantir um serviço ágil e eficaz. 
             <p>Obrigado pela confiança!</p></h6>
         </div>
@@ -163,8 +106,9 @@
 
 <section id="contactos">  
     <section class="intro-c">
+        <div class="contactos-container">
         <h3>Contactos</h3>
-        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/6b9af68eaa1623dcaaff54f354632200ede2a565" alt="Uni">
+        <img class="center-img" src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/6b9af68eaa1623dcaaff54f354632200ede2a565" alt="Uni">
         <div class="intro-c-container">
             <div class="intro-tele">
             <img src="images/phone.png" alt="Tele" />
@@ -179,8 +123,15 @@
             <h6>Morada: Campus de Azurém, Av. da Universidade, 4800-058 Guimarães</h6>
             </div>
         </div>
-        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/c55cb5fe558c416de38b8532b08f11858912849b" alt="Mapa">
+        <a href="https://www.google.com/maps/place/Universidade+do+Minho+-+Campus+de+Azurém" target="_blank">
+        <img src="https://www.figma.com/file/98H3TmkZWsnKZMawDLKS2y/image/c55cb5fe558c416de38b8532b08f11858912849b" alt="Mapa da localização" class="mapa-img">
+        </a>
+        </div>
     </section>
+</section>
+
+<section class="intro-equipa">
+    <h3>Equipa</h3>
 </section>
 
 <section id="feedback">
@@ -279,7 +230,7 @@
     <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
 </footer>
 
-<script src="FO-inicio1.js"></script>
+<script src="fo_pagina.js"></script>
     
 </body>
 
