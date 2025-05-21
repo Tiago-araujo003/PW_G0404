@@ -381,9 +381,18 @@ html, body {
 /* Footer */
 footer {
   background: #f4f4f4;
-  padding: 100px;
-  width: 100vw;
-  margin: 0;
+  padding: 40px 20px;       /* padding horizontal mais suave */
+  margin-top: 60px;         /* só margem em cima, sem empurrar para os lados */
+  width: 100%;
   box-sizing: border-box;
 }
+
+footer p {
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
 

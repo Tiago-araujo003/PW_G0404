@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 375px; 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo h1 {
+  font-size: 21px;
+  font-weight: 900;
+  color: #585858;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #585858;
+  color: white;
+  padding: 60px 20px 20px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.menu.open {
+  right: 0;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.menu h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  flex: 1;
+}
+
+.titulo-principal {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.filtro {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filtro label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="date"] {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+
+.filtro input,
+.filtro select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-pesquisar {
+  padding: 12px 24px;
+  background-color: #585858;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer {
+  background: #f4f4f4;
+  padding: 100px 20px;
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1176px;
+  width: 100%;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form h3,
+.follow h3 {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row input {
+  flex: 1;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.contact-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.follow {
+  min-width: 160px;
+}
+
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(2, 40px);
+  gap: 10px;
+}
+
+.icons-grid a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.icons-grid a:hover {
+  background-color: #eee;
+}
+
+footer p {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 0.75rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-icon {
+    align-self: flex-end;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.tabela-registos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .coluna {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .coluna h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    color: #444;
+  }
+  
+  .coluna ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .coluna ul li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #333;
+    border-left: 3px solid #f0f0f0;
+    padding-left: 12px;
+  }
+  

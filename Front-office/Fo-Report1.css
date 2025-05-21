@@ -252,3 +252,27 @@ header {
 .hidden {
   display: none;
 }
+
+footer p {
+  margin-top: 60px;
+  font-size: 0.75rem;
+  color: #666;
+  width: 100%;
+  max-width: 1176px;       /* igual ao contact-container */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+footer {
+  background: #f4f4f4;
+  padding: 140px 100px; /* Aumentado de 100px para 140px */
+  color: #666;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  min-height: 600px; /* Aumentado de 500px para 600px */
+}
