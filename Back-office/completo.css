@@ -1,0 +1,386 @@
+/* === BASE === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+input, select {
+    font-family: inherit;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 218px;
+    background: #585858;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.sidebar-icon {
+    margin-bottom: 20px;
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .nav li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #687179;
+}
+
+.sidebar .nav li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 10px;
+}
+
+/* Hover and active states */
+.sidebar .nav li:hover {
+    background: #4A4A4A;
+    border-radius: 8px;
+    color: white;
+}
+
+.sidebar .nav li a:hover {
+    color: white;
+}
+
+.sidebar .nav li.active {
+    background: #4A4A4A;
+    border-radius: 8px;
+    color: white;
+}
+
+.sidebar .nav li.active a {
+    color: white;
+}
+
+.sidebar .nav li.active svg path {
+    fill: white;
+}
+
+.sidebar .nav li svg path {
+    fill: #687179;
+}
+
+/* Sign out button at sidebar bottom */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.sign-out-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #687179;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.sign-out-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sign-out-btn:hover {
+    background: #4A4A4A;
+    color: white;
+}
+
+.sign-out-btn:hover svg {
+    color: white;
+}
+
+/* ========================================
+   4. MAIN CONTENT AREA
+   ======================================== */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #F6F6F6;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #585858;
+}
+
+/* === FRAME 97 - LISTA === */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    position: relative;
+}
+
+h1 {
+    font-size: 18px;
+    color: #5f5f5f;
+    margin-bottom: 25px;
+}
+
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+    color: #5f5f5f;
+}
+
+td {
+    padding: 12px;
+    color: #5f5f5f;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background: #FAFAFA;
+}
+
+.status {
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.disponivel {
+    background: #6AB69F;
+    color: white;
+}
+
+.status.ocupado {
+    background: #EC8C97;
+    color: white;
+}
+
+button.add-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 20px;
+    background: #6AB69F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+button.add-button:hover {
+    background: #5ea18b;
+}
+
+/* === FRAME 98 & 99 - FORMULÁRIOS === */
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 500px;
+}
+
+h2 {
+    font-size: 18px;
+    color: #5f5f5f;
+    margin-bottom: 25px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #5f5f5f;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row select {
+    flex: 1;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button.save-button, button.cancelar, button.atualizar, button.eliminar, button.excluir {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+button.save-button {
+    width: 100%;
+    background: #6AB69F;
+    color: white;
+}
+
+button.save-button:hover {
+    background: #5ea18b;
+}
+
+button.cancelar {
+    background: #EC8C97;
+    color: white;
+}
+
+button.cancelar:hover {
+    background: #d67a85;
+}
+
+button.atualizar {
+    background: #6AB69F;
+    color: white;
+}
+
+button.atualizar:hover {
+    background: #5ea18b;
+}
+
+button.eliminar {
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+button.eliminar:hover {
+    background: #222;
+}
+
+/* === FRAME 100 - MODAL === */
+.modal {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-align: center;
+    width: 400px;
+}
+
+.modal h2 {
+    color: #5f5f5f;
+    margin-bottom: 20px;
+}
+
+.modal .buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.layout-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* ========================================
+   9. DROPDOWN MENU
+   ======================================== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: #687179;
+    transition: transform 0.2s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+    min-width: 150px;
+    padding: 10px 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #F6F6F6;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    pointer-events: auto;
+}

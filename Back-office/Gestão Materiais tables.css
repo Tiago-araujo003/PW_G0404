@@ -1,0 +1,87 @@
+/* Table styles to match Reports page */
+
+/* Make all tables in Gestão Materiais match the Reports tables */
+.box table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 10px;
+}
+
+/* Remove borders to match Reports table */
+.box table,
+.box table tr,
+.box table th,
+.box table td {
+    border: none !important;
+    border-bottom: none !important;
+    border-spacing: 0;
+}
+
+/* Table headers styling */
+.box table th {
+    background: #F9F9F9;
+    color: #06152B;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Table cells styling */
+.box table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Row height and hover effect */
+.box table tr {
+    height: 60px;
+    margin-bottom: 4px;
+}
+
+.box table tr:hover {
+    background-color: #f8f8f8;
+}
+
+/* Quantity badges styling to match reports status badges */
+.box table .quantidade,
+.box table .alerta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 36px;
+    border-radius: 18px;
+    font-size: 14px;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+.box table .quantidade {
+    background: #76BFEB;
+    color: white;
+}
+
+.box table .alerta {
+    background: #E48698;
+    color: white;
+}
+
+/* Dropdown cell styling */
+.box table .dropdown-cell {
+    position: relative;
+    padding: 8px !important;
+}
+
+/* Consistent styling for the Materiais Alocados table */
+.materiais-alocados table td {
+    font-size: 14px;
+}

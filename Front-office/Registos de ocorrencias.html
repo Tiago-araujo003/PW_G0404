@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registos de Ocorrências</title>
+  <link rel="stylesheet" href="Registos de ocorrencias.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo-svg.jpg" alt="Logo">
+      <h1>EYES EVERYWHERE</h1>
+    </div>
+    <div class="menu-icon" onclick="openMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <nav id="sideMenu" class="menu">
+    <span class="closebtn" onclick="closeMenu()">&times;</span>
+    <h2>Menu</h2>
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contactos</a>
+    <a href="#">Feedback</a>
+    <a href="#">Estatísticas</a>
+  </nav>
+
+  <main>
+    <h2 class="titulo-principal">Registos de auditorias e ocorrências</h2>
+    <div class="banner">
+      <img src="images/pic-03-jpg.png" alt="Banner de Ocorrências" />
+    </div>
+
+    <section class="filtros">
+      <div class="filtro">
+        <label for="data">Data</label>
+        <input type="date" id="data">
+      </div>
+      <div class="filtro">
+        <label for="local">Distrito</label>
+        <select id="local">
+          <option value="">Selecionar</option>
+          <option>Aveiro</option>
+          <option>Beja</option>
+          <option>Braga</option>
+          <option>Bragança</option>
+          <option>Castelo Branco</option>
+          <option>Viana do Castelo</option>
+        </select>
+      </div>
+      <div class="filtro">
+        <label for="tipo">Tipologia</label>
+        <select id="tipo">
+          <option value="">Selecionar</option>
+          <option>Acidente</option>
+          <option>Estacionamento</option>
+          <option>Congestionamento</option>
+          <option>Lugar Reservado</option>
+          <option>Transportes</option>
+        </select>
+      </div>
+      <button class="btn-pesquisar">Pesquisar</button>
+    </section>
+
+    <section class="tabela-registos">
+      <div class="registos-header">
+        <div>Descrição</div>
+        <div>Assistências</div>
+      </div>
+
+      <div class="registos-linha">
+        <div>Colisão entre dois veículos</div>
+        <div>Reboque para remover veículo</div>
+      </div>
+      <div class="registos-linha">
+        <div>Despiste de veículo ligeiro</div>
+        <div>Agente de fiscalização enviado para o local</div>
+      </div>
+      <div class="registos-linha">
+        <div>Colisão contra infraestrutura</div>
+        <div>Sinalização temporária instalada para segurança</div>
+      </div>
+      <div class="registos-linha">
+        <div>Capotamento de viatura</div>
+        <div>Agente de fiscalização enviado</div>
+      </div>
+      <div class="registos-linha">
+        <div>Veículo imobilizado</div>
+        <div>Encaminhamento para autoridades competentes</div>
+      </div>
+      <div class="registos-linha">
+        <div>Colisão contra infraestrutura</div>
+        <div>-</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contact-container">
+      <div class="contact-form">
+        <h3>GET IN TOUCH</h3>
+        <form>
+          <div class="form-row">
+            <input type="text" placeholder="Nome" required />
+            <input type="email" placeholder="Email" required />
+          </div>
+          <textarea placeholder="Mensagem" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="follow">
+        <h3>FOLLOW</h3>
+        <div class="icons-grid">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fas fa-phone"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
+  </footer>
+
+  <script>
+    function openMenu() {
+      document.getElementById("sideMenu").classList.add("open");
+    }
+    function closeMenu() {
+      document.getElementById("sideMenu").classList.remove("open");
+    }
+  </script>
+</body>
+</html>
