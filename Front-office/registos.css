@@ -1,3 +1,4 @@
+/* Reset e estrutura base */
 * {
   margin: 0;
   padding: 0;
@@ -6,28 +7,30 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #fff;
-  color: #333;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  position: relative;
+  z-index: 10;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 375px; 
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo img {
@@ -36,29 +39,38 @@ header {
 }
 
 .logo h1 {
-  font-size: 21px;
-  font-weight: 900;
-  color: #585858;
-  letter-spacing: 6px;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  letter-spacing: 2px;
 }
 
 .menu-icon {
-  font-size: 28px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  z-index: 20;
 }
 
+.menu-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Menu lateral */
 .menu {
+  height: 100%;
+  width: 250px;
   position: fixed;
   top: 0;
   right: -250px;
-  width: 250px;
-  height: 100%;
   background-color: #585858;
   color: white;
-  padding: 60px 20px 20px;
   transition: right 0.3s ease;
-  z-index: 999;
+  padding-top: 60px;
+  z-index: 9999;
 }
 
 .menu.open {
@@ -67,156 +79,201 @@ header {
 
 .menu .closebtn {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 32px;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
   cursor: pointer;
 }
 
 .menu h2 {
-  margin-bottom: 20px;
   font-size: 24px;
+  font-weight: bold;
+  padding-left: 20px;
+  margin-bottom: 20px;
+    color: white;
 }
 
 .menu a {
+  padding: 10px 32px;
   display: block;
   color: white;
   text-decoration: none;
-  padding: 10px 0;
-  font-size: 18px;
+  font-size: 21px;
+  transition: 0.3s;
 }
 
+.menu a:hover {
+  background-color: #ffffff;
+}
+
+/* Main */
 main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 10px;
-  flex: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto 100px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.titulo-principal {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 30px;
+/* Imagem */
+.report-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.report-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Título */
+h2 {
   text-align: center;
+  margin-bottom: 30px;
   color: #333;
 }
 
-.banner img {
-  width: 100%;
-  height: auto;
-  max-height: 280px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 40px;
+/* Filtros */
+.filtros {
+  margin-bottom: 30px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.filtros {
+.filtros .form-row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
-.filtro {
+.filtros input[type="text"],
+.filtros input[type="date"],
+.filtros select {
   flex: 1;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-}
-
-.filtro label {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input[type="date"] {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-
-.filtro input,
-.filtro select {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fdfdfd;
+  min-width: 200px;
 }
 
 .btn-pesquisar {
   padding: 12px 24px;
   background-color: #585858;
   color: white;
-  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+.btn-pesquisar:hover {
+  background-color: #3f3f3f;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Rodapé */
 footer {
   background: #f4f4f4;
-  padding: 100px 20px;
+  padding: 60px 20px 30px;
   color: #666;
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
+  font-size: 14px;
+  text-align: center;
 }
 
 .contact-container {
   display: flex;
+  justify-content: center;
+  gap: 60px;
   flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-between;
-  max-width: 1176px;
-  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: left;
 }
 
 .contact-form {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
+}
+
+.follow {
+  min-width: 160px;
 }
 
 .contact-form h3,
 .follow h3 {
   font-size: 0.8rem;
+  font-weight: bold;
   letter-spacing: 2px;
-  text-transform: uppercase;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .form-row {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-}
-
-.form-row input {
-  flex: 1;
+  margin-bottom: 15px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 1rem;
   background: transparent;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .contact-form button {
+  padding: 10px 20px;
   background-color: #333;
   color: white;
-  padding: 10px 20px;
   border: none;
   border-radius: 3px;
+  font-size: 1rem;
   cursor: pointer;
-}
-
-.follow {
-  min-width: 160px;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .icons-grid {
@@ -235,6 +292,7 @@ footer {
   color: #333;
   font-size: 16px;
   text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 
 .icons-grid a:hover {
@@ -242,66 +300,66 @@ footer {
 }
 
 footer p {
-  text-align: center;
   width: 100%;
-  margin-top: 20px;
   font-size: 0.75rem;
+  color: #888;
+  margin-top: 0;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .filtros {
-    flex-direction: column;
-    align-items: stretch;
-  }
 
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .menu-icon {
-    align-self: flex-end;
-  }
-
-  .contact-container {
-    flex-direction: column;
-    align-items: center;
-  }
+.horizontal-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
 }
 
-.tabela-registos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 60px;
-  }
-  
-  .coluna {
-    flex: 1;
-    min-width: 250px;
-  }
-  
-  .coluna h4 {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    color: #444;
-  }
-  
-  .coluna ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .coluna ul li {
-    margin-bottom: 12px;
-    font-size: 15px;
-    color: #333;
-    border-left: 3px solid #f0f0f0;
-    padding-left: 12px;
-  }
-  
+.horizontal-filtros input[type="date"],
+.horizontal-filtros select,
+.horizontal-filtros .btn-pesquisar {
+  flex: 1;
+  min-width: 180px;
+}
+
+.linha-filtros {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.linha-filtros input,
+.linha-filtros select,
+.linha-filtros button {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.linha-filtros button {
+  background-color: #585858;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.linha-filtros button:hover {
+  background-color: #3f3f3f;
+}
+
+/*estilo igual*/
+input,
+select,
+button,
+textarea {
+  font-family: 'Montserrat', sans-serif;
+}
+

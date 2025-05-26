@@ -15,7 +15,7 @@
 
 <body>
 
-<!-- HEADER IGUAL AO REPORT 1 -->
+<!-- HEADER -->
 <header>
   <div class="logo">
     <img src="images/logo-svg.jpg" alt="Logo">
@@ -26,7 +26,7 @@
   </div>
 </header>
 
-<!-- MENU LATERAL FUNCIONAL -->
+<!-- MENU LATERAL -->
 <div id="sideMenu" class="menu">
   <span class="closebtn" onclick="closeMenu()">&times;</span>
   <h2>Menu</h2>
@@ -37,7 +37,7 @@
   <a href="#">Estatísticas</a>
 </div>
 
-<!-- CONTEÚDO PRINCIPAL -->
+<!-- CONTEÚDO -->
 <main>
   <div class="report-image">
     <img src="images/pic-01-jpg.png" alt="Imagem Ocorrência" />
@@ -56,7 +56,7 @@
       </tr>
     </thead>
     <tbody id="tabelaOcorrencias">
-      <!-- JavaScript vai preencher aqui -->
+      <!-- JS irá preencher -->
     </tbody>
   </table>
 </main>
@@ -90,9 +90,55 @@
   &copy; 2025 Eyes Everywhere. All rights reserved.
 </footer>
 
+<!-- JS embutido para carregar só as ocorrências do utilizador logado -->
+<script>
+  function openMenu() {
+    document.getElementById("sideMenu").classList.add("open");
+  }
 
-<!-- JavaScript Externo -->
-<script src="minhas_ocorrencias.js"></script>
+  function closeMenu() {
+    document.getElementById("sideMenu").classList.remove("open");
+  }
+
+  const utilizadorAtual = localStorage.getItem("utilizadorLogado");                     /* INSERIR LOG IN GOOGLE*/
+  const submissions = JSON.parse(localStorage.getItem("submissoes")) || [];
+  const tabela = document.getElementById("tabelaOcorrencias");
+
+  function gerarStatus() {
+    const status = ["Resolvido", "Pendente", "Em Análise"];
+    return status[Math.floor(Math.random() * status.length)];
+  }
+
+  submissions.forEach((submissao) => {
+    if (submissao.email !== utilizadorAtual) return;
+
+    const tr = document.createElement("tr");
+    const statusAtual = gerarStatus();
+
+    let statusClass = "";
+    if (statusAtual === "Resolvido") statusClass = "resolvido";
+    if (statusAtual === "Pendente") statusClass = "pendente";
+    if (statusAtual === "Em Análise") statusClass = "analise";
+
+    tr.innerHTML = `
+      <td data-label="ID">#${submissao.idPedido}</td>
+      <td data-label="Tipo">${submissao.tipo}</td>
+      <td data-label="Localização">${submissao.localizacao}</td>
+      <td data-label="Status"><span class="status ${statusClass}">${statusAtual}</span></td>
+      <td data-label="Data">${submissao.dataHora}</td>
+      <td data-label="Ação"><a href="#" class="ver-mais">Ver mais</a></td>
+    `;
+    tabela.appendChild(tr);
+  });
+
+  // Mensagem se não houver registos
+  if (tabela.innerHTML.trim() === "") {
+    tabela.innerHTML = `
+      <tr><td colspan="6" style="text-align:center; color:#888;">
+        Sem ocorrências associadas a esta conta.
+      </td></tr>`;
+  }
+</script>
 
 </body>
 </html>

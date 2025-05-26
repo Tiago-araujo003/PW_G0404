@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registos de Ocorrências</title>
-  <link rel="stylesheet" href="Registos de ocorrencias.css" />
+  <link rel="stylesheet" href="registos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 </head>
@@ -16,7 +16,7 @@
       <h1>EYES EVERYWHERE</h1>
     </div>
     <div class="menu-icon" onclick="openMenu()">
-      <i class="fas fa-bars"></i>
+      <img src="images/image.jpg" alt="Menu">
     </div>
   </header>
 
@@ -30,78 +30,54 @@
     <a href="#">Estatísticas</a>
   </nav>
 
-  <section id="registos-section" class="intro">
-
   <main>
-    <h2 class="titulo-principal">Registos de auditorias e ocorrências</h2>
-    <div class="banner">
-      <img src="images/pic-03-jpg.png" alt="Banner de Ocorrências" />
+    <div class="report-image">
+      <img src="images/pic-03-jpg.png" alt="Imagem Ocorrência" />
     </div>
 
+    <h2>Registos de Auditorias e Ocorrências</h2>
+
     <section class="filtros">
-      <div class="filtro">
-        <label for="data">Data</label>
-        <input type="date" id="data">
-      </div>
-      <div class="filtro">
-        <label for="local">Distrito</label>
-        <select id="local">
-          <option value="">Selecionar</option>
-          <option>Aveiro</option>
-          <option>Beja</option>
-          <option>Braga</option>
-          <option>Bragança</option>
-          <option>Castelo Branco</option>
-          <option>Viana do Castelo</option>
-        </select>
-      </div>
-      <div class="filtro">
-        <label for="tipo">Tipologia</label>
-        <select id="tipo">
-          <option value="">Selecionar</option>
-          <option>Acidente</option>
-          <option>Estacionamento</option>
-          <option>Congestionamento</option>
-          <option>Lugar Reservado</option>
-          <option>Transportes</option>
-        </select>
-      </div>
-      <button class="btn-pesquisar">Pesquisar</button>
-    </section>
+  <div class="linha-filtros">
+    <input type="date" id="data" placeholder="Data">
 
-    <section class="tabela-registos">
-      <div class="registos-header">
-        <div>Descrição</div>
-        <div>Assistências</div>
-      </div>
+    <select id="local">
+      <option value="">Selecionar Distrito</option>
+      <option>Aveiro</option><option>Beja</option><option>Braga</option><option>Bragança</option>
+      <option>Castelo Branco</option><option>Coimbra</option><option>Évora</option><option>Faro</option>
+      <option>Guarda</option><option>Leiria</option><option>Lisboa</option><option>Portalegre</option>
+      <option>Porto</option><option>Santarém</option><option>Setúbal</option><option>Viana do Castelo</option>
+      <option>Vila Real</option><option>Viseu</option>
+    </select>
 
-      <div class="registos-linha">
-        <div>Colisão entre dois veículos</div>
-        <div>Reboque para remover veículo</div>
-      </div>
-      <div class="registos-linha">
-        <div>Despiste de veículo ligeiro</div>
-        <div>Agente de fiscalização enviado para o local</div>
-      </div>
-      <div class="registos-linha">
-        <div>Colisão contra infraestrutura</div>
-        <div>Sinalização temporária instalada para segurança</div>
-      </div>
-      <div class="registos-linha">
-        <div>Capotamento de viatura</div>
-        <div>Agente de fiscalização enviado</div>
-      </div>
-      <div class="registos-linha">
-        <div>Veículo imobilizado</div>
-        <div>Encaminhamento para autoridades competentes</div>
-      </div>
-      <div class="registos-linha">
-        <div>Colisão contra infraestrutura</div>
-        <div>-</div>
-      </div>
-    </section>
+    <select id="tipo">
+      <option value="">Selecionar Tipologia</option>
+      <option>Acidente</option>
+      <option>Estacionamento Indevido</option>
+      <option>Congestionamento</option>
+      <option>Lugar Reservado</option>
+      <option>Transportes</option>
+    </select>
+
+    <button class="btn-pesquisar">Pesquisar</button>
+  </div>
+</section>
+
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nº de Pedido</th>
+          <th>Descrição</th>
+          <th>Assistência</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela">
+        <!-- Registos inseridos por JS -->
+      </tbody>
+    </table>
   </main>
-  </section>
 
   <footer>
     <div class="contact-container">
@@ -131,16 +107,59 @@
     <p>&copy; 2025 Eyes Everywhere. All rights reserved | Design: HTML5 UP | Demo images: Unsplash</p>
   </footer>
 
-  <script>
-    function openMenu() {
-      document.getElementById("sideMenu").classList.add("open");
-    }
-    function closeMenu() {
-      document.getElementById("sideMenu").classList.remove("open");
-    }
-  </script>
+<script>
+  function openMenu() {
+    document.getElementById("sideMenu").classList.add("open");
+  }
 
-<script src="fo_pagina.js"></script>
+  function closeMenu() {
+    document.getElementById("sideMenu").classList.remove("open");
+  }
+
+  // Obter dados do localStorage
+  const dados = JSON.parse(localStorage.getItem("submissoes")) || [];
+  const corpo = document.getElementById("corpoTabela");
+
+  // Converter "27/04/2025" → "2025-04-27"
+  function normalizarDataPTparaISO(dataPT) {
+    const partes = dataPT.split("/");
+    return `${partes[2]}-${partes[1].padStart(2, "0")}-${partes[0].padStart(2, "0")}`;
+  }
+
+  // Botão "Pesquisar"
+  document.querySelector(".btn-pesquisar").addEventListener("click", () => {
+    const filtroData = document.getElementById("data").value;
+    const filtroLocal = document.getElementById("local").value.toLowerCase();
+    const filtroTipo = document.getElementById("tipo").value.toLowerCase();
+
+    corpo.innerHTML = "";
+
+    dados.forEach((item) => {
+      const dataPT = item.dataHora.split(",")[0].trim(); 
+      const dataISO = normalizarDataPTparaISO(dataPT);  
+
+      const corresponde =
+        (filtroData === "" || filtroData === dataISO) &&
+        (filtroLocal === "" || item.localizacao.toLowerCase() === filtroLocal) &&
+        (filtroTipo === "" || item.tipo.toLowerCase() === filtroTipo);
+
+      if (corresponde) {
+        const linha = document.createElement("tr");
+        linha.innerHTML = `
+          <td>#${item.idPedido}</td>
+          <td>${item.descricao}</td>
+          <td>${item.tipo}</td>
+        `;
+        corpo.appendChild(linha);
+      }
+    });
+
+    if (corpo.innerHTML === "") {
+      corpo.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Sem resultados encontrados.</td></tr>`;
+    }
+  });
+</script>
+
 
 </body>
 </html>
