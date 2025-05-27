@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="fo_pagina.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body>
+  <section id="lista-feedbacks">
+    <h3>Feedbacks Recebidos</h3>
+    <ul id="feedbackList"></ul>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const feedbackList = document.getElementById('feedbackList');
+      const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
+      feedbacks.forEach((fb) => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <strong>${fb.nome}</strong> (${fb.email}, ${fb.idade} anos) avaliou como <em>${fb.avaliacao}</em><br>
+          <strong>Sugestões:</strong> ${fb.sugestoes || "Sem sugestões"}
+        `;
+        feedbackList.appendChild(item);
+      });
+    });
+  </script>
+
+</body>
+</html>
