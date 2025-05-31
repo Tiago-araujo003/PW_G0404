@@ -24,27 +24,27 @@
     position: relative; 
   }
   
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;  
-  }
-  
-  .logo img {
-    width: 33px;
-    height: 33px;                
-  }
-  
-  .logo h1 {
-    color: #585858;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    margin: 0;
-  } 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;  
+}
+
+.logo img {
+  width: 33px;
+  height: 33px;                
+}
+
+.logo h1 {
+  color: #585858;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin: 0;
+} 
   
   .menu-icon {
     display: block;
