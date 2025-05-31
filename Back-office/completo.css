@@ -384,3 +384,131 @@ button.eliminar:hover {
     display: block;
     pointer-events: auto;
 }
+
+/* ===== AJUSTES DE APARÊNCIA PARA BATER COM O PRINT ===== */
+
+/* Reset e base já definidos, mantidos */
+
+/* AJUSTES NA TABELA DE LISTA DE PERITOS */
+
+.table-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 92%;
+    margin: 30px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    font-size: 15px;
+    color: #5f5f5f;
+}
+
+th {
+    text-align: left;
+    font-weight: 500;
+    color: #5f5f5f;
+    padding: 10px 12px;
+}
+
+td {
+    background-color: #fff;
+    padding: 14px 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+tr {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+tr:nth-child(even) td {
+    background: #FAFAFA;
+}
+
+td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status.disponivel {
+    background: #6AB69F;
+    color: white;
+}
+
+.status.ocupado {
+    background: #EC8C97;
+    color: white;
+}
+
+/* Botão "Adicionar Perito" */
+
+.add-button, .create-expert {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 18px;
+    background: #6AB69F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.add-button:hover, .create-expert:hover {
+    background: #5ea18b;
+}
+
+/* Styled Cancel Button */
+button.cancel-button {
+    background-color: #ec8c97; /* Match the pink color */
+    border: none;
+    border-radius: 8px; /* Match the same border radius as Atualizar Perito */
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+button.cancel-button:hover {
+    background-color: #d67a85; /* Slightly darker shade for hover effect */
+}
+
+/* Styled Delete Button */
+button.delete-button {
+    background-color: #333333; /* Match the dark gray color from the provided image */
+    border: none;
+    border-radius: 8px; /* Match the same border radius as other buttons */
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+button.delete-button:hover {
+    background-color: #222222; /* Slightly darker shade for hover effect */
+}
+

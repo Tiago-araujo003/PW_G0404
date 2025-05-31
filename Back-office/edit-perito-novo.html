@@ -124,6 +124,23 @@
             </div>
         </div>
     </div>
+    <script>
+        // Add event listeners to the buttons
+        document.querySelector('.cancel-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            window.location.href = 'peritos-novo.html'; // Redirect to peritos-novo.html
+        });
+
+        document.querySelector('.save-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            window.location.href = 'peritos-novo.html'; // Redirect to peritos-novo.html
+        });
+
+        document.querySelector('.delete-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            window.location.href = 'delete-perito.html'; // Redirect to delete-perito.html
+        });
+    </script>
 </body>
 </html>
 

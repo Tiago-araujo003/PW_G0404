@@ -3,76 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Perito</title>
-    <link rel="stylesheet" href="completo-2.css">
-    <script src="scripts.js" defer></script>
+    <title>Gestão de Peritos</title>
+    <link rel="stylesheet" href="completo.css">
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".dropdown-button");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    closeAllDropdowns();
+                    const menu = button.nextElementSibling;
+                    menu.style.display = "block";
+                });
+            });
+
+            document.addEventListener("click", () => {
+                closeAllDropdowns();
+            });
+
+            function closeAllDropdowns() {
+                document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                    menu.style.display = "none";
+                });
+            }
+        });
+    </script>
     <style>
-        body {
-            display: flex;
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            font-family: 'Inter', sans-serif;
+            height: 100%;
+            font-family: sans-serif;
         }
+
+        .layout-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
         .sidebar {
-            width: 218px;
-            background: #585858;
+            width: 220px;
+            background-color: #333;
             color: white;
-            padding: 20px;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            background: #F6F6F6;
-            overflow-y: auto;
-        }
-        .form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            max-width: 600px;
-        }
-        form label {
-            display: block;
-            margin-bottom: 5px;
-            color: #5f5f5f;
-        }
-        form input, form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-        .dropdowns {
-            display: flex;
-            gap: 10px;
-        }
-        .dropdowns select {
-            flex: 1;
-        }
-        .buttons {
-            display: flex;
             justify-content: space-between;
-            gap: 10px;
+            padding: 20px;
         }
-        button {
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .expert-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .expert-list th, .expert-list td {
             padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .status.available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status.occupied {
+            color: red;
+            font-weight: bold;
+        }
+
+        .create-expert {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: none;
             border: none;
-            border-radius: 8px;
             cursor: pointer;
         }
-        .save-button {
-            background: #6AB69F;
-            color: white;
+
+        .dropdown-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 5px;
+            display: none;
+            z-index: 10;
         }
-        .cancel-button {
-            background: #EC8C97;
-            color: white;
+
+        .dropdown-menu a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -147,54 +189,90 @@
                 </a>
             </div>
         </div>
-    <div class="main-content">
-        <div class="header">
-            <h1>Adicionar Perito</h1>
-        </div>
-        <div class="form-container">
-            <form>
-                <label for="nome">Nome do Perito</label>
-                <input type="text" id="nome" name="nome" placeholder="Ex: João Silva">
-                <label for="data-nascimento">Data de Nascimento</label>
-                <input type="date" id="data-nascimento" name="data-nascimento">
-                <label for="morada">Morada</label>
-                <input type="text" id="morada" name="morada" placeholder="Ex: Rua X, nº Y, Cidade">
-                <label for="contacto">Contacto</label>
-                <input type="text" id="contacto" name="contacto" placeholder="Ex: email@exemplo.com | +351 912 345 678">
-                <div class="dropdowns">
-                    <select id="especialidade" name="especialidade">
-                        <option value="" disabled selected>Escolha a especialidade</option>
-                        <option value="mobilidade">Mobilidade</option>
-                        <option value="infraestruturas">Infraestruturas</option>
-                        <option value="transportes">Transportes</option>
-                        <option value="seguranca">Segurança Rodoviária</option>
-                        <option value="peritagem">Peritagem Técnica</option>
-                    </select>
-                    <select id="disponibilidade" name="disponibilidade">
-                        <option value="" disabled selected>Escolha a disponibilidade</option>
-                        <option value="disponivel">Disponível</option>
-                        <option value="ocupado">Ocupado</option>
-                    </select>
-                </div>
-                <div class="buttons">
-                    <button type="reset" class="cancel-button">Cancelar</button>
-                    <button type="submit" class="save-button">Adicionar Perito</button>
-                </div>
-            </form>
+
+        <div class="main-content">
+            <header>
+                <h1>Gestão de Peritos</h1>
+            </header>
+            <div class="expert-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID do Perito</th>
+                            <th>Nome</th>
+                            <th>Especialidade</th>
+                            <th>Disponibilidade</th>
+                            <th>Contacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="perito-001">
+                            <td>#001</td>
+                            <td>João Rodrigues</td>
+                            <td>Mobilidade</td>
+                            <td><span class="status available">Disponível</span></td>
+                            <td>
+                                912 345 678
+                                <div class="dropdown">
+                                    <button class="dropdown-button">...</button>
+                                    <div class="dropdown-menu">
+                                        <a href="edit-perito-novo.html?id=001">Editar</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="perito-002">
+                            <td>#002</td>
+                            <td>Ana Martins</td>
+                            <td>Infraestruturas</td>
+                            <td><span class="status available">Disponível</span></td>
+                            <td>
+                                934 567 890
+                                <div class="dropdown">
+                                    <button class="dropdown-button">...</button>
+                                    <div class="dropdown-menu">
+                                        <a href="edit-perito-novo.html?id=002">Editar</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="perito-003">
+                            <td>#003</td>
+                            <td>Carlos Almeida</td>
+                            <td>Transportes</td>
+                            <td><span class="status occupied">Ocupado</span></td>
+                            <td>
+                                965 432 198
+                                <div class="dropdown">
+                                    <button class="dropdown-button">...</button>
+                                    <div class="dropdown-menu">
+                                        <a href="edit-perito-novo.html?id=003">Editar</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="perito-004">
+                            <td>#004</td>
+                            <td>Marta Ferreira</td>
+                            <td>Segurança Rodoviária</td>
+                            <td><span class="status available">Disponível</span></td>
+                            <td>
+                                987 654 321
+                                <div class="dropdown">
+                                    <button class="dropdown-button">...</button>
+                                    <div class="dropdown-menu">
+                                        <a href="edit-perito-novo.html?id=004">Editar</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="add-perito-novo.html">
+                <button class="create-expert">Adicionar Perito</button>
+            </a>
         </div>
     </div>
-    <script>
-        // Add event listeners to the buttons
-        document.querySelector('.cancel-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default behavior
-            window.location.href = 'peritos-novo.html'; // Redirect to peritos-novo.html
-        });
-
-        document.querySelector('.save-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default behavior
-            window.location.href = 'peritos-novo.html'; // Redirect to peritos-novo.html
-        });
-    </script>
 </body>
 </html>
-
