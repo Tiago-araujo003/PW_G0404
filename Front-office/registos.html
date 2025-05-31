@@ -118,48 +118,146 @@
     document.getElementById("sideMenu").classList.remove("open");
   }
 
-  // Obter dados do localStorage
+  // Obter dados do localStorage e fazer debug dos dados
   const dados = JSON.parse(localStorage.getItem("submissoes")) || [];
+  console.log("Dados brutos carregados:", dados);
   const corpo = document.getElementById("corpoTabela");
 
-  // Converter "27/04/2025" → "2025-04-27"
-  function normalizarDataPTparaISO(dataPT) {
-    const partes = dataPT.split("/");
-    return `${partes[2]}-${partes[1].padStart(2, "0")}-${partes[0].padStart(2, "0")}`;
+  // Função para exibir os dados na tabela
+  function mostrarRegistos(registros) {
+    corpo.innerHTML = "";
+    
+    if (!registros || registros.length === 0) {
+      corpo.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Sem resultados encontrados.</td></tr>`;
+      return;
+    }
+    
+    registros.forEach((item) => {
+      const linha = document.createElement("tr");
+      linha.innerHTML = `
+        <td>#${item.idPedido || "N/A"}</td>
+        <td>${item.descricao || "Sem descrição"}</td>
+        <td>${item.tipo || "Não especificado"}</td>
+      `;
+      corpo.appendChild(linha);
+    });
   }
+
+  // Função auxiliar para depuração - mostra todos os campos de um objeto
+  function mostrarCampos(obj) {
+    console.log("Campos do objeto:", Object.keys(obj).map(key => `${key}: ${obj[key]}`).join(", "));
+  }
+
+  // Função mais flexível para lidar com diferentes formatos de data
+  function normalizarDataPTparaISO(dataPT) {
+    if (!dataPT) return "";
+    
+    console.log("Tentando normalizar data:", dataPT);
+    
+    // Tenta diferentes formatos de data
+    if (dataPT.includes("/")) {
+      const partes = dataPT.split("/");
+      if (partes.length === 3) {
+        // Determinar o formato com base nos valores
+        // Se o primeiro número é > 12, provavelmente é DD/MM/YYYY
+        // Se o segundo número é > 12, provavelmente é MM/DD/YYYY
+        
+        const primeiro = parseInt(partes[0]);
+        const segundo = parseInt(partes[1]);
+        
+        // Formato DD/MM/YYYY
+        if (primeiro > 12 && segundo <= 12) {
+          console.log("Formato detectado: DD/MM/YYYY");
+          return `${partes[2]}-${partes[1].padStart(2, "0")}-${partes[0].padStart(2, "0")}`;
+        }
+        // Formato MM/DD/YYYY
+        else if (primeiro <= 12 && segundo <= 31) {
+          console.log("Formato detectado: MM/DD/YYYY");
+          return `${partes[2]}-${partes[0].padStart(2, "0")}-${partes[1].padStart(2, "0")}`;
+        }
+        // Se não consegue determinar, assume MM/DD/YYYY como solicitado
+        else {
+          console.log("Formato não determinado, assumindo MM/DD/YYYY");
+          return `${partes[2]}-${partes[0].padStart(2, "0")}-${partes[1].padStart(2, "0")}`;
+        }
+      }
+    }
+    
+    // Se já estiver em formato ISO, retorna como está
+    if (dataPT.includes("-")) {
+      return dataPT;
+    }
+    
+    return "";
+  }
+
+
+
+  // Mostrar todos os registros ao carregar a página
+  window.addEventListener("load", () => {
+    console.log(`Carregando ${dados.length} registros na inicialização`);
+    mostrarRegistos(dados);
+  });
 
   // Botão "Pesquisar"
   document.querySelector(".btn-pesquisar").addEventListener("click", () => {
     const filtroData = document.getElementById("data").value;
-    const filtroLocal = document.getElementById("local").value.toLowerCase();
-    const filtroTipo = document.getElementById("tipo").value.toLowerCase();
+    const filtroLocal = document.getElementById("local").value.toLowerCase().trim();
+    const filtroTipo = document.getElementById("tipo").value.toLowerCase().trim();
+    
+    console.log("Filtros aplicados:", { filtroData, filtroLocal, filtroTipo });
 
-    corpo.innerHTML = "";
-
-    dados.forEach((item) => {
-      const dataPT = item.dataHora.split(",")[0].trim(); 
-      const dataISO = normalizarDataPTparaISO(dataPT);  
-
-      const corresponde =
-        (filtroData === "" || filtroData === dataISO) &&
-        (filtroLocal === "" || item.localizacao.toLowerCase() === filtroLocal) &&
-        (filtroTipo === "" || item.tipo.toLowerCase() === filtroTipo);
-
-      if (corresponde) {
-        const linha = document.createElement("tr");
-        linha.innerHTML = `
-          <td>#${item.idPedido}</td>
-          <td>${item.descricao}</td>
-          <td>${item.tipo}</td>
-        `;
-        corpo.appendChild(linha);
+    const registrosFiltrados = dados.filter((item) => {
+      // Verificar correspondência de data
+      let correspondeData = true;
+      if (filtroData) {
+        // Extrair data do formato "MM/DD/YYYY, HH:MM:SS" ou "DD/MM/YYYY, HH:MM:SS"
+        const dataPT = (item.dataHora || "").split(",")[0]?.trim();
+        const dataISO = normalizarDataPTparaISO(dataPT);
+        
+        // Usar correspondência parcial para mais flexibilidade (comparar apenas a data)
+        correspondeData = dataISO === filtroData;
+        
+        console.log(`Data - Item: "${dataPT}" → ISO: "${dataISO}", Filtro: "${filtroData}", Corresponde: ${correspondeData}`);
       }
-    });
+      
+      // Verificar correspondência de localização
+      let correspondeLocal = true;
+      if (filtroLocal) {
+        const localItem = (item.localizacao || "").toLowerCase().trim();
+        correspondeLocal = localItem.includes(filtroLocal);
+        console.log(`Local - Item: ${localItem}, Filtro: ${filtroLocal}, Corresponde: ${correspondeLocal}`);
+      }
+      
+      // Verificar correspondência de tipo
+      let correspondeTipo = true;
+      if (filtroTipo) {
+        const tipoItem = (item.tipo || "").toLowerCase().trim();
+        correspondeTipo = tipoItem.includes(filtroTipo);
+        console.log(`Tipo - Item: ${tipoItem}, Filtro: ${filtroTipo}, Corresponde: ${correspondeTipo}`);
+      }
 
-    if (corpo.innerHTML === "") {
-      corpo.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#999;">Sem resultados encontrados.</td></tr>`;
-    }
+      // Resultado final para este item
+      const resultado = correspondeData && correspondeLocal && correspondeTipo;
+      console.log(`Resultado final para item ${item.idPedido}: ${resultado}`);
+      
+      return resultado;
+    });
+    
+    console.log(`Encontrados ${registrosFiltrados.length} registros após filtragem`);
+    mostrarRegistos(registrosFiltrados);
   });
+  
+  // Adicionar manipulador para testar/converter datas diretamente
+  window.testeDateConversion = function(dataPT) {
+    const resultado = normalizarDataPTparaISO(dataPT);
+    console.log(`Conversão de "${dataPT}" para "${resultado}"`);
+    alert(`Data convertida: ${resultado}`);
+  };
+  
+  // Criar botão para depuração de datas
+  
+  linhaDeFiltros.appendChild(botaoDebug);
 </script>
 
 
