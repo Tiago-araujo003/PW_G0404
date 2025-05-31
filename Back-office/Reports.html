@@ -1,6 +1,29 @@
 <head>
     <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="perito-allocation.css">
     <title>Reports</title>
+    
+    <!-- Adicionar estilos para criticidade -->
+    <style>
+        /* Estilos para badges de criticidade */
+        .criticality-badge {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            line-height: 25px;
+            margin-right: 8px;
+        }
+        
+        .level-1 { background-color: #90EE90; } /* Light green */
+        .level-2 { background-color: #FFD700; } /* Gold */
+        .level-3 { background-color: #FFA500; } /* Orange */
+        .level-4 { background-color: #FF6347; } /* Tomato */
+        .level-5 { background-color: #DC143C; } /* Crimson */
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -116,7 +139,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-report-id="876364">
                         <td>#876364</td>
                         <td>Estacionamento</td>
                         <td>Braga</td>
@@ -345,12 +368,22 @@
     </div>
     <script src="script.js"></script>
     <script src="dropdown.js"></script>
+    <script src="reports-criticality.js"></script>
     <script>
         // Make sure reports are loaded and status is updated when page loads
         document.addEventListener("DOMContentLoaded", function() {
-            loadReportsData();
-            updateReportStatus();
-            // The dropdown functionality is now handled in dropdown.js
+            // Carregar reports e atualizar status
+            if (typeof loadReportsData === 'function') {
+                loadReportsData();
+            }
+            if (typeof updateReportStatus === 'function') {
+                updateReportStatus();
+            }
+            
+            // Verificar e atualizar criticidade imediatamente
+            if (typeof updateReportCriticalities === 'function') {
+                updateReportCriticalities();
+            }
         });
     </script>
     <style>
@@ -393,6 +426,7 @@
             text-align: center;
             font-weight: bold;
             line-height: 25px;
+            margin-right: 8px;
         }
         
         .level-1 { background-color: #90EE90; } /* Light green */
@@ -456,6 +490,35 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        
+        /* Estilos para badges de criticidade na tabela */
+        .criticality-badge {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            line-height: 25px;
+            margin-right: 8px;
+        }
+        
+        .criticality-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .level-1 { background-color: #90EE90; } /* Light green */
+        .level-2 { background-color: #FFD700; } /* Gold */
+        .level-3 { background-color: #FFA500; } /* Orange */
+        .level-4 { background-color: #FF6347; } /* Tomato */
+        .level-5 { background-color: #DC143C; } /* Crimson */
+        
+        /* Garantir que a coluna de criticidade tenha espaço adequado */
+        .criticality-cell {
+            min-width: 120px;
         }
     </style>
 </body>

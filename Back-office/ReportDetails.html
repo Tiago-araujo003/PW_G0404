@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Login.css">
-    <link rel="stylesheet" href="perito-association.css">
-    <title>Report Details</title>
-    <script src="reportdetails.js"></script>
-</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Login.css">
+        <link rel="stylesheet" href="perito-allocation.css">
+        <title>Report Details</title>
+        <script src="reportdetails.js"></script>
+        <script src="perito-allocation.js"></script>
+        <script src="criticality-initializer.js"></script>
+        
+        <!-- Adicione este estilo inline para garantir que a seção de criticidade seja visível -->
+        <style>
+            #criticality-section {
+                display: block !important;
+            }
+            
+            .criticality-badge {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                color: white;
+                text-align: center;
+                font-weight: bold;
+                line-height: 25px;
+                margin-right: 8px;
+            }
+            
+            .criticality-label {
+                font-size: 16px;
+                font-weight: 500;
+            }
+            
+            .level-1 { background-color: #90EE90; } /* Light green */
+            .level-2 { background-color: #FFD700; } /* Gold */
+            .level-3 { background-color: #FFA500; } /* Orange */
+            .level-4 { background-color: #FF6347; } /* Tomato */
+            .level-5 { background-color: #DC143C; } /* Crimson */
+        </style>
+    </head>
 <body>
     <!-- Clear status marker with explicit status -->
     <div id="report-status" data-status="pending" style="display:none;"></div>
@@ -112,12 +144,12 @@
                 </div>
             </div>
             
-            <!-- Add criticality section -->
-            <div class="details-section" id="criticality-section">
+            <!-- Seção de criticidade com visibilidade forçada -->
+            <div class="details-section" id="criticality-section" style="display: block !important;">
                 <label>Nível de Criticidade</label>
                 <div class="details-box">
                     <div id="current-criticality">
-                        <!-- This will be populated by JavaScript -->
+                        <!-- Será preenchido pelo JavaScript -->
                     </div>
                     
                     <div class="criticality-form" style="margin-top: 15px;">
@@ -130,7 +162,12 @@
                                 <option value="4">4 - Alto</option>
                                 <option value="5">5 - Muito Alto</option>
                             </select>
-                            <button onclick="updateReportCriticality()" class="criticality-button" style="padding: 8px 16px; background: #585858; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                            <button 
+                                type="button" 
+                                id="criticality-button" 
+                                class="criticality-button" 
+                                onclick="event.preventDefault(); updateReportCriticality(event); return false;" 
+                                style="padding: 8px 16px; background: #585858; color: white; border: none; border-radius: 8px; cursor: pointer;">
                                 Atualizar
                             </button>
                         </div>
@@ -143,142 +180,219 @@
                 <img id="report-image" src="https://placehold.co/431x323" alt="Report Image" class="details-image">
             </div>
             
-            <!-- Add new section for Perito Allocation - Only shows for resolved reports -->
-            <div class="details-section resolved-only" id="perito-allocation-section" style="display: none;">
-                <label>Perito Alocado</label>
+            <!-- Seção de alocação de peritos para relatórios pendentes -->
+            <div class="details-section" id="pending-allocation">
+                <label>Alocação de Peritos</label>
                 <div class="details-box perito-allocation">
-                    <div class="perito-info">
-                        <img src="../Assets/avatar-joao.jpg" alt="Avatar do Perito" class="perito-avatar">
+                    <div class="perito-selection-pending">
+                        <p>Selecione um perito para alocar a este report</p>
+                        <button type="button" id="select-perito-button" class="select-perito-button" onclick="openPeritoSelector()">
+                            Selecionar Perito
+                        </button>
+                    </div>
+                    <div class="perito-info" id="selected-perito-info" style="display: none;">
+                        <img id="selected-perito-avatar" src="" alt="Avatar do Perito" class="perito-avatar">
                         <div class="perito-details">
-                            <div class="perito-name">João Pereira</div>
-                            <div class="perito-speciality">Infraestrutura Rodoviária</div>
-                            <div class="perito-contact">joao.pereira@example.com | +351 923 456 789</div>
+                            <div id="selected-perito-name" class="perito-name"></div>
+                            <div id="selected-perito-speciality" class="perito-speciality"></div>
+                            <div id="selected-perito-contact" class="perito-contact"></div>
                         </div>
+                        <button type="button" class="change-perito-button" onclick="resetPeritoSelection()">Alterar</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Add a hidden element with the report status -->
-            <div id="report-status" data-status="pending" style="display:none;"></div>
-
-            <div class="details-actions">
-                <!-- Vue app container -->
-                <div id="perito-association-app">
-                    <div class="perito-overlay" v-if="showSelector"></div>
-                    <!-- Perito selection component -->
-                    <perito-selector 
-                        v-if="showSelector" 
-                        :peritos="availablePeritos" 
-                        @select-perito="assignPerito" 
-                        @cancel="cancelSelection">
-                    </perito-selector>
-                    
-                    <!-- These buttons should now appear for pending reports -->
-                    <template v-if="canModifyReport">
-                        <button class="reject-button" @click="prepareAction('reject')">Rejeitar</button>
-                        <button class="approve-button" @click="prepareAction('approve')">Aprovar</button>
-                    </template>
-                    <span v-else class="status-message">Este report já foi processado</span>
-                    
-                    <!-- Fallback buttons that will be shown by pendingFix.js if needed -->
-                    <div class="fallback-buttons" style="display:none;">
-                        <button class="reject-button" onclick="window.showPeritoSelector('reject')">Rejeitar</button>
-                        <button class="approve-button" onclick="window.showPeritoSelector('approve')">Aprovar</button>
+            <!-- Seção de perito alocado para relatórios resolvidos -->
+            <div class="details-section resolved-only" id="resolved-allocation" style="display: none;">
+                <label>Perito Alocado</label>
+                <div class="details-box perito-allocation">
+                    <div class="perito-info">
+                        <img id="resolved-perito-avatar" src="" alt="Avatar do Perito" class="perito-avatar">
+                        <div class="perito-details">
+                            <div id="resolved-perito-name" class="perito-name"></div>
+                            <div id="resolved-perito-speciality" class="perito-speciality"></div>
+                            <div id="resolved-perito-contact" class="perito-contact"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Seção de materiais para relatórios resolvidos -->
+            <div class="details-section resolved-only" id="materiais-allocation" style="display: none;">
+                <label>Materiais Utilizados</label>
+                <div class="details-box materiais-allocation">
+                    <div class="materiais-list">
+                        <table class="materiais-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Material</th>
+                                    <th>Quantidade</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="materiais-tbody">
+                                <!-- Materiais serão adicionados via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botões de ação para relatórios pendentes -->
+            <div class="details-actions" id="action-buttons">
+                <button type="button" class="reject-button action-button" onclick="submitAction('reject')" disabled>Rejeitar</button>
+                <button type="button" class="approve-button action-button" onclick="submitAction('approve')" disabled>Aprovar</button>
+            </div>
+            
+            <!-- Mensagem para relatórios resolvidos -->
+            <div class="status-message" id="status-message" style="display: none;">
+                Este report já foi processado
+            </div>
+
             <div class="view-report-container" id="view-report-button" style="display: none;">
                 <a id="view-report-link" href="#" class="view-report-button">Ver relatório</a>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    
     <style>
-        /* Criticality selector styles */
-        .criticality-form {
-            margin-top: 15px;
-        }
+        /* Estilos existentes... */
         
-        .criticality-input-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 8px;
-        }
-        
-        .criticality-select {
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            flex-grow: 1;
-            max-width: 200px;
-        }
-        
-        .criticality-button {
+        /* Corrigindo especificamente o problema do botão */
+        .select-perito-button {
             padding: 8px 16px;
             background: #585858;
             color: white;
-            border: none;
+            border: none !important;
             border-radius: 6px;
-            cursor: pointer;
-        }
-        
-        .criticality-button:hover {
-            background: #4A4A4A;
-        }
-        
-        .criticality-badge {
+            cursor: pointer !important;
+            margin-top: 10px;
+            position: relative;
+            z-index: 100;
             display: inline-block;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            line-height: 25px;
-            margin-right: 8px;
+        }
+
+        .select-perito-button:hover {
+            background: #444;
         }
         
-        .level-1 { background-color: #90EE90; } /* Light green */
-        .level-2 { background-color: #FFD700; } /* Gold */
-        .level-3 { background-color: #FFA500; } /* Orange */
-        .level-4 { background-color: #FF6347; } /* Tomato */
-        .level-5 { background-color: #DC143C; } /* Crimson */
+        .perito-allocation {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Garantir que o modal seja clicável */
+        .perito-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        /* Garantir que botões de ação sejam clicáveis */
+        .action-button {
+            position: relative;
+            z-index: 50;
+        }
     </style>
-    <script>
-        // Add this at the end of the file or merge with existing script section if present
-        document.addEventListener("DOMContentLoaded", function() {
-            const saveButton = document.getElementById("save-criticality");
-            if (saveButton) {
-                saveButton.addEventListener("click", updateReportCriticality);
-            }
-        });
-
-        // Ensure buttons are visible for pending reports
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get report ID from URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const reportId = urlParams.get('id');
-            
-            // Force status for specific report IDs
-            if (['876811', '897654', '876368', '876789', '876790', '876810'].includes(reportId)) {
-                // Force the status to pending in all possible ways
-                document.getElementById('report-status').dataset.status = 'pending';
-                
-                // Add a special marker to ensure proper detection
-                const marker = document.getElementById('status-marker');
-                if (marker) {
-                    marker.className = 'status-pending';
-                }
-                
-                console.log('Forced pending status for report ID:', reportId);
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="perito-association.js"></script>
+    
+    <script src="script.js"></script>
+    <script src="perito-allocation.js"></script>
+    <script src="criticality-initializer.js"></script>
     <script src="pendingFix.js"></script>
     <script src="resolvedReportsFix.js"></script>
     <script src="view-report-button-fix.js"></script>
+    
+    <!-- Script adicional para garantir que a criticidade seja inicializada -->
+    <script>
+        // Tentar inicializar a criticidade quando a página estiver completamente carregada
+        window.onload = function() {
+            console.log("Página totalmente carregada, inicializando criticidade");
+            
+            // Verificar se os elementos existem
+            const criticalitySection = document.getElementById('criticality-section');
+            const currentCriticality = document.getElementById('current-criticality');
+            
+            if (criticalitySection) {
+                criticalitySection.style.display = 'block';
+            }
+            
+            if (currentCriticality && typeof updateReportCriticality === 'function') {
+                // Carregar criticidade salva
+                const urlParams = new URLSearchParams(window.location.search);
+                const reportId = urlParams.get('id') || '876364';
+                const savedCriticality = localStorage.getItem(`report_${reportId}_criticality`) || '3';
+                
+                // Labels de criticidade
+                const criticalityLabels = {
+                    '1': 'Baixo',
+                    '2': 'Moderado',
+                    '3': 'Médio',
+                    '4': 'Alto',
+                    '5': 'Muito Alto'
+                };
+                
+                // Renderizar
+                currentCriticality.innerHTML = `
+                    <span class="criticality-badge level-${savedCriticality}">${savedCriticality}</span>
+                    <span class="criticality-label">${criticalityLabels[savedCriticality]}</span>
+                `;
+            }
+        };
+    </script>
+    
+    <script>
+    // Garantir que as alterações de criticidade sejam persistidas e propagadas para outras páginas
+    function updateReportCriticality(event) {
+        if (event) {
+            event.preventDefault();
+        }
+        
+        const criticalitySelect = document.getElementById('criticality-select');
+        if (!criticalitySelect) return;
+        
+        const selectedValue = criticalitySelect.value;
+        
+        // Obter o ID do relatório da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const reportId = urlParams.get('id') || '876364';
+        
+        // Salvar no localStorage com um formato consistente
+        localStorage.setItem(`report_${reportId}_criticality`, selectedValue);
+        
+        // Atualizar o display
+        const currentCriticality = document.getElementById('current-criticality');
+        if (currentCriticality) {
+            const criticalityLabels = {
+                '1': 'Baixo',
+                '2': 'Moderado',
+                '3': 'Médio',
+                '4': 'Alto',
+                '5': 'Muito Alto'
+            };
+            
+            currentCriticality.innerHTML = `
+                <span class="criticality-badge level-${selectedValue}">${selectedValue}</span>
+                <span class="criticality-label">${criticalityLabels[selectedValue]}</span>
+            `;
+        }
+        
+        // Mostrar mensagem de sucesso
+        alert(`Criticidade atualizada para ${selectedValue}`);
+        
+        return false;
+    }
+
+    // Fazer a função disponível globalmente
+    window.updateReportCriticality = updateReportCriticality;
+</script>
 </body>
 </html>

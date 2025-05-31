@@ -1,0 +1,368 @@
+/* Perito allocation styles */
+.perito-allocation {
+    position: relative;
+    z-index: 1;
+}
+
+.select-perito-button {
+    padding: 8px 16px;
+    background: #585858;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer !important;
+    margin-top: 10px;
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.select-perito-button:hover {
+    background: #444;
+}
+
+.select-perito-button:active {
+    background: #333333;
+}
+
+.change-perito-button {
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reject-button, .approve-button {
+    position: relative;
+    z-index: 50;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer !important;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border: none;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.approve-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.reject-button:hover {
+    background-color: #d32f2f;
+}
+
+.approve-button:hover {
+    background-color: #388e3c;
+}
+
+/* Make sure no overlap or invisible elements are blocking clicks */
+#perito-allocation-app {
+    position: relative;
+    z-index: 1;
+}
+
+/* Modal styles with improved z-index */
+.perito-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.perito-modal-content {
+    background-color: white;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+.perito-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+}
+
+/* Ensure items in lists are clickable */
+.perito-item {
+    cursor: pointer !important;
+    z-index: 5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.perito-item:hover {
+    background-color: #f9f9f9;
+}
+
+.perito-item-details {
+    margin-left: 15px;
+}
+
+/* Fix for any hidden elements that might be blocking clicks */
+.details-container * {
+    pointer-events: auto;
+}
+
+/* Fallback button for non-Vue environments */
+#fallback-select-button {
+    display: none;
+}
+
+/* Estilos para criticidade */
+.criticality-badge {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    line-height: 25px;
+    margin-right: 8px;
+}
+
+.criticality-label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.level-1 { background-color: #90EE90; } /* Light green */
+.level-2 { background-color: #FFD700; } /* Gold */
+.level-3 { background-color: #FFA500; } /* Orange */
+.level-4 { background-color: #FF6347; } /* Tomato */
+.level-5 { background-color: #DC143C; } /* Crimson */
+
+/* Estilos para o botão de criticidade */
+.criticality-button {
+    padding: 8px 16px;
+    background: #585858;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer !important;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 50;
+}
+
+.criticality-button:hover {
+    background-color: #444444;
+}
+
+/* Estilos para alocação de peritos */
+.perito-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.perito-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.perito-details {
+    flex-grow: 1;
+}
+
+.perito-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.perito-speciality {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.perito-contact {
+    font-size: 12px;
+    color: #777;
+}
+
+.change-perito-button {
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.select-perito-button {
+    padding: 8px 16px;
+    background: #585858;
+    color: white;
+    border: none !important;
+    border-radius: 6px;
+    cursor: pointer !important;
+    margin-top: 10px;
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+}
+
+.select-perito-button:hover {
+    background: #444;
+}
+
+.perito-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.perito-modal-content {
+    background-color: white;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+.perito-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+}
+
+.peritos-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.perito-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.perito-item:hover {
+    background-color: #f9f9f9;
+}
+
+.perito-item-details {
+    margin-left: 15px;
+}
+
+.action-button {
+    position: relative;
+    z-index: 50;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border: none;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.approve-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.reject-button:disabled, .approve-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Estilos para exibição de criticidade */
+#criticality-section {
+    display: block !important;
+}
+
+#current-criticality {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.criticality-form {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* Garantir que os campos de formulário sejam visíveis */
+#criticality-select {
+    display: inline-block !important;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    min-width: 200px;
+}
+
+.criticality-button {
+    display: inline-block !important;
+}

@@ -153,4 +153,43 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         setTimeout(checkAndHideButtons, 800);
     });
+    
+    // ========================
+    // SCRIPT ADICIONAL PARA PERITO
+    // ========================
+    
+    // Get report ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const reportId = urlParams.get('id');
+    
+    // List of resolved/validated report IDs (for demo purposes)
+    const resolvedReports = ['876369', '876370', '876371', '889101', '889102'];
+    
+    if (resolvedReports.includes(reportId)) {
+        // This is a resolved report
+        const statusElem = document.getElementById('report-status');
+        if (statusElem) {
+            statusElem.dataset.status = 'resolved';
+        }
+        
+        // Show the perito allocation section
+        const peritoSection = document.getElementById('perito-allocation-section');
+        if (peritoSection) {
+            peritoSection.style.display = 'block';
+        }
+        
+        // Show the view report button
+        const viewReportBtn = document.getElementById('view-report-button');
+        if (viewReportBtn) {
+            viewReportBtn.style.display = 'block';
+        }
+        
+        // Set the link to the report
+        const viewReportLink = document.getElementById('view-report-link');
+        if (viewReportLink) {
+            viewReportLink.href = `PeritReport.html?id=${reportId}`;
+        }
+        
+        console.log('This is a resolved report. Showing allocated perito info.');
+    }
 });
