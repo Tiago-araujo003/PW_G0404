@@ -187,6 +187,112 @@
         .botao-vermelho:hover {
             background-color: #c0392b; /* Efeito hover mais escuro */
         }
+
+        .custo-estimado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f7f8fa;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .custo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .custo-item.total {
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #e1e4e8;
+            font-weight: bold;
+        }
+
+        .custo-estimado label {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .custo-valor {
+            font-size: 16px;
+            font-weight: 600;
+            color: #77B7A9;
+        }
+
+        .custo-valor.total {
+            font-size: 18px;
+            color: #58a090;
+        }
+
+        /* Estilos para a lista de materiais */
+        .material-list {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .material-item:last-child {
+            border-bottom: none;
+        }
+
+        .material-name {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .info-text {
+            margin-top: 12px;
+            color: #77B7A9;
+            font-style: italic;
+        }
+
+        /* Estilos para o botão de atualização de materiais */
+        .refresh-btn {
+            background: #77B7A9;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: rotate(180deg);
+            background: #59897f;
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.95) rotate(180deg);
+        }
+
+        .update-time {
+            display: block;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -272,6 +378,9 @@
             <label for="date">Data</label>
             <input type="date" id="date" v-model="data">
 
+            <label for="duration">Duração da Auditoria (dias)</label>
+            <input type="number" id="duration" v-model="duracao" min="1" max="30">
+
             <label for="expert-select">Peritos Disponíveis</label>
             <select id="expert-select" v-model="selectedPerito" @change="adicionarPerito">
                 <option value="" disabled>Selecione o perito:</option>
@@ -293,6 +402,36 @@
                 </div>
             </div>
 
+            <!-- Nova seção para mostrar materiais alocados (somente visualização) -->
+            <label>Materiais Alocados <button class="refresh-btn" @click="carregarMateriaisAlocados" title="Atualizar materiais">↻</button></label>
+            <div class="material-list">
+                <p v-if="!materiaisAlocados || materiaisAlocados.length === 0">
+                    Nenhum material alocado para esta auditoria.
+                </p>
+                <div v-for="(material, index) in materiaisAlocados" :key="index" class="material-item">
+                    <div class="material-name">{{ material }}</div>
+                </div>
+                <p class="info-text">
+                    <small>Para gerenciar materiais, utilize a seção específica de materiais.</small>
+                    <span v-if="ultimaAtualizacao" class="update-time">Atualizado: {{ ultimaAtualizacao }}</span>
+                </p>
+            </div>
+
+            <div class="custo-estimado">
+                <div class="custo-item">
+                    <label>Custo dos Peritos:</label>
+                    <span class="custo-valor">€{{ custoEstimadoPeritosFormatado }}</span>
+                </div>
+                <div class="custo-item">
+                    <label>Custo dos Materiais:</label>
+                    <span class="custo-valor">€{{ custoEstimadoMateriaisFormatado }}</span>
+                </div>
+                <div class="custo-item total">
+                    <label>Custo Total:</label>
+                    <span class="custo-valor total">€{{ custoEstimadoFormatado }}</span>
+                </div>
+            </div>
+
             <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
                 <button id="guardarBtn" class="botao-verde" @click="salvarAuditoria">Guardar alterações</button>
                 <button id="eliminarBtn" class="botao-vermelho" @click="eliminarAuditoria">Eliminar Auditoria</button>
@@ -300,9 +439,7 @@
         </div>
     </div>
 
-    <!-- Incluir Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-
     <script>
         // Carregar auditorias do localStorage
         let auditorias = JSON.parse(localStorage.getItem('auditorias')) || {
@@ -361,18 +498,109 @@
                 descricao: '',
                 localizacao: '',
                 data: new Date().toISOString().split('T')[0],
+                duracao: 3,
                 peritos: [],
                 peritosAlocados: [],
                 selectedPerito: '',
                 auditoriaId: auditoriaId,
-                auditoria: null
+                auditoria: null,
+                materiaisAlocados: [],
+                ultimaAtualizacao: '',
+                pollingInterval: null,
+                custoPeritos: {
+                    'Trânsito': 250,
+                    'Seguros': 280,
+                    'Acidentes de Trabalho': 300,
+                    'Engenharia Forense': 350,
+                    'Medicina Legal': 400,
+                    'Contabilidade': 280,
+                    'Criminalística': 320
+                },
+                custoDiarioBase: 400,
+                custoMateriais: {
+                    "Colete Refletor": 45,
+                    "Fita Fluorescente": 15, 
+                    "Cone de Trânsito": 25,
+                    "Telemóvel": 350,
+                    "Triângulo de Sinalização": 30,
+                    "Extintor": 75,
+                    "Kit Primeiros Socorros": 60
+                },
+                tabelaMateriais: {
+                    "Colete Refletor": { "876364": 0, "876368": 1, "876412": 0, "876621": 2 },
+                    "Fita Fluorescente": { "876364": 1, "876368": 0, "876412": 0, "876621": 0 },
+                    "Cone de Trânsito": { "876364": 6, "876368": 2, "876412": 3, "876621": 3 },
+                    "Telemóvel": { "876364": 1, "876368": 4, "876412": 4, "876621": 3 },
+                    "Triângulo de Sinalização": { "876364": 1, "876368": 5, "876412": 5, "876621": 1 },
+                    "Extintor": { "876364": 1, "876368": 2, "876412": 5, "876621": 3 },
+                    "Kit Primeiros Socorros": { "876364": 1, "876368": 0, "876412": 4, "876621": 2 }
+                },
+                // Total inventory limits for materials
+                limitesMateriais: {
+                    "Colete Refletor": 10,
+                    "Fita Fluorescente": 15,
+                    "Cone de Trânsito": 20,
+                    "Telemóvel": 10,
+                    "Triângulo de Sinalização": 15,
+                    "Extintor": 12,
+                    "Kit Primeiros Socorros": 8
+                },
+                // How many experts of each specialization we have available
+                limitesPeritos: {
+                    'Trânsito': 3,
+                    'Seguros': 2,
+                    'Acidentes de Trabalho': 4,
+                    'Engenharia Forense': 2,
+                    'Medicina Legal': 3,
+                    'Contabilidade': 2,
+                    'Criminalística': 2
+                },
+                erroDisponibilidade: ''
             },
             computed: {
                 peritosDisponiveis() {
-                    // Retorna apenas peritos que ainda não foram alocados
                     return this.peritos.filter(perito => 
                         !this.peritosAlocados.some(alocado => alocado.id === perito.id)
                     );
+                },
+                custoEstimadoPeritos() {
+                    let custoTotal = this.duracao * this.custoDiarioBase;
+                    
+                    this.peritosAlocados.forEach(perito => {
+                        const especialidade = perito.especialidade;
+                        custoTotal += this.custoPeritos[especialidade] 
+                            ? this.custoPeritos[especialidade] * this.duracao 
+                            : 250 * this.duracao;
+                    });
+                    
+                    return custoTotal;
+                },
+                custoEstimadoMateriais() {
+                    let custoTotal = 0;
+                    
+                    if (!this.auditoriaId) return custoTotal;
+                    
+                    for (const [material, auditorias] of Object.entries(this.tabelaMateriais)) {
+                        if (auditorias[this.auditoriaId] && parseInt(auditorias[this.auditoriaId]) > 0) {
+                            const quantidade = parseInt(auditorias[this.auditoriaId]);
+                            const precoUnitario = this.custoMateriais[material] || 0;
+                            custoTotal += quantidade * precoUnitario;
+                        }
+                    }
+                    
+                    return custoTotal;
+                },
+                custoEstimado() {
+                    return this.custoEstimadoPeritos + this.custoEstimadoMateriais;
+                },
+                custoEstimadoPeritosFormatado() {
+                    return this.custoEstimadoPeritos.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                },
+                custoEstimadoMateriaisFormatado() {
+                    return this.custoEstimadoMateriais.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                },
+                custoEstimadoFormatado() {
+                    return this.custoEstimado.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
                 }
             },
             methods: {
@@ -387,13 +615,13 @@
                         this.descricao = this.auditoria.descricao;
                         this.localizacao = this.auditoria.localizacao;
                         this.data = this.auditoria.data;
+                        this.duracao = this.auditoria.duracao || 3;
                         
                         // Mapear peritos alocados da auditoria
                         this.peritosAlocados = [];
                         const peritosNames = this.auditoria.peritos || [];
                         
                         peritosNames.forEach(peritoName => {
-                            // Encontrar o objeto perito completo baseado no nome e especialidade
                             const peritoInfo = peritoName.match(/(.*) \((.*)\)/);
                             if (peritoInfo) {
                                 const nome = peritoInfo[1];
@@ -409,17 +637,19 @@
                             }
                         });
                         
+                        // Buscar materiais alocados depois que a auditoria for carregada
+                        this.carregarMateriaisAlocados();
+                        
                         document.title = `Editar Auditoria #${this.auditoria.id}`;
                     }
                 },
                 adicionarPerito() {
                     if (!this.selectedPerito) return;
                     
-                    // Encontrar o objeto perito completo
                     const perito = this.peritos.find(p => p.id === this.selectedPerito);
                     if (perito) {
                         this.peritosAlocados.push(perito);
-                        this.selectedPerito = ''; // Resetar seleção
+                        this.selectedPerito = '';
                     }
                 },
                 removerPerito(perito) {
@@ -427,10 +657,141 @@
                     if (index !== -1) {
                         this.peritosAlocados.splice(index, 1);
                     }
-                    return false; // Prevenir comportamento padrão do checkbox
+                    return false;
+                },
+                // Check if we have enough resources for the audit
+                verificarDisponibilidade() {
+                    this.erroDisponibilidade = '';
+                    
+                    // Get the end date of our audit
+                    const dataInicio = new Date(this.data);
+                    const dataFim = new Date(dataInicio);
+                    dataFim.setDate(dataFim.getDate() + parseInt(this.duracao) - 1);
+                    
+                    // Find overlapping audits
+                    const auditoriasSobrepostas = this.obterAuditoriasSobrepostas(dataInicio, dataFim);
+                    
+                    // If this is an edit of an existing audit, remove it from the overlap check
+                    const auditoriasFiltradas = this.auditoriaId ? 
+                        auditoriasSobrepostas.filter(a => a.id !== this.auditoriaId) : 
+                        auditoriasSobrepostas;
+                        
+                    // Check material availability
+                    const verificacaoMateriais = this.verificarDisponibilidadeMateriais(auditoriasFiltradas);
+                    if (!verificacaoMateriais.disponivel) {
+                        this.erroDisponibilidade = `Não há materiais suficientes: ${verificacaoMateriais.mensagem}`;
+                        return false;
+                    }
+                    
+                    // Check expert availability
+                    const verificacaoPeritos = this.verificarDisponibilidadePeritos(auditoriasFiltradas);
+                    if (!verificacaoPeritos.disponivel) {
+                        this.erroDisponibilidade = `Não há peritos suficientes: ${verificacaoPeritos.mensagem}`;
+                        return false;
+                    }
+                    
+                    return true;
+                },
+                // Get all audits that overlap with the specified date range
+                obterAuditoriasSobrepostas(dataInicio, dataFim) {
+                    return Object.values(auditorias).filter(auditoria => {
+                        const auditoriaInicio = new Date(auditoria.data);
+                        const auditoriaFim = new Date(auditoriaInicio);
+                        auditoriaFim.setDate(auditoriaFim.getDate() + (auditoria.duracao || 3) - 1);
+                        
+                        // Check for overlap: (StartDate1 ≤ EndDate2) AND (EndDate1 ≥ StartDate2)
+                        return dataInicio <= auditoriaFim && dataFim >= auditoriaInicio;
+                    });
+                },
+                // Check if we have enough materials for all overlapping audits
+                verificarDisponibilidadeMateriais(auditoriasSobrepostas) {
+                    // Count materials used in overlapping audits
+                    const materiaisUsados = {};
+                    
+                    // Initialize with 0 for each material
+                    Object.keys(this.limitesMateriais).forEach(material => {
+                        materiaisUsados[material] = 0;
+                    });
+                    
+                    // Add materials needed for current audit being edited
+                    if (this.auditoriaId) {
+                        for (const [material, audits] of Object.entries(this.tabelaMateriais)) {
+                            if (audits[this.auditoriaId]) {
+                                materiaisUsados[material] += parseInt(audits[this.auditoriaId] || 0);
+                            }
+                        }
+                    }
+                    
+                    // Add materials from other overlapping audits
+                    auditoriasSobrepostas.forEach(auditoria => {
+                        for (const [material, audits] of Object.entries(this.tabelaMateriais)) {
+                            if (audits[auditoria.id]) {
+                                materiaisUsados[material] += parseInt(audits[auditoria.id] || 0);
+                            }
+                        }
+                    });
+                    
+                    // Check if any material exceeds the limit
+                    for (const [material, quantidade] of Object.entries(materiaisUsados)) {
+                        const limiteDisponivel = this.limitesMateriais[material] || 0;
+                        if (quantidade > limiteDisponivel) {
+                            return {
+                                disponivel: false,
+                                mensagem: `${material} (${quantidade} necessários, apenas ${limiteDisponivel} disponíveis)`
+                            };
+                        }
+                    }
+                    
+                    return { disponivel: true };
+                },
+                // Check if we have enough experts for all overlapping audits
+                verificarDisponibilidadePeritos(auditoriasSobrepostas) {
+                    // Count experts used by specialization
+                    const peritosUsados = {};
+                    
+                    // Initialize with 0 for each specialization
+                    Object.keys(this.limitesPeritos).forEach(especialidade => {
+                        peritosUsados[especialidade] = 0;
+                    });
+                    
+                    // Count our current audit's experts
+                    this.peritosAlocados.forEach(perito => {
+                        const especialidade = perito.especialidade;
+                        peritosUsados[especialidade] = (peritosUsados[especialidade] || 0) + 1;
+                    });
+                    
+                    // Count experts from overlapping audits
+                    auditoriasSobrepostas.forEach(auditoria => {
+                        // Each expert is in format "Nome (Especialidade)"
+                        (auditoria.peritos || []).forEach(peritoStr => {
+                            const match = peritoStr.match(/(.*) \((.*)\)/);
+                            if (match) {
+                                const especialidade = match[2];
+                                peritosUsados[especialidade] = (peritosUsados[especialidade] || 0) + 1;
+                            }
+                        });
+                    });
+                    
+                    // Check if any expert type exceeds the limit
+                    for (const [especialidade, quantidade] of Object.entries(peritosUsados)) {
+                        const limiteDisponivel = this.limitesPeritos[especialidade] || 0;
+                        if (quantidade > limiteDisponivel) {
+                            return {
+                                disponivel: false,
+                                mensagem: `${especialidade} (${quantidade} necessários, apenas ${limiteDisponivel} disponíveis)`
+                            };
+                        }
+                    }
+                    
+                    return { disponivel: true };
                 },
                 salvarAuditoria() {
-                    // Preparar peritos para o formato esperado pelo sistema
+                    // Check if resources are available
+                    if (!this.verificarDisponibilidade()) {
+                        alert(`Erro: ${this.erroDisponibilidade}`);
+                        return;
+                    }
+                    
                     const peritosFormatados = this.peritosAlocados.map(perito => 
                         `${perito.nome} (${perito.especialidade})`
                     );
@@ -441,6 +802,8 @@
                         this.auditoria.localizacao = this.localizacao;
                         this.auditoria.data = this.data;
                         this.auditoria.peritos = peritosFormatados;
+                        this.auditoria.duracao = this.duracao;
+                        this.auditoria.custoEstimadoPeritos = this.custoEstimado;
                         
                         // Atualizar no objeto de auditorias
                         auditorias[this.auditoria.id] = this.auditoria;
@@ -454,7 +817,10 @@
                             localizacao: this.localizacao,
                             data: this.data,
                             status: 'Pendente',
-                            peritos: peritosFormatados
+                            peritos: peritosFormatados,
+                            duracao: this.duracao,
+                            materiaisAlocados: [],
+                            custoEstimadoPeritos: this.custoEstimado
                         };
                         
                         // Adicionar ao objeto de auditorias
@@ -480,14 +846,12 @@
                         alert('Auditoria eliminada com sucesso!');
                         window.location.href = 'index.html';
                     } else if (confirmado) {
-                        // Se for uma nova auditoria que ainda não existe
                         alert('Operação cancelada.');
                         window.location.href = 'index.html';
                     }
                 },
                 generateNewId() {
-                    // Pega o maior ID existente e incrementa
-                    let maxId = 876000;  // Valor base
+                    let maxId = 876000;
                     
                     Object.keys(auditorias).forEach(id => {
                         const numId = parseInt(id);
@@ -495,6 +859,32 @@
                     });
                     
                     return (maxId + 1).toString();
+                },
+                carregarMateriaisAlocados() {
+                    this.materiaisAlocados = [];
+                    
+                    if (!this.auditoriaId) return;
+                    
+                    for (const [material, auditorias] of Object.entries(this.tabelaMateriais)) {
+                        if (auditorias[this.auditoriaId] && parseInt(auditorias[this.auditoriaId]) > 0) {
+                            const quantidade = parseInt(auditorias[this.auditoriaId]);
+                            const precoUnitario = this.custoMateriais[material] || 0;
+                            const custoTotal = quantidade * precoUnitario;
+                            
+                            this.materiaisAlocados.push(
+                                `${material} (${quantidade} unidades) - €${precoUnitario.toFixed(2)}/un. - Total: €${custoTotal.toFixed(2)}`
+                            );
+                        }
+                    }
+                    
+                    this.atualizarTimestamp();
+                },
+                atualizarTimestamp() {
+                    const agora = new Date();
+                    const hora = agora.getHours().toString().padStart(2, '0');
+                    const minuto = agora.getMinutes().toString().padStart(2, '0');
+                    const segundo = agora.getSeconds().toString().padStart(2, '0');
+                    this.ultimaAtualizacao = `${hora}:${minuto}:${segundo}`;
                 }
             },
             mounted() {
@@ -503,5 +893,5 @@
             }
         });
     </script>
-</body>
+</body> = [];
 </html>

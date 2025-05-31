@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Materiais</title>
-    <link rel="stylesheet" href="Gestão Materiais 2.css">
+    <title>Alocar Materiais</title>
+    <link rel="stylesheet" href="Gestão Materiais 1.css">
+    <link rel="stylesheet" href="Login.css">
+    <style>
+        .material-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .material-item label {
+            flex: 1;
+            margin-right: 15px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .quantity-display {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-save {
+            background-color: #77B7A9;
+            color: white;
+        }
+        
+        .btn-cancel {
+            background-color: #E48698;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -64,39 +123,126 @@
             </li>
         </ul>
     </div>
-    <div class="content">
-        <div class="audit-info">
-            <h3>#858349</h3>
-            <label>Descrição da auditoria</label>
-            <textarea id="descricao">Após várias ocorrências reportando a existência de trânsito excessivo em vários momentos, especialmente por volta dos períodos de horas de ponto, o perito irá ser mobilizado para o local e irá averiguar o ponto de situação.</textarea>
-            <label>Localização</label>
-            <input type="text" id="localizacao" value="Braga, São Vicente, Rotunda de Enfias.">
-            <label>Data</label>
-            <input type="text" id="data" value="24/01/2025">
+    
+    <main>
+        <h1>Alocar Materiais</h1>
+        
+        <div class="box">
+            <h2 id="auditoria-titulo">Auditoria #876364</h2>
+            <p id="auditoria-descricao">Descrição da auditoria será carregada dinamicamente.</p>
+            
+            <div id="materiais-container">
+                <!-- Controles de materiais serão inseridos aqui dinamicamente -->
+            </div>
+            
+            <div class="btn-container">
+                <button id="btn-cancelar" class="btn btn-cancel">Cancelar</button>
+                <button id="btn-salvar" class="btn btn-save">Guardar Alterações</button>
+            </div>
         </div>
-        <div class="materials">
-            <label><input type="checkbox" checked> Colete refletor</label>
-            <label><input type="checkbox"> Fita Fluorescente</label>
-            <label><input type="checkbox"> Cone de Trânsito</label>
-            <label><input type="checkbox" checked> Telemóvel</label>
-            <label><input type="checkbox"> Triângulo de Sinalização</label>
-            <label><input type="checkbox"> Cone de Trânsito</label>
-            <label><input type="checkbox"> Kit Primeiros Socorros</label>
-        </div>
-        <button id="confirmar" onclick="location.href='Gestão Materiais 3.html'">Confirmar</button>
-    </div>
+    </main>
+
     <script>
-        function confirmChanges() {
-            const descricao = document.getElementById('descricao').value;
-            const localizacao = document.getElementById('localizacao').value;
-            const data = document.getElementById('data').value;
-
-            console.log('Descrição:', descricao);
-            console.log('Localização:', localizacao);
-            console.log('Data:', data);
-
-            alert('Alterações confirmadas!');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter ID da auditoria da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const auditoriaId = urlParams.get('id');
+            
+            if (!auditoriaId) {
+                alert('ID da auditoria não especificado');
+                window.location.href = 'Gestão Materiais 1.html';
+                return;
+            }
+            
+            // Carregar dados da auditoria
+            const auditorias = JSON.parse(localStorage.getItem('auditorias')) || {};
+            const auditoria = auditorias[auditoriaId];
+            
+            if (!auditoria) {
+                alert('Auditoria não encontrada');
+                window.location.href = 'Gestão Materiais 1.html';
+                return;
+            }
+            
+            // Exibir informações da auditoria
+            document.getElementById('auditoria-titulo').textContent = `Auditoria #${auditoriaId}`;
+            document.getElementById('auditoria-descricao').textContent = auditoria.descricao || 'Sem descrição disponível';
+            
+            // Lista de tipos de materiais
+            const tiposMateriais = [
+                'Colete Refletor',
+                'Fita Fluorescente',
+                'Cone de Trânsito',
+                'Telemóvel',
+                'Triângulo de Sinalização',
+                'Extintor',
+                'Kit Primeiros Socorros'
+            ];
+            
+            // Carregar materiais alocados
+            const materiais = JSON.parse(localStorage.getItem('materiais_alocados')) || {};
+            
+            if (!materiais[auditoriaId]) {
+                materiais[auditoriaId] = {};
+                tiposMateriais.forEach(tipo => {
+                    materiais[auditoriaId][tipo] = 0;
+                });
+            }
+            
+            // Criar controles para cada material
+            const container = document.getElementById('materiais-container');
+            
+            tiposMateriais.forEach(tipo => {
+                const materialItem = document.createElement('div');
+                materialItem.className = 'material-item';
+                
+                const quantidade = materiais[auditoriaId][tipo] || 0;
+                
+                materialItem.innerHTML = `
+                    <label for="${tipo}">${tipo}</label>
+                    <div class="quantity-control">
+                        <button class="quantity-btn decrease" data-material="${tipo}">-</button>
+                        <span class="quantity-display" id="${tipo}-qty">${quantidade}</span>
+                        <button class="quantity-btn increase" data-material="${tipo}">+</button>
+                    </div>
+                `;
+                
+                container.appendChild(materialItem);
+            });
+            
+            // Adicionar event listeners para os botões de quantidade
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const material = this.dataset.material;
+                    const isIncrease = this.classList.contains('increase');
+                    
+                    let quantidade = materiais[auditoriaId][material] || 0;
+                    
+                    if (isIncrease) {
+                        quantidade++;
+                    } else if (quantidade > 0) {
+                        quantidade--;
+                    }
+                    
+                    materiais[auditoriaId][material] = quantidade;
+                    document.getElementById(`${material}-qty`).textContent = quantidade;
+                });
+            });
+            
+            // Event listener para botão cancelar
+            document.getElementById('btn-cancelar').addEventListener('click', () => {
+                window.location.href = 'Gestão Materiais 1.html';
+            });
+            
+            // Event listener para botão salvar
+            document.getElementById('btn-salvar').addEventListener('click', () => {
+                // Salvar os materiais no localStorage
+                localStorage.setItem('materiais_alocados', JSON.stringify(materiais));
+                
+                alert('Materiais alocados com sucesso!');
+                window.location.href = 'Gestão Materiais 1.html';
+            });
+        });
     </script>
 </body>
 </html>

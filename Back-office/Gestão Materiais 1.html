@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Materiais</title>
     <link rel="stylesheet" href="Gestão Materiais 1.css">
-    <link rel="stylesheet" href="Login.css"> <!-- Add Login.css for dropdown styles -->
+    <link rel="stylesheet" href="Login.css">
 </head>
 <body>
     <div class="sidebar">
@@ -68,130 +68,159 @@
     <main>
         <h1>Gestão de Materiais</h1>
         <div class="container">
-            <section class="box materiais-utilizados">
-                <h2>Materiais Utilizados</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do Produto</th>
-                        <th>Quantidade</th>
-                    </tr>
-                    <tr><td>#876364</td><td>Colete Refletor</td><td><span class="quantidade">10</span></td></tr>
-                    <tr><td>#876368</td><td>Fita Fluorescente</td><td><span class="quantidade">32</span></td></tr>
-                    <tr><td>#876412</td><td>Cone de Trânsito</td><td><span class="quantidade">18</span></td></tr>
-                    <tr><td>#876621</td><td>Telemóvel</td><td><span class="quantidade">5</span></td></tr>
-                </table>
-            </section>
-            <section class="box auditorias">
-                <h2>Auditorias em Andamento</h2>
-                <table>
-                    <tr>
-                        <th>Área</th>
-                        <th>Quantidade</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Braga</td>
-                        <td><span class="alerta">7</span></td>
-                        <td class="dropdown-cell">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
-                                    </svg>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Porto</td>
-                        <td><span class="alerta">13</span></td>
-                        <td class="dropdown-cell">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
-                                    </svg>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Guimarães</td>
-                        <td><span class="alerta">4</span></td>
-                        <td class="dropdown-cell">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
-                                    </svg>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Beja</td>
-                        <td><span class="alerta">6</span></td>
-                        <td class="dropdown-cell">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
-                                    </svg>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="Gestão Materiais 2.html">Alocar Materiais</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </section>
+            <!-- Removidas as seções de materiais utilizados e auditorias em andamento -->
         </div>
         <section class="box materiais-alocados">
             <h2>Materiais Alocados</h2>
-            <table>
-                <tr>
-                    <th>ID da Auditoria</th>
-                    <th>Colete Refletor</th>
-                    <th>Fita Fluorescente</th>
-                    <th>Cone de Trânsito</th>
-                    <th>Telemóvel</th>
-                    <th>Triângulo de Sinalização</th>
-                    <th>Extintor</th>
-                    <th>Kit Primeiros Socorros</th>
-                </tr>
-                <tr><td>#876364</td><td>2</td><td>2</td><td>5</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-                <tr><td>#876368</td><td>1</td><td>1</td><td>5</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-                <tr><td>#876412</td><td>3</td><td>4</td><td>7</td><td>1</td><td>2</td><td>1</td><td>1</td></tr>
-                <tr><td>#876621</td><td>1</td><td>1</td><td>5</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+            <table id="tabela-materiais">
+                <thead>
+                    <tr>
+                        <th>ID da Auditoria</th>
+                        <th>Colete Refletor</th>
+                        <th>Fita Fluorescente</th>
+                        <th>Cone de Trânsito</th>
+                        <th>Telemóvel</th>
+                        <th>Triângulo de Sinalização</th>
+                        <th>Extintor</th>
+                        <th>Kit Primeiros Socorros</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="materiais-tbody">
+                    <!-- Dados serão inseridos dinamicamente via JavaScript -->
+                </tbody>
             </table>
         </section>
     </main>
+    
     <script>
-        // Navigation function for links
-        function navigateToPage() {
-            window.location.href = "Gestão Materiais 2.html";
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter todas as auditorias do localStorage
+            const auditorias = JSON.parse(localStorage.getItem('auditorias')) || {};
+            
+            // Obter ou criar o objeto de materiais
+            const materiais = JSON.parse(localStorage.getItem('materiais_alocados')) || {};
+            
+            // Lista padrão de tipos de materiais
+            const tiposMateriais = [
+                'Colete Refletor',
+                'Fita Fluorescente',
+                'Cone de Trânsito',
+                'Telemóvel',
+                'Triângulo de Sinalização',
+                'Extintor',
+                'Kit Primeiros Socorros'
+            ];
+            
+            // Inicializar valores padrão para materiais se não existirem
+            Object.keys(auditorias).forEach(idAuditoria => {
+                if (!materiais[idAuditoria]) {
+                    materiais[idAuditoria] = {};
+                    tiposMateriais.forEach(tipo => {
+                        // Valores aleatórios entre 0 e 5 para demonstração
+                        materiais[idAuditoria][tipo] = Math.floor(Math.random() * 6);
+                    });
+                }
+            });
+            
+            // Salvar os materiais no localStorage
+            localStorage.setItem('materiais_alocados', JSON.stringify(materiais));
+            
+            // Função para renderizar a tabela
+            function renderizarTabelaMateriais() {
+                const tbody = document.getElementById('materiais-tbody');
+                tbody.innerHTML = ''; // Limpar conteúdo existente
+                
+                // Para cada auditoria, adicionar uma linha
+                Object.keys(auditorias).forEach(idAuditoria => {
+                    const tr = document.createElement('tr');
+                    
+                    // Coluna ID
+                    const tdId = document.createElement('td');
+                    tdId.textContent = `#${idAuditoria}`;
+                    tr.appendChild(tdId);
+                    
+                    // Colunas para cada tipo de material
+                    tiposMateriais.forEach(tipo => {
+                        const tdMaterial = document.createElement('td');
+                        tdMaterial.textContent = materiais[idAuditoria]?.[tipo] || 0;
+                        tr.appendChild(tdMaterial);
+                    });
+                    
+                    // Coluna de ações
+                    const tdAcoes = document.createElement('td');
+                    tdAcoes.className = 'dropdown-cell';
+                    tdAcoes.innerHTML = `
+                        <div class="dropdown">
+                            <button class="dropdown-toggle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                    <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                    <circle cx="12" cy="19" r="2" fill="#687179"></circle>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="Gestão Materiais 2.html?id=${idAuditoria}">Alocar Materiais</a>
+                            </div>
+                        </div>
+                    `;
+                    tr.appendChild(tdAcoes);
+                    
+                    tbody.appendChild(tr);
+                });
+                
+                // Inicializar eventos de dropdown após renderizar a tabela
+                initDropdowns();
+            }
+            
+            // Função para inicializar dropdowns (esta função pode estar em dropdown.js)
+            function initDropdowns() {
+                document.querySelectorAll('.dropdown-toggle').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const dropdown = this.parentElement;
+                        dropdown.classList.toggle('active');
+                        
+                        // Fechar outros dropdowns
+                        document.querySelectorAll('.dropdown.active').forEach(activeDropdown => {
+                            if (activeDropdown !== dropdown) {
+                                activeDropdown.classList.remove('active');
+                            }
+                        });
+                        
+                        // Parar propagação do evento
+                        event.stopPropagation();
+                    });
+                });
+                
+                // Fechar dropdowns ao clicar fora
+                document.addEventListener('click', function() {
+                    document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                });
+            }
+            
+            // Verificar se há mudanças nos materiais (por exemplo, de outra página)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'materiais_alocados') {
+                    // Recarregar os materiais e atualizar a tabela
+                    const novosMateriais = JSON.parse(localStorage.getItem('materiais_alocados'));
+                    if (novosMateriais) {
+                        Object.assign(materiais, novosMateriais);
+                        renderizarTabelaMateriais();
+                    }
+                } else if (e.key === 'auditorias') {
+                    // Recarregar as auditorias e atualizar a tabela
+                    location.reload(); // Recarregar a página para simplificar
+                }
+            });
+            
+            // Renderizar a tabela inicialmente
+            renderizarTabelaMateriais();
+        });
     </script>
-    <script src="dropdown.js"></script>
+    
+    <!-- Se dropdown.js contém funções que você ainda precisa, mantenha-o -->
     <script src="materiais-dropdown-fix.js"></script>
 </body>
 </html>
