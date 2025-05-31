@@ -9,6 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f5f6fa;
+            display: flex; /* Adiciona display flex ao body */
         }
 
         .sidebar {
@@ -20,7 +21,9 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            position: static;
+            position: fixed; /* Fixamos a sidebar */
+            left: 0;
+            top: 0;
         }
 
         .sidebar-icon {
@@ -110,25 +113,23 @@
         }
 
         .main-content {
-            margin-left: 218px;
+            flex: 1;
+            padding: 40px;
+            margin-left: 258px; /* 218px da sidebar + 40px de padding */
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: flex-start;
-            padding: 40px 0 40px 32px;
             min-height: 100vh;
-            box-sizing: border-box;
         }
 
         .card {
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 32px 32px 24px 32px;
+            padding: 32px;
             width: 100%;
-            max-width: none;
-            min-width: 0;
-            margin-left: 0;
-            margin-right: 0;
+            max-width: 800px; /* Limita a largura máxima do card */
+            margin: 0 auto; /* Centraliza o card horizontalmente */
         }
 
         .card h1 {
@@ -168,14 +169,23 @@
             border-radius: 5px;
             color: white;
             cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         .botao-verde {
-            background-color: #27ae60;
+            background-color: #77B7A9; /* Alterado de #27ae60 para #585858 para combinar com o tema */
+        }
+
+        .botao-verde:hover {
+            background-color: #59897f; /* Efeito hover mais escuro */
         }
 
         .botao-vermelho {
-            background-color: #e74c3c;
+            background-color: #E48698; /* Mantido vermelho, mas ajustado tom */
+        }
+
+        .botao-vermelho:hover {
+            background-color: #c0392b; /* Efeito hover mais escuro */
         }
     </style>
 </head>
@@ -211,7 +221,7 @@
                 </a>
             </li>
             <li>
-                <a href="Peritos.html">
+                <a href="peritos-novo.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4998 21.5525C17.3267 21.5525 22.0499 16.8292 22.0499 11.0024C22.0499 5.17556 17.3267 0.452271 11.4998 0.452271C5.673 0.452271 0.949707 5.17556 0.949707 11.0024C0.949707 16.8292 5.673 21.5525 11.4998 21.5525ZM11.4998 7.83735C12.0594 7.83735 12.5961 7.61505 12.9918 7.21934C13.3875 6.82364 13.6098 6.28694 13.6098 5.72733C13.6098 5.16772 13.3875 4.63102 12.9918 4.23532C12.5961 3.83961 12.0594 3.61731 11.4998 3.61731C10.9402 3.61731 10.4035 3.83961 10.0078 4.23532C9.61211 4.63102 9.3898 5.16772 9.3898 5.72733C9.3898 6.28694 9.61211 6.82364 10.0078 7.21934C10.4035 7.61505 10.9402 7.83735 11.4998 7.83735ZM5.47887 8.16441C5.28724 8.09002 5.07417 8.09313 4.88479 8.17309C4.69541 8.25304 4.54458 8.40356 4.46423 8.59278C4.38389 8.78199 4.38033 8.99505 4.45432 9.18684C4.52831 9.37863 4.67403 9.53409 4.86064 9.62032L4.86275 9.62138L4.86486 9.62243L4.87541 9.62665L4.90917 9.64142C5.10868 9.72466 5.30988 9.80381 5.51263 9.8788C5.91354 10.0318 6.47691 10.2354 7.12364 10.438C8.16599 10.7671 9.48264 11.1132 10.7086 11.2271V12.5353C10.7086 12.989 10.5777 13.4352 10.3319 13.8182L7.66908 17.9591C7.61283 18.0466 7.57435 18.1442 7.55584 18.2465C7.53732 18.3488 7.53914 18.4537 7.56118 18.5553C7.58322 18.6569 7.62506 18.7532 7.6843 18.8386C7.74355 18.924 7.81903 18.9969 7.90646 19.0532C7.99388 19.1094 8.09152 19.1479 8.19382 19.1664C8.29611 19.1849 8.40105 19.1831 8.50264 19.1611C8.60423 19.139 8.70049 19.0972 8.78591 19.038C8.87134 18.9787 8.94425 18.9032 9.0005 18.8158L11.5009 14.927L13.9991 18.8158C14.0554 18.9032 14.1283 18.9787 14.2137 19.038C14.2992 19.0972 14.3954 19.139 14.497 19.1611C14.5986 19.1831 14.7035 19.1849 14.8058 19.1664C14.9081 19.1479 15.0058 19.1094 15.0932 19.0532C15.1806 18.9969 15.2561 18.924 15.3153 18.8386C15.3746 18.7532 15.4164 18.6569 15.4385 18.5553C15.4605 18.4537 15.4623 18.3488 15.4438 18.2465C15.4253 18.1442 15.3868 18.0466 15.3306 17.9591L12.6677 13.8182C12.4217 13.4352 12.2909 12.9895 12.2911 12.5343V11.2271C13.517 11.1132 14.8337 10.7671 15.8771 10.438C16.6252 10.2019 17.3635 9.93622 18.0905 9.64142L18.1253 9.62665L18.1359 9.62243L18.138 9.62138C18.3277 9.53726 18.4769 9.38193 18.5532 9.18887C18.6295 8.99582 18.6269 8.78051 18.5459 8.58936C18.4649 8.39821 18.3121 8.24654 18.1203 8.16704C17.9286 8.08755 17.7132 8.0866 17.5208 8.16441L17.5134 8.16757L17.4849 8.17918L17.3689 8.22665C17.2648 8.26956 17.1171 8.32723 16.9258 8.39968C16.5459 8.54421 16.0132 8.73728 15.4023 8.92929C14.1595 9.31964 12.6719 9.68363 11.4998 9.68363C10.3277 9.68363 8.8412 9.31964 7.59839 8.92929C6.89474 8.70633 6.20002 8.4561 5.5158 8.17918L5.48626 8.16757L5.47887 8.16441Z" fill="#687179"/>
                     </svg>
@@ -250,62 +260,247 @@
     </div>
 
     <div class="main-content">
-        <div class="card">
-            <h1>#858349</h1>
+        <div class="card" id="app">
+            <h1>{{ titulo }}</h1>
 
             <label for="description">Descrição da auditoria</label>
-            <textarea id="description" rows="4">Após várias ocorrências reportando a existência de trânsito excessivo em vários momentos, especialmente por volta dos períodos de horas de ponto, o perito irá ser mobilizado para o local e irá averiguar o ponto de situação.</textarea>
+            <textarea id="description" rows="4" v-model="descricao"></textarea>
 
             <label for="location">Localização</label>
-            <input type="text" id="location" value="Braga, São Vicente, Rotunda de Enfias">
+            <input type="text" id="location" v-model="localizacao">
 
             <label for="date">Data</label>
-            <input type="date" id="date" value="2025-01-24">
+            <input type="date" id="date" v-model="data">
 
-            <label for="expert-select">Peritos Alocados</label>
-            <select id="expert-select">
-                <option value="" disabled selected>Selecione o seu perito:</option>
-                <option value="joao-rodrigues">João Rodrigues (Trânsito)</option>
-                <option value="ana-sa">Ana Sá (Acidentes de Trabalho)</option>
-                <option value="carlos-almeida">Carlos Almeida (Seguros)</option>
-                <option value="marta-ferreira">Marta Ferreira (Fraude Financeira)</option>
-                <option value="rui-moreira">Rui Moreira (Avaliação Imobiliária)</option>
-                <option value="jose-araujo">José Araújo (Engenharia Forense)</option>
+            <label for="expert-select">Peritos Disponíveis</label>
+            <select id="expert-select" v-model="selectedPerito" @change="adicionarPerito">
+                <option value="" disabled>Selecione o perito:</option>
+                <option v-for="perito in peritosDisponiveis" :key="perito.id" :value="perito.id">
+                    {{ perito.nome }} ({{ perito.especialidade }})
+                </option>
             </select>
 
-            <div class="expert-checkboxes">
-                <label><input type="checkbox" checked> João Rodrigues (Trânsito)</label>
-                <label><input type="checkbox"> Ana Sá (Acidentes de Trabalho)</label>
-                <label><input type="checkbox"> Carlos Almeida (Seguros)</label>
-                <label><input type="checkbox"> Marta Ferreira (Fraude Financeira)</label>
-                <label><input type="checkbox"> Rui Moreira (Avaliação Imobiliária)</label>
-                <label><input type="checkbox"> José Araújo (Engenharia Forense)</label>
+            <label>Peritos Alocados</label>
+            <div class="expert-checkboxes" id="expert-checkboxes">
+                <p v-if="peritosDisponiveis.length === 0">
+                    Nenhum perito cadastrado. Adicione peritos na seção "Peritos".
+                </p>
+                <div v-for="perito in peritosAlocados" :key="perito.id" style="margin-bottom: 10px; display: flex; align-items: center;">
+                    <input type="checkbox" :id="'perito-' + perito.id" :value="perito.id" checked @click="removerPerito(perito)">
+                    <label :for="'perito-' + perito.id" style="margin-left: 8px;">
+                        {{ perito.nome }} ({{ perito.especialidade }})
+                    </label>
+                </div>
             </div>
 
-            <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                <button id="guardarBtn" class="botao-verde">Guardar alterações</button>
-                <button id="eliminarBtn" class="botao-vermelho">Eliminar Auditoria</button>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button id="guardarBtn" class="botao-verde" @click="salvarAuditoria">Guardar alterações</button>
+                <button id="eliminarBtn" class="botao-vermelho" @click="eliminarAuditoria">Eliminar Auditoria</button>
             </div>
         </div>
     </div>
 
+    <!-- Incluir Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const guardarBtn = document.getElementById('guardarBtn');
-            const eliminarBtn = document.getElementById('eliminarBtn');
+        // Carregar auditorias do localStorage
+        let auditorias = JSON.parse(localStorage.getItem('auditorias')) || {
+            '876364': {
+                id: '876364',
+                titulo: 'Inspeção de Transportes Públicos',
+                descricao: 'Inspeção periódica dos transportes públicos da cidade. Verificação da conformidade com normas de segurança e acessibilidade.',
+                localizacao: 'Braga',
+                data: '2025-05-12',
+                status: 'Aprovada',
+                peritos: ['João Rodrigues (Trânsito)']
+            },
+            '876368': {
+                id: '876368',
+                titulo: 'Avaliação de Congestionamento',
+                descricao: 'Análise do fluxo de tráfego e identificação de pontos críticos de congestionamento na hora de ponta.',
+                localizacao: 'Porto',
+                data: '2025-05-17',
+                status: 'Pendente',
+                peritos: ['Carlos Almeida (Seguros)']
+            },
+            '876412': {
+                id: '876412',
+                titulo: 'Análise de Sinalização',
+                descricao: 'Verificação da conformidade e visibilidade da sinalização de trânsito nas principais vias da cidade.',
+                localizacao: 'Lisboa',
+                data: '2025-06-04',
+                status: 'Aprovada',
+                peritos: ['Ana Sá (Acidentes de Trabalho)']
+            },
+            '876621': {
+                id: '876621',
+                titulo: 'Avaliação de Estrutura',
+                descricao: 'Análise estrutural de pontes e viadutos após relatos de fissuras e deterioração.',
+                localizacao: 'Faro',
+                data: '2025-05-27',
+                status: 'Rejeitada',
+                peritos: ['José Araújo (Engenharia Forense)']
+            }
+        };
+        
+        // Salvar os dados iniciais no localStorage se ainda não existirem
+        if (!localStorage.getItem('auditorias')) {
+            localStorage.setItem('auditorias', JSON.stringify(auditorias));
+        }
 
-            guardarBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.location.href = 'index.html';
-            });
-
-            eliminarBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const confirmado = confirm('Tens a certeza que queres eliminar esta auditoria?');
-                if (confirmado) {
-                    window.location.href = 'index.html';
+        // Obter o ID da auditoria da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const auditoriaId = urlParams.get('id') || '';
+        
+        // Inicializar a aplicação Vue
+        new Vue({
+            el: '#app',
+            data: {
+                titulo: auditoriaId ? `#${auditoriaId}` : 'Nova Auditoria',
+                descricao: '',
+                localizacao: '',
+                data: new Date().toISOString().split('T')[0],
+                peritos: [],
+                peritosAlocados: [],
+                selectedPerito: '',
+                auditoriaId: auditoriaId,
+                auditoria: null
+            },
+            computed: {
+                peritosDisponiveis() {
+                    // Retorna apenas peritos que ainda não foram alocados
+                    return this.peritos.filter(perito => 
+                        !this.peritosAlocados.some(alocado => alocado.id === perito.id)
+                    );
                 }
-            });
+            },
+            methods: {
+                carregarPeritos() {
+                    const peritosStorage = JSON.parse(localStorage.getItem('peritos')) || {};
+                    this.peritos = Object.values(peritosStorage);
+                },
+                carregarAuditoria() {
+                    if (this.auditoriaId && auditorias[this.auditoriaId]) {
+                        this.auditoria = auditorias[this.auditoriaId];
+                        this.titulo = `#${this.auditoria.id}`;
+                        this.descricao = this.auditoria.descricao;
+                        this.localizacao = this.auditoria.localizacao;
+                        this.data = this.auditoria.data;
+                        
+                        // Mapear peritos alocados da auditoria
+                        this.peritosAlocados = [];
+                        const peritosNames = this.auditoria.peritos || [];
+                        
+                        peritosNames.forEach(peritoName => {
+                            // Encontrar o objeto perito completo baseado no nome e especialidade
+                            const peritoInfo = peritoName.match(/(.*) \((.*)\)/);
+                            if (peritoInfo) {
+                                const nome = peritoInfo[1];
+                                const especialidade = peritoInfo[2];
+                                
+                                const perito = this.peritos.find(p => 
+                                    p.nome === nome && p.especialidade === especialidade
+                                );
+                                
+                                if (perito) {
+                                    this.peritosAlocados.push(perito);
+                                }
+                            }
+                        });
+                        
+                        document.title = `Editar Auditoria #${this.auditoria.id}`;
+                    }
+                },
+                adicionarPerito() {
+                    if (!this.selectedPerito) return;
+                    
+                    // Encontrar o objeto perito completo
+                    const perito = this.peritos.find(p => p.id === this.selectedPerito);
+                    if (perito) {
+                        this.peritosAlocados.push(perito);
+                        this.selectedPerito = ''; // Resetar seleção
+                    }
+                },
+                removerPerito(perito) {
+                    const index = this.peritosAlocados.findIndex(p => p.id === perito.id);
+                    if (index !== -1) {
+                        this.peritosAlocados.splice(index, 1);
+                    }
+                    return false; // Prevenir comportamento padrão do checkbox
+                },
+                salvarAuditoria() {
+                    // Preparar peritos para o formato esperado pelo sistema
+                    const peritosFormatados = this.peritosAlocados.map(perito => 
+                        `${perito.nome} (${perito.especialidade})`
+                    );
+                    
+                    if (this.auditoria) {
+                        // Atualizar auditoria existente
+                        this.auditoria.descricao = this.descricao;
+                        this.auditoria.localizacao = this.localizacao;
+                        this.auditoria.data = this.data;
+                        this.auditoria.peritos = peritosFormatados;
+                        
+                        // Atualizar no objeto de auditorias
+                        auditorias[this.auditoria.id] = this.auditoria;
+                    } else {
+                        // Criar nova auditoria
+                        const novoId = this.generateNewId();
+                        const novaAuditoria = {
+                            id: novoId,
+                            titulo: `Nova Auditoria ${novoId}`,
+                            descricao: this.descricao,
+                            localizacao: this.localizacao,
+                            data: this.data,
+                            status: 'Pendente',
+                            peritos: peritosFormatados
+                        };
+                        
+                        // Adicionar ao objeto de auditorias
+                        auditorias[novoId] = novaAuditoria;
+                    }
+                    
+                    // Salvar no localStorage
+                    localStorage.setItem('auditorias', JSON.stringify(auditorias));
+                    
+                    alert('Alterações guardadas com sucesso!');
+                    window.location.href = 'index.html';
+                },
+                eliminarAuditoria() {
+                    const confirmado = confirm('Tem certeza que deseja eliminar esta auditoria?');
+                    
+                    if (confirmado && this.auditoria) {
+                        // Remover a auditoria do objeto
+                        delete auditorias[this.auditoria.id];
+                        
+                        // Atualizar o localStorage
+                        localStorage.setItem('auditorias', JSON.stringify(auditorias));
+                        
+                        alert('Auditoria eliminada com sucesso!');
+                        window.location.href = 'index.html';
+                    } else if (confirmado) {
+                        // Se for uma nova auditoria que ainda não existe
+                        alert('Operação cancelada.');
+                        window.location.href = 'index.html';
+                    }
+                },
+                generateNewId() {
+                    // Pega o maior ID existente e incrementa
+                    let maxId = 876000;  // Valor base
+                    
+                    Object.keys(auditorias).forEach(id => {
+                        const numId = parseInt(id);
+                        if (numId > maxId) maxId = numId;
+                    });
+                    
+                    return (maxId + 1).toString();
+                }
+            },
+            mounted() {
+                this.carregarPeritos();
+                this.carregarAuditoria();
+            }
         });
     </script>
 </body>

@@ -221,7 +221,7 @@
                 </a>
             </li>
             <li class="active">
-                <a href="Auditorias.html">
+                <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
                         <path d="M22.0429 17.3842V11.6901C22.0429 10.6411 22.0429 10.1167 21.7586 9.72177C21.5285 9.40326 21.1598 9.23345 20.5026 9.00537C20.368 10.619 19.8335 12.2679 18.9945 13.7097C18.0168 15.3897 16.5649 16.8918 14.7051 17.7027C14.167 17.9364 13.5866 18.057 13 18.057C12.4134 18.057 11.833 17.9364 11.2949 17.7027C9.43506 16.8918 7.98316 15.3897 7.00551 13.7097C6.36801 12.614 5.91517 11.4208 5.66515 10.1779C5.28032 10.1207 4.98592 10.1498 4.73071 10.2915C4.62938 10.3484 4.53497 10.4168 4.44937 10.4954C3.95703 10.9436 3.95703 11.7765 3.95703 13.4435V18.397C3.95703 19.445 3.95703 19.9695 4.24138 20.3643C4.52573 20.7592 5.0231 20.925 6.01782 21.2566L6.40365 21.3852C7.98818 21.9127 8.77994 22.1769 9.5908 22.179C9.83462 22.179 10.0778 22.1615 10.3203 22.1267C11.1221 22.0112 11.8756 21.6344 13.3828 20.8808C14.5373 20.303 15.115 20.0147 15.728 19.881C15.943 19.8341 16.1607 19.8013 16.3811 19.7826C17.007 19.7303 17.637 19.8358 18.9 20.0458C20.1791 20.2588 20.8191 20.3653 21.2864 20.0971C21.4464 20.0053 21.5848 19.8881 21.7013 19.7454C22.0429 19.3284 22.0429 18.6803 22.0429 17.3842Z" fill="#687179"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0003 2.4834C9.6705 2.4834 6.97168 5.04758 6.97168 8.21061C6.97168 11.3495 8.89582 15.0119 11.8981 16.3211C12.246 16.4718 12.6212 16.5496 13.0003 16.5496C13.3795 16.5496 13.7546 16.4718 14.1026 16.3211C17.1048 15.0129 19.029 11.3495 19.029 8.21061C19.029 5.04758 16.3301 2.4834 13.0003 2.4834ZM13.0003 10.5216C13.5333 10.5216 14.0444 10.3099 14.4213 9.933C14.7981 9.55614 15.0099 9.045 15.0099 8.51204C15.0099 7.97907 14.7981 7.46794 14.4213 7.09107C14.0444 6.71421 13.5333 6.50249 13.0003 6.50249C12.4674 6.50249 11.9562 6.71421 11.5794 7.09107C11.2025 7.46794 10.9908 7.97907 10.9908 8.51204C10.9908 9.045 11.2025 9.55614 11.5794 9.933C11.9562 10.3099 12.4674 10.5216 13.0003 10.5216Z" fill="#687179"/>                    
@@ -264,13 +264,98 @@
         </div>
     </div>
     <script>
-        // Botão Guardar Auditoria redireciona para index.html na pasta Back-office
-        document.querySelector('.save-btn').addEventListener('click', function() {
-            window.location.href = '../../Documentos/GitHub/PW_G0404/Back-office/index.html';
-        });
-        // Botão Cancelar redireciona para index.html na pasta Back-office
-        document.querySelector('.cancel-btn').addEventListener('click', function() {
-            window.location.href = '../../Documentos/GitHub/PW_G0404/Back-office/index.html';
+        // Função para obter parâmetros da URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        // Dados fictícios das auditorias (em produção, isso viria de um banco de dados ou API)
+        const auditorias = {
+            "876364": {
+                id: "858349",
+                nome: "Inspeção de Transportes Públicos",
+                local: "Braga, São Vicente, Rotunda de Enfias.",
+                descricao: "Após várias ocorrências reportando a existência de trânsito excessivo em vários momentos, especialmente por volta dos períodos de horas de ponto, o perito irá ser mobilizado para o local e irá averiguar o ponto de situação.",
+                dataPlaneada: "2025-05-12",
+                perito: "João Rodrigues (Trânsito)",
+                status: "Aprovada"
+            },
+            "876368": {
+                id: "876368",
+                nome: "Avaliação de Congestionamento",
+                local: "Porto, Avenida da Boavista",
+                descricao: "Verificação do fluxo de trânsito e possíveis soluções para reduzir congestionamento no horário de pico.",
+                dataPlaneada: "2025-05-17",
+                perito: "Carlos Almeida (Seguros)",
+                status: "Pendente"
+            },
+            "876412": {
+                id: "876412",
+                nome: "Análise de Sinalização",
+                local: "Lisboa, Avenida da Liberdade",
+                descricao: "Avaliação da sinalização atual e proposta de melhorias para aumentar a segurança dos pedestres.",
+                dataPlaneada: "2025-06-04",
+                perito: "Ana Sá (Acidentes de Trabalho)",
+                status: "Aprovada"
+            },
+            "876621": {
+                id: "876621",
+                nome: "Avaliação de Estrutura",
+                local: "Faro, Marina",
+                descricao: "Verificação da estrutura da ponte de acesso à marina que apresenta sinais de deterioração.",
+                dataPlaneada: "2025-05-27",
+                perito: "José Araújo (Engenharia Forense)",
+                status: "Rejeitada"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obter o ID da auditoria da URL
+            const auditId = getUrlParameter('id');
+            
+            // Se não houver ID ou o ID não existir nos dados, usar o ID padrão
+            const auditData = auditId && auditorias[auditId] ? auditorias[auditId] : auditorias["876364"];
+            
+            // Preencher os campos com os dados da auditoria
+            document.querySelector('h2').textContent = `#${auditData.id}`;
+            document.getElementById('nomeAuditoria').value = auditData.nome;
+            document.getElementById('localAuditoria').value = auditData.local;
+            document.getElementById('descricao').value = auditData.descricao;
+            document.getElementById('dataPlaneada').value = auditData.dataPlaneada;
+            
+            // Adicionar campo para perito e status
+            const peritosField = document.createElement('div');
+            peritosField.innerHTML = `
+                <label for="peritosAtribuidos">Peritos Atribuídos</label>
+                <input type="text" id="peritosAtribuidos" value="${auditData.perito}" readonly>
+            `;
+            
+            const statusField = document.createElement('div');
+            statusField.innerHTML = `
+                <label for="status">Status</label>
+                <input type="text" id="status" value="${auditData.status}" readonly>
+            `;
+            
+            // Inserir os novos campos antes do grupo de botões
+            const buttonGroup = document.querySelector('.button-group');
+            buttonGroup.parentNode.insertBefore(peritosField, buttonGroup);
+            buttonGroup.parentNode.insertBefore(statusField, buttonGroup);
+            
+            // Botão Guardar Auditoria redireciona para index.html
+            document.querySelector('.save-btn').addEventListener('click', function() {
+                alert('Auditoria atualizada com sucesso!');
+                window.location.href = 'index.html';
+            });
+            
+            // Botão Cancelar redireciona para index.html sem salvar
+            document.querySelector('.cancel-btn').addEventListener('click', function() {
+                if (confirm('Tem certeza que deseja cancelar? As alterações não serão salvas.')) {
+                    window.location.href = 'index.html';
+                }
+            });
         });
     </script>
 </body>

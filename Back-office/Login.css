@@ -548,7 +548,7 @@ table:not(.dashboard-grid table) td {
 }
 
 .status-badge.completed {
-    background: #77B7A9;
+    background: #77B7A9; /* Changed from "#c" to match your theme's green */
     color: white;
 }
 

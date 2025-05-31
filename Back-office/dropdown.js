@@ -1,76 +1,73 @@
 /**
- * Dropdown menu handler
- * This script manages the dropdown menus in the application
+ * Script para gerenciar os dropdowns da aplicação
+ * Este script substitui o comportamento padrão para garantir que
+ * os dropdowns apareçam sobre outros elementos da página
  */
 
-// Function to position and show dropdown
-function showDropdown(toggle, menu) {
-    // Get position of toggle button
-    const rect = toggle.getBoundingClientRect();
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar todos os dropdowns na página
+    initializeAllDropdowns();
     
-    // Position the dropdown absolutely to the viewport
-    menu.style.position = 'fixed';
-    menu.style.top = (rect.bottom + 5) + 'px';
-    menu.style.right = (window.innerWidth - rect.right) + 'px';
-    menu.style.display = 'block';
-    menu.style.zIndex = '10000'; // Very high z-index
+    // Reexportar para uso global
+    window.initializeDropdowns = initializeAllDropdowns;
+});
+
+function initializeAllDropdowns() {
+    // Remover listeners existentes para evitar duplicação
+    document.querySelectorAll('.dropdown-toggle').forEach(button => {
+        button.removeEventListener('click', toggleDropdown);
+        // Usar addEventListener com parâmetro explícito para possibilitar remoção posterior
+        button.addEventListener('click', toggleDropdown);
+    });
     
-    // Add visible class
-    menu.classList.add('visible');
+    // Adicionar listener global para fechar dropdowns ao clicar fora
+    document.removeEventListener('click', closeAllDropdownsOnClickOutside);
+    document.addEventListener('click', closeAllDropdownsOnClickOutside);
 }
 
-// Initialize dropdown functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Find all dropdowns
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+function toggleDropdown(e) {
+    e.preventDefault();
+    e.stopPropagation();
     
-    // Keep track of currently open dropdown
-    let openDropdown = null;
+    const dropdown = this.closest('.dropdown');
+    const menu = dropdown.querySelector('.dropdown-menu');
     
-    // Add click handlers to all dropdown toggles
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Get the dropdown menu
-            const menu = this.nextElementSibling;
-            const dropdown = this.parentElement;
-            
-            // Close currently open dropdown if it's not this one
-            if (openDropdown && openDropdown !== dropdown) {
-                openDropdown.querySelector('.dropdown-menu').style.display = 'none';
-                openDropdown.classList.remove('active');
-            }
-            
-            // Toggle this dropdown
-            if (menu.style.display === 'block') {
+    // Fechar todos os outros dropdowns abertos
+    document.querySelectorAll('.dropdown.active').forEach(d => {
+        if (d !== dropdown) {
+            d.classList.remove('active');
+            d.querySelector('.dropdown-menu').style.display = 'none';
+        }
+    });
+    
+    // Alternar o estado do dropdown atual
+    if (dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active');
+        menu.style.display = 'none';
+    } else {
+        dropdown.classList.add('active');
+        
+        // Ajustar posicionamento e visibilidade do menu
+        const buttonRect = this.getBoundingClientRect();
+        const pageScrollY = window.scrollY || document.documentElement.scrollTop;
+        const pageScrollX = window.scrollX || document.documentElement.scrollLeft;
+        
+        menu.style.position = 'fixed';
+        menu.style.top = (buttonRect.bottom + 5) + 'px';
+        menu.style.right = (window.innerWidth - buttonRect.right) + 'px';
+        menu.style.zIndex = '10000'; // Valor alto para garantir que fique por cima
+        menu.style.display = 'block';
+    }
+}
+
+function closeAllDropdownsOnClickOutside(e) {
+    if (!e.target.closest('.dropdown-toggle')) {
+        document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+            dropdown.classList.remove('active');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            if (menu) {
                 menu.style.display = 'none';
-                dropdown.classList.remove('active');
-                openDropdown = null;
-            } else {
-                showDropdown(this, menu);
-                dropdown.classList.add('active');
-                openDropdown = dropdown;
             }
         });
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown') && openDropdown) {
-            openDropdown.querySelector('.dropdown-menu').style.display = 'none';
-            openDropdown.classList.remove('active');
-            openDropdown = null;
-        }
-    });
-    
-    // Close dropdown when pressing ESC key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && openDropdown) {
-            openDropdown.querySelector('.dropdown-menu').style.display = 'none';
-            openDropdown.classList.remove('active');
-            openDropdown = null;
-        }
-    });
-});
+    }
+}

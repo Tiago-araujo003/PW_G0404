@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-                <a href="Peritos.html">
+                <a href="peritos-novo.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4998 21.5525C17.3267 21.5525 22.0499 16.8292 22.0499 11.0024C22.0499 5.17556 17.3267 0.452271 11.4998 0.452271C5.673 0.452271 0.949707 5.17556 0.949707 11.0024C0.949707 16.8292 5.673 21.5525 11.4998 21.5525ZM11.4998 7.83735C12.0594 7.83735 12.5961 7.61505 12.9918 7.21934C13.3875 6.82364 13.6098 6.28694 13.6098 5.72733C13.6098 5.16772 13.3875 4.63102 12.9918 4.23532C12.5961 3.83961 12.0594 3.61731 11.4998 3.61731C10.9402 3.61731 10.4035 3.83961 10.0078 4.23532C9.61211 4.63102 9.3898 5.16772 9.3898 5.72733C9.3898 6.28694 9.61211 6.82364 10.0078 7.21934C10.4035 7.61505 10.9402 7.83735 11.4998 7.83735ZM5.47887 8.16441C5.28724 8.09002 5.07417 8.09313 4.88479 8.17309C4.69541 8.25304 4.54458 8.40356 4.46423 8.59278C4.38389 8.78199 4.38033 8.99505 4.45432 9.18684C4.52831 9.37863 4.67403 9.53409 4.86064 9.62032L4.86275 9.62138L4.86486 9.62243L4.87541 9.62665L4.90917 9.64142C5.10868 9.72466 5.30988 9.80381 5.51263 9.8788C5.91354 10.0318 6.47691 10.2354 7.12364 10.438C8.16599 10.7671 9.48264 11.1132 10.7086 11.2271V12.5353C10.7086 12.989 10.5777 13.4352 10.3319 13.8182L7.66908 17.9591C7.61283 18.0466 7.57435 18.1442 7.55584 18.2465C7.53732 18.3488 7.53914 18.4537 7.56118 18.5553C7.58322 18.6569 7.62506 18.7532 7.6843 18.8386C7.74355 18.924 7.81903 18.9969 7.90646 19.0532C7.99388 19.1094 8.09152 19.1479 8.19382 19.1664C8.29611 19.1849 8.40105 19.1831 8.50264 19.1611C8.60423 19.139 8.70049 19.0972 8.78591 19.038C8.87134 18.9787 8.94425 18.9032 9.0005 18.8158L11.5009 14.927L13.9991 18.8158C14.0554 18.9032 14.1283 18.9787 14.2137 19.038C14.2992 19.0972 14.3954 19.139 14.497 19.1611C14.5986 19.1831 14.7035 19.1849 14.8058 19.1664C14.9081 19.1479 15.0058 19.1094 15.0932 19.0532C15.1806 18.9969 15.2561 18.924 15.3153 18.8386C15.3746 18.7532 15.4164 18.6569 15.4385 18.5553C15.4605 18.4537 15.4623 18.3488 15.4438 18.2465C15.4253 18.1442 15.3868 18.0466 15.3306 17.9591L12.6677 13.8182C12.4217 13.4352 12.2909 12.9895 12.2911 12.5343V11.2271C13.517 11.1132 14.8337 10.7671 15.8771 10.438C16.6252 10.2019 17.3635 9.93622 18.0905 9.64142L18.1253 9.62665L18.1359 9.62243L18.138 9.62138C18.3277 9.53726 18.4769 9.38193 18.5532 9.18887C18.6295 8.99582 18.6269 8.78051 18.5459 8.58936C18.4649 8.39821 18.3121 8.24654 18.1203 8.16704C17.9286 8.08755 17.7132 8.0866 17.5208 8.16441L17.5134 8.16757L17.4849 8.17918L17.3689 8.22665C17.2648 8.26956 17.1171 8.32723 16.9258 8.39968C16.5459 8.54421 16.0132 8.73728 15.4023 8.92929C14.1595 9.31964 12.6719 9.68363 11.4998 9.68363C10.3277 9.68363 8.8412 9.31964 7.59839 8.92929C6.89474 8.70633 6.20002 8.4561 5.5158 8.17918L5.48626 8.16757L5.47887 8.16441Z" fill="#687179"/>
                     </svg>
@@ -80,10 +80,11 @@
     <div class="main-content">
         <h2>Gestão de Auditorias</h2>
         <div class="table-container">
-            <table>
+            <table class="audits-table">
                 <thead>
                     <tr>
                         <th>ID da Auditoria</th>
+                        <th>Nome</th>
                         <th>Localização</th>
                         <th>Data Planeada</th>
                         <th>Peritos Atribuídos</th>
@@ -92,86 +93,90 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a href="#">#876364</a></td>
+                    <tr data-audit-id="876364">
+                        <td>#876364</td>
+                        <td>Inspeção de Transportes Públicos</td>
                         <td>Braga</td>
                         <td>12/05/2025</td>
                         <td>João Rodrigues (Trânsito)</td>
                         <td><span class="status green">Aprovada</span></td>
-                        <td>
+                        <td class="dropdown-cell">
                             <div class="dropdown">
-                                <button class="dropdown-btn" aria-label="Mais opções">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"/>
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
                                     </svg>
                                 </button>
-                                <div class="dropdown-content">
-                                    <a href="#" class="edit-link">Editar</a>
+                                <div class="dropdown-menu">
+                                    <a href="edir-audit.html?id=876364">Editar</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">#876368</a></td>
+                    <tr data-audit-id="876368">
+                        <td>#876368</td>
+                        <td>Avaliação de Congestionamento</td>
                         <td>Porto</td>
                         <td>17/05/2025</td>
                         <td>Carlos Almeida (Seguros)</td>
                         <td><span class="status yellow">Pendente</span></td>
-                        <td>
+                        <td class="dropdown-cell">
                             <div class="dropdown">
-                                <button class="dropdown-btn" aria-label="Mais opções">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"/>
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
                                     </svg>
                                 </button>
-                                <div class="dropdown-content">
-                                    <a href="#" class="edit-link">Editar</a>
+                                <div class="dropdown-menu">
+                                    <a href="edir-audit.html?id=876368" class="edit-link">Editar</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">#876412</a></td>
+                    <tr data-audit-id="876412">
+                        <td>#876412</td>
+                        <td>Análise de Sinalização</td>
                         <td>Lisboa</td>
                         <td>04/06/2025</td>
                         <td>Ana Sá (Acidentes de Trabalho)</td>
                         <td><span class="status green">Aprovada</span></td>
-                        <td>
+                        <td class="dropdown-cell">
                             <div class="dropdown">
-                                <button class="dropdown-btn" aria-label="Mais opções">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"/>
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
                                     </svg>
                                 </button>
-                                <div class="dropdown-content">
-                                    <a href="#" class="edit-link">Editar</a>
+                                <div class="dropdown-menu">
+                                    <a href="edir-audit.html?id=876412" class="edit-link">Editar</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">#876621</a></td>
+                    <tr data-audit-id="876621">
+                        <td>876621</td>
+                        <td>Avaliação de Estrutura</td>
                         <td>Faro</td>
                         <td>27/05/2025</td>
                         <td>José Araújo (Engenharia Forense)</td>
                         <td><span class="status red">Rejeitada</span></td>
-                        <td>
+                        <td class="dropdown-cell">
                             <div class="dropdown">
-                                <button class="dropdown-btn" aria-label="Mais opções">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <circle cx="12" cy="5" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="12" r="2" fill="#687179"/>
-                                        <circle cx="12" cy="19" r="2" fill="#687179"/>
+                                <button class="dropdown-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="5" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="12" r="2" fill="#687179"></circle>
+                                        <circle cx="12" cy="19" r="2" fill="#687179"></circle>
                                     </svg>
                                 </button>
-                                <div class="dropdown-content">
-                                    <a href="#" class="edit-link">Editar</a>
+                                <div class="dropdown-menu">
+                                    <a href="edir-audit.html?id=876621" class="edit-link">Editar</a>
                                 </div>
                             </div>
                         </td>
@@ -179,7 +184,19 @@
                 </tbody>
             </table>
         </div>
-        <button class="create-btn">Criar nova Auditoria</button>
+        <div class="new-audit-button-container" style="margin: 20px 0;">
+            <a href="view-audit.html" class="btn-nova-auditoria" style="
+                padding: 10px 15px;
+                background-color: #77B7A9;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+                display: inline-block;
+                cursor: pointer;">
+                + Criar Nova Auditoria
+            </a>
+        </div>
     </div>
 
     <style>
@@ -302,229 +319,162 @@
             padding: 0;
             margin-top: 24px;
             overflow: hidden;
+            border: none;
         }
 
-        table {
+        .audits-table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: #fff;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            border-collapse: collapse; /* Voltamos para collapse para controle mais direto */
+            table-layout: fixed;
+            border: none;
         }
-
-        thead tr {
+        
+        .audits-table thead {
             background: #f5f6f8;
         }
-
-        th {
-            text-align: left;
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 15px;
-            padding: 18px 24px;
-            border: none;
-            letter-spacing: 0.5px;
-        }
-
-        td {
-            padding: 16px 24px;
-            border: none;
-            font-size: 15px;
-            color: #444;
-            background: #fff;
+        
+        .audits-table th, 
+        .audits-table td {
+            border: none !important; /* Forçar a remoção das bordas */
+            padding: 12px 10px;
             vertical-align: middle;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
-        tr {
-            border: none;
+        
+        /* Linhas alternadas para melhorar legibilidade sem precisar de bordas */
+        .audits-table tbody tr {
+            border: none !important;
             transition: background 0.18s;
         }
-
-        tbody tr:hover td {
+        
+        .audits-table tbody tr:hover td {
             background: #f5f6f8;
         }
-
-        tr:nth-child(even) td {
+        
+        .audits-table tbody tr:nth-child(even) td {
             background: #fafbfc;
         }
-
-        tr:nth-child(even):hover td {
+        
+        .audits-table tbody tr:nth-child(even):hover td {
             background: #f5f6f8;
         }
 
-        .status {
-            padding: 4px 14px;
-            border-radius: 12px;
-            font-size: 13px;
-            color: white;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        /* Verde igual ao "Resolvido" em reports.html */
-        .green {
-            background-color: #00b894;
-        }
-
-        /* Amarelo igual ao "Pendente" em reports.html */
-        .yellow {
-            background-color: #ffe066;
-            color: #444;
-        }
-
-        /* Vermelho igual ao "Pendente" em reports.html */
-        .red {
-            background-color: #ff7675;
-        }
-
-        .edit-btn {
-            background: #f5f6f8;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 6px;
-            padding: 6px 12px;
-            transition: background 0.2s;
-        }
-
-        .edit-btn:hover {
-            background: #e0e3e7;
-        }
-
-        .create-btn {
-            float: right;
-            margin-top: 24px;
-            background-color: #585858;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            transition: background 0.2s;
-        }
-
-        .create-btn:hover {
-            background: #424242;
-        }
-
-        a {
-            color: #5c6bc0;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
+        /* Estilos melhorados para os dropdowns */
         .dropdown {
             position: relative;
-            display: inline-block;
         }
-
-        .dropdown-btn {
+        
+        .dropdown-cell {
+            position: relative;
+            text-align: center;
+            z-index: 1; /* Garante que a célula esteja acima de outras células */
+        }
+        
+        .dropdown-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            padding: 0 8px;
-            border-radius: 6px;
-            display: flex;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 32px;
             width: 32px;
+            height: 32px;
             transition: background 0.2s;
+            position: relative;
+            z-index: 2; /* Garante que o botão esteja acima de outros elementos */
         }
-
-        .dropdown-btn:hover,
-        .dropdown-btn:focus {
-            background: #f5f6f8;
-            outline: none;
+        
+        .dropdown-toggle:hover {
+            background-color: #f0f0f0;
         }
-
-        .dropdown-btn svg {
-            display: block;
-            width: 24px;
-            height: 24px;
-        }
-
-        .dropdown-content {
+        
+        .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
+            top: 100%;
             background-color: #fff;
-            min-width: 120px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            border-radius: 8px;
-            z-index: 1;
-            margin-top: 4px;
+            min-width: 140px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000; /* Valor muito alto para garantir que fique acima de todos os elementos */
+            border-radius: 6px;
             padding: 6px 0;
+            margin-top: 4px;
         }
-
-        .dropdown-content a {
-            color: #444;
-            padding: 10px 18px;
+        
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            color: #333;
+            padding: 10px 16px;
             text-decoration: none;
             display: block;
-            font-size: 15px;
-            border-radius: 0;
+            font-size: 14px;
+            font-weight: 500;
             transition: background 0.2s;
         }
-
-        .dropdown-content a:hover {
+        
+        .dropdown-menu a:hover {
             background-color: #f5f6f8;
+            text-decoration: none;
         }
-
-        .dropdown.show .dropdown-content {
-            display: block;
+        .audits-table th:last-child,
+        .audits-table td:last-child {
+            min-width: 60px;
+            width: 60px;
+            padding-right: 16px;
+        }
+        .status {
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+        }
+        .green {
+            background-color: #77B7A9;
+            color: white;
+        }
+        .yellow {
+            background-color: #ffe066;
+            color: #333;
+        }
+        .red {
+            background-color: #E48698;
+            color: white;
+        }
+        .audits-table a {
+            color: #5c6bc0;
+            text-decoration: none;
+        }
+        .audits-table a:hover {
+            text-decoration: underline;
+        }
+        .btn-nova-auditoria {
+            margin-top: 20px;
+            background-color: #585858;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-nova-auditoria:hover {
+            background-color: #424242;
+            text-decoration: none;
         }
     </style>
-    <script>
-        // Redireciona todos os botões Editar para edir-audit.html
-        document.querySelectorAll('.edit-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                window.location.href = 'edir-audit.html';
-            });
-        });
-        // Redireciona o botão Criar nova Auditoria para o view-audit.html correto na pasta do utilizador
-        document.querySelector('.create-btn').addEventListener('click', function() {
-            window.location.href = 'file:///C:/Users/tiago/OneDrive/Ambiente de Trabalho/PW/view-audit.html';
-        });
-
-        // Dropdown logic for each row
-        document.querySelectorAll('.dropdown-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // Close other dropdowns
-                document.querySelectorAll('.dropdown').forEach(function(drop) {
-                    if (drop !== btn.parentElement) drop.classList.remove('show');
-                });
-                btn.parentElement.classList.toggle('show');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
-            document.querySelectorAll('.dropdown').forEach(function(drop) {
-                drop.classList.remove('show');
-            });
-        });
-
-        // Redireciona ao clicar em "Editar"
-        document.querySelectorAll('.edit-link').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'edir-audit.html';
-            });
-        });
-
-        // Redireciona o botão Criar nova Auditoria para o view-audit.html correto na pasta do utilizador
-        document.querySelector('.create-btn').addEventListener('click', function() {
-            window.location.href = 'file:///C:/Users/tiago/OneDrive/Ambiente de Trabalho/PW/view-audit.html';
-        });
-    </script>
+<script src="dropdown.js"></script>
+<script src="audit-manager.js"></script>
 </body>
 </html>
