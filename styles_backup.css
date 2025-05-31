@@ -1,0 +1,322 @@
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Space between the buttons */
+    margin-top: 20px;
+}
+
+.save-button, .delete-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #77B7A9;
+    color: white;
+}
+
+.delete-button {
+    background-color: #E48698;
+    color: white;
+}
+
+.botao-verde, .botao-vermelho {
+    display: flex;
+    width: 150px;
+    padding: 14px 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-left: 10px;
+}
+
+.botao-verde {
+    background: #77B7A9;
+}
+
+.botao-verde:hover {
+    background: #65a89b;
+}
+
+.botao-vermelho {
+    background: #E48698;
+}
+
+.botao-vermelho:hover {
+    background: #d06b7f;
+}
+
+.botoes-container {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Space between the buttons */
+    margin-top: 20px;
+    padding: 0 25px;
+}
+
+.botoes-finais {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 50px;
+    gap: 10px;
+}
+
+.botoes-fixas {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000; /* Ensure buttons are above other elements */
+}
+
+.botoes-no-fundo {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 30px 50px;
+}
+
+.fixo-no-fundo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+    background-color: #f5f5f5; /* igual ao fundo geral */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.rodape-botoes {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+    background-color: #f9f9f9; /* mesmo tom que o fundo geral */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid #e0e0e0;
+}
+
+.botoes-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 60px 30px 300px; /* o 300px à esquerda evita a sidebar */
+    background-color: #f5f5f5;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5; /* fundo geral */
+    height: 100vh; /* altura total da página */
+    overflow-y: auto; /* rolagem vertical se necessário */
+    margin-left: 200px; /* distância da sidebar */
+}
+
+.card-auditoria {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-auditoria label {
+    font-weight: bold;
+}
+
+.card-auditoria input,
+.card-auditoria textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: white; /* Ensure the background is editable */
+    color: black; /* Ensure text is visible */
+    pointer-events: auto; /* Allow interaction */
+    resize: vertical; /* Allow resizing for textareas */
+    border: 1px solid #ccc; /* Ensure the border is visible */
+}
+
+.card-auditoria textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.botoes-final {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.botao-verde, .botao-vermelho {
+    padding: 14px 40px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.botao-verde {
+    background-color: #77B7A9;
+}
+
+.botao-vermelho {
+    background-color: #E48698;
+}
+
+.botoes-final-pagina {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.botao-verde, .botao-vermelho {
+    padding: 14px 40px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.2s ease;
+}
+
+.botao-verde {
+    background-color: #77B7A9;
+}
+
+.botao-verde:hover {
+    background-color: #65a89b;
+}
+
+.botao-vermelho {
+    background-color: #E48698;
+}
+
+.botao-vermelho:hover {
+    background-color: #d06b7f;
+}
+
+.botoes-canto-direito {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 60px;
+    box-sizing: border-box;
+}
+
+.rectangle {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rectangle p {
+    align-self: stretch;
+    color: var(--sds-color-text-default-default);
+    font-family: var(--sds-typography-body-font-family);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: var(--sds-typography-body-font-weight-regular);
+    line-height: 140%; /* 28px */
+    margin: 0;
+}
+
+.audit-info input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 218px;
+    background: #585858;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Make the sidebar stretch to the full height of the page */
+}
+
+.sidebar-icon {
+    margin-bottom: 20px; /* Add spacing below the icon */
+}
+
+.sidebar .nav {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .nav li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; /* Adjust padding for better spacing */
+    font-size: 16px;
+    cursor: pointer;
+    color: #687179; /* Match the text color in the screenshot */
+}
+
+.sidebar .nav li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+    gap: 10px; /* Add spacing between icon and text */
+}
+
+.sidebar .nav li:hover {
+    background: #4A4A4A; /* Darken background on hover */
+    border-radius: 8px;
+    color: white; /* Change text color on hover */
+}
+
+.sidebar .nav li a:hover {
+    color: white; /* Ensure text color changes on hover */
+}
+
+.sidebar .nav li.active {
+    background: #4A4A4A; /* Highlight the active page */
+    border-radius: 8px;
+    color: white; /* Ensure text is white */
+}
+
+.sidebar .nav li.active a {
+    color: white; /* Ensure link text is white */
+}
+
+.sidebar .nav li.active svg path {
+    fill: white; /* White color for active icons */
+}
+
+.sidebar .nav li svg path {
+    fill: #687179; /* Default color for inactive icons */
+}
